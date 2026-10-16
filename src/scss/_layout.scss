@@ -1,0 +1,200 @@
+/* =========================================
+   37. LAYOUT APP WEB — SIDEBAR & TOPBAR (UiGas integration)
+   ========================================= */
+
+/* Layout tipo app web */
+.app-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background: var(--bs-body-bg);
+}
+
+/* Sidebar mejorado - usa clases de UiGas para fondo y bordes */
+.app-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    background: var(--uig-bg);
+    border-right: 1px solid var(--uig-line);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+/* Logo área */
+.sidebar-header {
+    padding: 1.5rem 1.25rem;
+    border-bottom: 1px solid var(--uig-line);
+}
+
+/* Navegación - reutilizando .nav-item-custom ya definido arriba */
+/* Nota: .nav-item-custom ya existe en la sección 5, pero lo dejamos definido aquí también para consistencia */
+.nav-item-custom {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.7rem 1rem;
+    border-radius: var(--bs-border-radius-sm);
+    font-family: var(--uig-font-display);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: var(--uig-text-dim);
+    transition:
+      background-color 0.2s ease,
+      box-shadow 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+    text-decoration: none;
+    margin-bottom: 0.25rem;
+}
+
+.nav-item-custom i {
+    font-size: 1.2rem;
+    width: 24px;
+}
+
+.nav-item-custom:hover {
+    background: rgba(249, 33, 33, 0.08);
+    color: var(--uig-heading);
+}
+
+.nav-item-custom.active {
+    background: rgba(249, 33, 33, 0.12);
+    color: var(--bs-primary-text-emphasis);
+    box-shadow: inset 0 0 0 1px rgba(249, 33, 33, 0.35);
+}
+
+/* Badge en sidebar */
+.nav-badge {
+    margin-left: auto;
+    background: rgba(249, 33, 33, 0.2);
+    color: var(--bs-primary-text-emphasis);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--bs-border-radius-sm);
+    font-weight: 700;
+}
+
+/* Footer del sidebar */
+.sidebar-footer {
+    padding: 1rem 0.75rem;
+    border-top: 1px solid var(--uig-line);
+}
+
+/* Main content area */
+.app-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Top bar */
+.top-bar {
+    padding: 1rem 1.5rem;
+    background: var(--uig-nav-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--uig-line);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Content area */
+.app-content {
+    padding: 1.5rem;
+    flex: 1;
+}
+
+/* Stats cards minimal */
+.stat-mini {
+    background: var(--uig-surface);
+    border: 1px solid var(--uig-line);
+    border-radius: var(--bs-border-radius-lg);
+    padding: 1rem;
+}
+
+/* Tabla responsive */
+.table-custom {
+    background: var(--uig-surface);
+    border: 1px solid var(--uig-line);
+    border-radius: var(--bs-border-radius-lg);
+    overflow: hidden;
+}
+
+.table-custom th {
+    background: var(--uig-tint);
+    font-family: var(--uig-font-display);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    color: var(--uig-text-dim);
+    border-bottom-color: var(--uig-line);
+}
+
+.table-custom td {
+    border-bottom-color: var(--uig-line);
+    color: var(--uig-text);
+    font-family: var(--uig-font-data);
+}
+
+/* Botón mobile toggle */
+.mobile-toggle {
+    display: none;
+    background: transparent;
+    border: 1px solid var(--uig-line);
+    color: var(--uig-text);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--bs-border-radius);
+}
+
+@media (max-width: 768px) {
+    .app-sidebar {
+        position: fixed;
+        left: -280px;
+        z-index: 1050;
+        transition: left 0.3s ease;
+    }
+    .app-sidebar.show {
+        left: 0;
+    }
+    .mobile-toggle {
+        display: block;
+    }
+    .top-bar {
+        padding: 0.75rem 1rem;
+    }
+    .app-content {
+        padding: 1rem;
+    }
+}
+
+/* Overlay para mobile */
+.sidebar-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1040;
+}
+.sidebar-overlay.show {
+    display: block;
+}
+
+/* Animaciones suaves (los botones ya tienen su propia transición de estados) */
+.nav-item-custom, .stat-mini {
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+}

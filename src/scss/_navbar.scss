@@ -1,0 +1,53 @@
+/* =========================================
+   5. NAVBAR
+   ========================================= */
+.navbar {
+  --bs-navbar-color:               var(--uig-text-dim);
+  --bs-navbar-hover-color:         var(--uig-heading);
+  --bs-navbar-active-color:        var(--bs-primary-text-emphasis);
+  --bs-navbar-brand-color:         var(--uig-heading);
+  --bs-navbar-brand-hover-color:   var(--uig-red);
+  --bs-navbar-toggler-border-color: var(--uig-line-strong);
+  background-color: var(--uig-nav-bg) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--uig-line);
+}
+
+.navbar-brand {
+  /* La navbar brand ES el logotipo de la app: usa la voz de marca
+     (Korataki si está instalada, si no Barlow Condensed 900 itálica). */
+  font-family: var(--uig-font-brand);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.navbar-nav .nav-link {
+  font-family: var(--uig-font-display);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+  color: var(--bs-primary-text-emphasis) !important;
+}
+
+/* Stripe accent under active link */
+.navbar-nav .nav-link.active::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background: var(--uig-red);
+  margin-top: 2px;
+  border-radius: 1px;
+  box-shadow: var(--uig-glow-red);
+}
+
+.navbar-toggler-icon {
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28237,237,237,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}

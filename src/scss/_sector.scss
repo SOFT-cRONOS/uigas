@@ -1,0 +1,24 @@
+/* =========================================
+   39. LÍNEA DE SECTOR — firma gráfica de marca
+   ─────────────────────────────────────────
+   Brandbook CVR §07, Elemento 02: "Barras horizontales delgadas
+   en rojo que actúan como separadores de módulos o indicadores
+   de posición en la jerarquía."
+
+   Sustituye al chaflán: mismo gesto de velocidad sin recortar la
+   silueta del componente, sin filter: drop-shadow() y sin robarle
+   el foco de teclado (el anillo vuelve al outline global).
+
+   Uso: <div class="card uig-sector"> …
+   ========================================= */
+.uig-sector { position: relative; }
+.uig-sector::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--uig-red);
+  pointer-events: none;
+}

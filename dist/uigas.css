@@ -1,0 +1,2599 @@
+@charset "UTF-8";
+/* =========================================
+   FUENTES — Korataki (Brandbook CVR §06)
+   ─────────────────────────────────────────
+   Voz de MARCA: logotipo y menciones del nombre. Es una fuente
+   comercial (Typodermic) que no está en Google Fonts: el brandbook la
+   resuelve desde la fuente instalada en el sistema y así lo hace
+   también este override, declarándola con local(). El rostro ya es
+   Bold Italic de fábrica, por eso se publica como la cursiva de la
+   familia: así el navegador no le aplica oblicua sintética encima.
+   Donde Korataki no esté instalada, la familia no carga y cada
+   stack cae a su siguiente voz (Barlow Condensed 900 itálica).
+   ========================================= */
+@font-face {
+  font-family: "Korataki";
+  src: local("KoratakiW01-BoldItalic"), local("Korataki W01 Bold Italic"), local("Korataki Bold Italic");
+  font-weight: 700 900;
+  font-style: italic;
+  font-display: swap;
+}
+/* =========================================
+   1. TOKENS — paleta CVR + capa semántica
+   ─────────────────────────────────────────
+   Valores tomados del Brandbook CVR 2027: §05 Sistema de Color
+   (Racing Red, Asphalt Black, rampa de grises) y §06 Sistema
+   Tipográfico. La paleta de marca no cambia entre temas: solo se
+   reescribe la capa semántica (--uig-*), así
+   <html data-bs-theme="light"> conmuta TODO.
+   Radios chicos: Dark Sport Minimal, sin chaflán.
+   ========================================= */
+:root,
+[data-bs-theme=dark] {
+  /* --- Marca (idéntica en ambos temas) — Brandbook CVR §05 --- */
+  /* `--bs-primary` es el relleno sólido que sostiene texto blanco, así
+     que apunta al slab de marca (#e10600 = 4.97:1, el rojo de glow que
+     trae el propio brandbook). La SEÑAL de marca es `--uig-red`
+     (#f92121, Racing Red) y se usa en todo lo que no lleva texto
+     encima: enlaces, focus, bordes, tintes, indicadores, glow. */
+  --bs-primary: #e10600;
+  --bs-primary-rgb: 225, 6, 0;
+  --bs-secondary: #a1a1aa;
+  --bs-secondary-rgb: 161, 161, 170;
+  --bs-success: #22c55e;
+  --bs-success-rgb: 34, 197, 94;
+  --bs-danger: #e10600;
+  --bs-danger-rgb: 225, 6, 0;
+  --bs-warning: #f59e0b;
+  --bs-warning-rgb: 245, 158, 11;
+  --bs-info: #38bdf8;
+  --bs-info-rgb: 56, 189, 248;
+  --bs-light: #d4d4d8;
+  --bs-light-rgb: 212, 212, 216;
+  --bs-dark: #141414; /* Asphalt Black */
+  --bs-dark-rgb: 20, 20, 20;
+  /* Rampón rojo CVR (§05). Cada escalón cumple su contraste:
+     #f92121 / #ff2a1f sobre oscuro = 4.70 / 5.00 · #b30500 y más abajo
+     con texto blanco = 7.15+. `--uig-red-slab` es el único que puede
+     portar texto blanco a plena intensidad. */
+  --uig-red: #f92121; /* Racing Red  — señal: acentos y texto */
+  --uig-red-hi: #ff2a1f; /* Red Light   — hover */
+  --uig-red-lo: #b30500; /* Red 600     — hover profundo */
+  --uig-red-deep: #8a0400; /* Deep Red    — activo / destructivo */
+  --uig-red-slab: #e10600; /* relleno sólido con texto blanco (4.97:1) */
+  --uig-white: #ffffff;
+  --uig-ink: #141414; /* texto oscuro sobre superficies claras */
+  /* --- Superficies (cambian por tema) --- */
+  --uig-bg: #141414; /* Asphalt Black — base por defecto CVR */
+  --uig-bg-deep: #0c0c0c; /* overlay / fondo profundo / código */
+  --uig-surface: #111111; /* cards, campos, menús */
+  --uig-surface-2: #1a1a1a; /* elevado / hover */
+  --uig-surface-3: #1f1f1f; /* sólido neutro */
+  /* --- Líneas --- */
+  --uig-line: #1f1f1f;
+  --uig-line-strong: #2a2a2a;
+  /* --- Texto --- */
+  --uig-heading: #ffffff;
+  --uig-text: #ededed;
+  --uig-text-soft: #d4d4d8;
+  --uig-text-dim: #a1a1aa;
+  --uig-text-muted: #7d8593; /* Gray 400 levantado: 4.75:1 sobre #1f1f1f */
+  /* --- Tintes, vidrio y overlays --- */
+  --uig-tint: rgba(255, 255, 255, 0.03);
+  --uig-tint-2: rgba(255, 255, 255, 0.015);
+  --uig-glass: rgba(255, 255, 255, 0.025);
+  --uig-glass-line: rgba(255, 255, 255, 0.08);
+  --uig-nav-bg: rgba(20, 20, 20, 0.9);
+  --uig-menu-bg: rgba(17, 17, 17, 0.98);
+  --uig-backdrop: rgba(0, 0, 0, 0.7);
+  /* --- Sombras (por tema) --- */
+  --uig-shadow-1: 0 2px 6px rgba(0, 0, 0, 0.35);
+  --uig-shadow-2: 0 6px 18px rgba(0, 0, 0, 0.5);
+  --uig-shadow-3: 0 12px 32px rgba(0, 0, 0, 0.65);
+  --uig-inset: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  /* --- Bootstrap derivado de la capa semántica --- */
+  --bs-body-bg: var(--uig-bg);
+  --bs-body-bg-rgb: 20, 20, 20;
+  --bs-body-color: var(--uig-text);
+  --bs-body-color-rgb: 237, 237, 237;
+  /* Sistema tipográfico (Brandbook CVR §06, ajustado):
+     Barlow Condensed = H1, display, títulos y etiquetas (legible)
+     Korataki         = SOLO marca: logotipo y menciones del nombre
+                        (exclusivo, fuente local del sistema)
+     Barlow           = cuerpo
+     Rajdhani         = EXCLUSIVO de datos (tiempos, posiciones, telemetría) */
+  --uig-font-h1: 'Barlow Condensed', sans-serif;
+  --uig-font-display: 'Barlow Condensed', sans-serif;
+  --uig-font-brand: 'Korataki', 'KoratakiW01-BoldItalic', 'Barlow Condensed', sans-serif;
+  --uig-font-body: 'Barlow', 'Segoe UI', sans-serif;
+  --uig-font-data: 'Rajdhani', sans-serif;
+  --bs-body-font-family: var(--uig-font-body);
+  --bs-emphasis-color: var(--uig-heading);
+  --bs-emphasis-color-rgb: 255, 255, 255;
+  --bs-secondary-color: rgba(237, 237, 237, 0.65);
+  --bs-secondary-color-rgb: 237, 237, 237;
+  --bs-secondary-bg: var(--uig-surface);
+  --bs-secondary-bg-rgb: 17, 17, 17;
+  --bs-tertiary-color: rgba(237, 237, 237, 0.4);
+  --bs-tertiary-bg: var(--uig-surface-2);
+  --bs-tertiary-bg-rgb: 26, 26, 26;
+  --bs-border-color: var(--uig-line);
+  --bs-border-color-translucent: var(--uig-glass-line);
+  --bs-heading-color: var(--uig-heading);
+  /* --- Radios: escala chica (Dark Sport Minimal, sin chaflán) --- */
+  --bs-border-radius: 3px;
+  --bs-border-radius-sm: 2px;
+  --bs-border-radius-lg: 4px;
+  --bs-border-radius-xl: 6px;
+  --bs-border-radius-xxl: 8px;
+  --bs-border-radius-pill: 50rem;
+  /* Racing Red mide 4.70:1 sobre #141414 — AA en cuerpo */
+  --bs-link-color: #f92121;
+  --bs-link-color-rgb: 249, 33, 33;
+  --bs-link-hover-color: #ff4d44;
+  --bs-link-hover-color-rgb: 255, 77, 68;
+  --bs-box-shadow: var(--uig-shadow-2);
+  --bs-box-shadow-sm: var(--uig-shadow-1);
+  --bs-box-shadow-lg: var(--uig-shadow-3);
+  --bs-box-shadow-inset: var(--uig-inset);
+  --bs-focus-ring-color: rgba(249, 33, 33, 0.35);
+  --bs-form-valid-color: #22c55e;
+  --bs-form-valid-border-color: #22c55e;
+  --bs-form-invalid-color: var(--uig-red);
+  --bs-form-invalid-border-color: var(--uig-red);
+  /* --- Tonos sutiles (alerts, tablas, badges) --- */
+  --bs-primary-text-emphasis: #ff4d44;
+  --bs-primary-bg-subtle: rgba(249, 33, 33, 0.12);
+  --bs-primary-border-subtle: rgba(249, 33, 33, 0.4);
+  --bs-secondary-text-emphasis: var(--uig-text-soft);
+  --bs-secondary-bg-subtle: rgba(161, 161, 170, 0.1);
+  --bs-secondary-border-subtle: rgba(161, 161, 170, 0.3);
+  --bs-success-text-emphasis: #4ade80;
+  --bs-success-bg-subtle: rgba(34, 197, 94, 0.1);
+  --bs-success-border-subtle: rgba(34, 197, 94, 0.35);
+  --bs-warning-text-emphasis: #fbbf24;
+  --bs-warning-bg-subtle: rgba(245, 158, 11, 0.1);
+  --bs-warning-border-subtle: rgba(245, 158, 11, 0.35);
+  --bs-danger-text-emphasis: #ff4d44;
+  --bs-danger-bg-subtle: rgba(249, 33, 33, 0.12);
+  --bs-danger-border-subtle: rgba(249, 33, 33, 0.4);
+  --bs-info-text-emphasis: #7dd3fc;
+  --bs-info-bg-subtle: rgba(56, 189, 248, 0.1);
+  --bs-info-border-subtle: rgba(56, 189, 248, 0.35);
+  --bs-light-text-emphasis: #f4f4f5;
+  --bs-light-bg-subtle: rgba(212, 212, 216, 0.08);
+  --bs-light-border-subtle: rgba(212, 212, 216, 0.25);
+  --bs-dark-text-emphasis: var(--uig-text-dim);
+  --bs-dark-bg-subtle: rgba(20, 20, 20, 0.5);
+  --bs-dark-border-subtle: var(--uig-line);
+  --bs-gradient: none;
+  /* --- Glow de marca (Brandbook CVR: --cvr-glow-primary) --- */
+  --uig-glow-red: 0 0 18px rgba(249, 33, 33, 0.35);
+  --uig-glow-red-lg: 0 0 32px rgba(249, 33, 33, 0.45);
+  /* --- Interacción: reposo plano, la motion lleva el peso --- */
+  --uig-btn-lit: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  --uig-lift: translateY(-2px);
+  --uig-press: translateY(0) scale(0.985);
+  --uig-inset-press: inset 0 2px 8px rgba(0, 0, 0, 0.45);
+  --uig-ring: 0 0 0 3px rgba(249, 33, 33, 0.45);
+  --uig-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* =========================================
+   1b. TEMA CLARO — misma marca, superficies claras
+   ─────────────────────────────────────────
+   Solo se reescriben los tokens semánticos:
+   ningún componente necesita reglas nuevas.
+   ========================================= */
+[data-bs-theme=light] {
+  /* Brandbook CVR §11: "No usar fondos blancos como base principal".
+     La base clara vive en la rampa neutra, pero en un tono menos
+     brillante que Gray 50 para que el texto destaque; el blanco
+     sigue siendo la superficie elevada. Carbono #141414 para texto
+     sobre claro. */
+  --uig-bg: #dcdde2; /* base: más baja que Gray 100 (antes #ececf0) */
+  --uig-bg-deep: #cfd0d6; /* overlay / fondo profundo */
+  --uig-surface: #f0f0f3; /* superficie elevada (cards) — ya no blanco puro */
+  --uig-surface-2: #e6e7eb; /* hover / overlays */
+  --uig-surface-3: #d3d4da; /* profundo / presionado */
+  --uig-line: #c3c4cb;
+  --uig-line-strong: #b0b1ba;
+  --uig-heading: #141414; /* Asphalt Black sobre fondo claro */
+  --uig-text: #2a2a2a; /* Steel Gray */
+  --uig-text-soft: #3f3f46;
+  --uig-text-dim: #52525b;
+  --uig-text-muted: #545760; /* AA (≥4.5:1) incluso sobre --uig-bg-deep */
+  --uig-tint: rgba(20, 20, 20, 0.035);
+  --uig-tint-2: rgba(20, 20, 20, 0.02);
+  --uig-glass: rgba(20, 20, 20, 0.025);
+  --uig-glass-line: rgba(20, 20, 20, 0.1);
+  /* La señal de marca se profundiza sobre claro: #b30500 mide ~6:1
+     sobre la base, y el hover pasa a Deep Red en vez de encenderse. */
+  --uig-red: #b30500;
+  --uig-red-hi: #8a0400;
+  --uig-nav-bg: rgba(240, 240, 243, 0.88);
+  --uig-menu-bg: rgba(240, 240, 243, 0.99);
+  --uig-backdrop: rgba(20, 20, 20, 0.45);
+  --uig-shadow-1: 0 1px 3px rgba(20, 20, 20, 0.08);
+  --uig-shadow-2: 0 6px 18px rgba(20, 20, 20, 0.1);
+  --uig-shadow-3: 0 14px 34px rgba(20, 20, 20, 0.14);
+  --uig-inset: inset 0 1px 2px rgba(20, 20, 20, 0.08);
+  --bs-body-bg-rgb: 220, 221, 226; /* = --uig-bg */
+  --bs-body-color-rgb: 42, 42, 42;
+  --bs-emphasis-color-rgb: 20, 20, 20;
+  --bs-secondary-color: rgba(42, 42, 42, 0.72);
+  --bs-secondary-color-rgb: 42, 42, 42;
+  --bs-tertiary-color: rgba(42, 42, 42, 0.7); /* 0.5 daba ~2.8:1 */
+  --bs-secondary-bg-rgb: 240, 240, 243; /* = --uig-surface */
+  --bs-tertiary-bg-rgb: 230, 231, 235; /* = --uig-surface-2 */
+  --uig-btn-lit: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  --uig-inset-press: inset 0 2px 8px rgba(20, 20, 20, 0.18);
+  --uig-glow-red: 0 0 18px rgba(249, 33, 33, 0.28);
+  --uig-glow-red-lg: 0 0 32px rgba(249, 33, 33, 0.36);
+  /* Semánticos base en claro. Los de dark (#a1a1aa, #22c55e, #f59e0b,
+     #38bdf8) miden 1.6–2.0:1 sobre la base clara, y .text-secondary /
+     .text-success / .text-warning / .text-info los usan tal cual.
+     primary y danger NO se tocan (son el slab de marca). */
+  --bs-secondary: #52525b;
+  --bs-secondary-rgb: 82, 82, 91;
+  --bs-success: #166534;
+  --bs-success-rgb: 22, 101, 52;
+  --bs-warning: #92400e;
+  --bs-warning-rgb: 146, 64, 14;
+  --bs-info: #075985;
+  --bs-info-rgb: 7, 89, 133;
+  /* Acentos de estado: rampón rojo CVR (Red 600) para leerse sobre
+     la base clara; el resto, versantes oscuros de sus propios tonos. */
+  --bs-primary-text-emphasis: #b30500;
+  --bs-success-text-emphasis: #166534;
+  --bs-warning-text-emphasis: #92400e;
+  --bs-danger-text-emphasis: #b30500;
+  --bs-info-text-emphasis: #075985;
+  --bs-light-text-emphasis: #3f3f46;
+  --bs-secondary-text-emphasis: #3f3f46;
+  --bs-dark-text-emphasis: #3f3f46;
+  /* Tinte sutil de cada acento. En el tema claro se usan los
+     versantes oscuros ya empleados en text-emphasis. */
+  --bs-primary-bg-subtle: rgba(179, 5, 0, 0.09);
+  --bs-primary-border-subtle: rgba(179, 5, 0, 0.4);
+  --bs-secondary-bg-subtle: rgba(20, 20, 20, 0.06);
+  --bs-secondary-border-subtle: rgba(20, 20, 20, 0.25);
+  --bs-success-bg-subtle: rgba(22, 101, 52, 0.09);
+  --bs-success-border-subtle: rgba(22, 101, 52, 0.4);
+  --bs-warning-bg-subtle: rgba(146, 64, 14, 0.09);
+  --bs-warning-border-subtle: rgba(146, 64, 14, 0.4);
+  --bs-danger-bg-subtle: rgba(179, 5, 0, 0.09);
+  --bs-danger-border-subtle: rgba(179, 5, 0, 0.4);
+  --bs-info-bg-subtle: rgba(7, 89, 133, 0.09);
+  --bs-info-border-subtle: rgba(7, 89, 133, 0.4);
+  --bs-light-bg-subtle: rgba(20, 20, 20, 0.06);
+  --bs-light-border-subtle: rgba(20, 20, 20, 0.12);
+  --bs-dark-bg-subtle: rgba(20, 20, 20, 0.06);
+  --bs-dark-border-subtle: rgba(20, 20, 20, 0.15);
+  --bs-link-color: #b30500;
+  --bs-link-color-rgb: 179, 5, 0;
+  --bs-link-hover-color: #8a0400;
+  --bs-link-hover-color-rgb: 138, 4, 0;
+}
+
+/* =========================================
+   2. BASE — body, typography, links
+   ========================================= */
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  font-family: var(--bs-body-font-family);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7; /* Brandbook CVR §06 — Body: Barlow 400 · lh 1.7 */
+}
+
+/* H2–H6 — Brandbook CVR §06: Barlow Condensed es la voz de títulos
+   de sección y subsección. El H1 vive aparte, más abajo. */
+h2, h3, h4, h5, h6,
+.h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--bs-heading-color);
+}
+
+/* Display headings — wide, aggressive */
+.display-1, .display-2, .display-3,
+.display-4, .display-5, .display-6 {
+  font-family: var(--uig-font-display);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--uig-heading);
+}
+
+/* H1 y display — Barlow Condensed es la voz legible de los títulos
+   principales (Brandbook CVR §06, ajustado). Korataki queda reservada
+   para la marca: logotipo y menciones del nombre (ver .brandmark y
+   .navbar-brand). Sin itálica: la jerarquía la dan el peso 900, el
+   uppercase y el tracking. */
+h1, .h1,
+.display-1, .display-2, .display-3 {
+  font-family: var(--uig-font-h1);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--uig-heading);
+}
+
+/* .brandmark — mención del nombre de marca. Korataki si está instalada
+   (local); si no, Barlow Condensed 900 itálica. */
+.brandmark {
+  font-family: var(--uig-font-brand);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--uig-heading);
+}
+
+a {
+  color: var(--bs-link-color);
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--bs-link-hover-color);
+}
+
+hr {
+  border-color: var(--bs-border-color);
+  opacity: 1;
+}
+
+::selection {
+  background: var(--uig-red-slab);
+  color: #ffffff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--uig-bg-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--uig-line-strong);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--uig-text-dim);
+}
+
+/* =========================================
+   3. BUTTONS — hierarchy & interaction states
+   ─────────────────────────────────────────
+   The rest state is flat and solid. Lift, glow
+   and ring live only in hover / focus / press,
+   so the primary CTA keeps its rank. Red is the
+   brand; danger reads destructive through a
+   deeper tone that ignites on hover.
+   ========================================= */
+.btn {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border-radius: var(--bs-border-radius);
+  padding: 0.55rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  line-height: 1.15;
+  transition: transform 0.18s var(--uig-ease-out), box-shadow 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Icons inside a button keep an even rhythm */
+.btn > svg,
+.btn > img {
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
+}
+
+.btn > .bi {
+  font-size: 1.05em;
+  line-height: 1;
+}
+
+/* Sizes — re-declared so our padding / radius win over Bootstrap's vars */
+.btn-sm {
+  padding: 0.34rem 0.85rem;
+  font-size: 0.82rem;
+  border-radius: var(--bs-border-radius-sm);
+}
+
+.btn-lg {
+  padding: 0.72rem 1.7rem;
+  font-size: 1.12rem;
+  border-radius: var(--bs-border-radius-lg);
+}
+
+/* Ghost — quiet tertiary action, no chrome until hover */
+.btn-ghost {
+  --bs-btn-color: #a1a1aa;
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: rgba(255, 255, 255, 0.06);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: rgba(255, 255, 255, 0.1);
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+}
+
+/* Loading — a spinner takes the label's place */
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+
+.btn-loading::after {
+  content: "";
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  animation: uig-btn-spin 0.6s linear infinite;
+}
+
+@keyframes uig-btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* Primary — the one brand CTA. Flat until touched. */
+.btn-primary {
+  --bs-btn-color: #ffffff;
+  --bs-btn-bg: var(--uig-red-slab);
+  --bs-btn-border-color: var(--uig-red-slab);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: var(--uig-red-lo);
+  --bs-btn-hover-border-color: var(--uig-red-lo);
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: var(--uig-red-deep);
+  --bs-btn-active-border-color: var(--uig-red-deep);
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+  --bs-btn-disabled-color: #ffffff;
+  --bs-btn-disabled-bg: var(--uig-red-slab);
+  --bs-btn-disabled-border-color: var(--uig-red-slab);
+  box-shadow: var(--uig-btn-lit);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: var(--uig-lift);
+  box-shadow: var(--uig-btn-lit), var(--uig-glow-red);
+}
+
+/* Secondary — neutral surface action */
+.btn-secondary {
+  --bs-btn-color: #ededed;
+  --bs-btn-bg: #1f1f1f;
+  --bs-btn-border-color: #2a2a2a;
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: #262626;
+  --bs-btn-hover-border-color: #3a3a3a;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #2f2f2f;
+  --bs-btn-active-border-color: #3a3a3a;
+  --bs-btn-focus-shadow-rgb: 161, 161, 170;
+  --bs-btn-disabled-color: #a1a1aa;
+  --bs-btn-disabled-bg: #1a1a1a;
+  --bs-btn-disabled-border-color: #262626;
+}
+
+.btn-secondary:hover:not(:disabled) {
+  transform: var(--uig-lift);
+}
+
+/* Success */
+.btn-success {
+  --bs-btn-color: #04140a;
+  --bs-btn-bg: #22c55e;
+  --bs-btn-border-color: #22c55e;
+  --bs-btn-hover-color: #04140a;
+  --bs-btn-hover-bg: #1cae52;
+  --bs-btn-hover-border-color: #1cae52;
+  --bs-btn-active-color: #04140a;
+  --bs-btn-active-bg: #16a34a;
+  --bs-btn-active-border-color: #16a34a;
+  --bs-btn-focus-shadow-rgb: 34, 197, 94;
+  --bs-btn-disabled-color: #04140a;
+  --bs-btn-disabled-bg: #22c55e;
+  --bs-btn-disabled-border-color: #22c55e;
+}
+
+.btn-success:hover:not(:disabled) {
+  transform: var(--uig-lift);
+}
+
+/* Danger — destructive. Deep Red CVR at rest, ignites on hover. */
+.btn-danger {
+  --bs-btn-color: #ffffff;
+  --bs-btn-bg: var(--uig-red-deep);
+  --bs-btn-border-color: var(--uig-red-deep);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: var(--uig-red-lo);
+  --bs-btn-hover-border-color: var(--uig-red-lo);
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #410200; /* Red 750 */
+  --bs-btn-active-border-color: #410200;
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+  --bs-btn-disabled-color: #ffffff;
+  --bs-btn-disabled-bg: var(--uig-red-deep);
+  --bs-btn-disabled-border-color: var(--uig-red-deep);
+  box-shadow: var(--uig-btn-lit);
+}
+
+.btn-danger:hover:not(:disabled) {
+  transform: var(--uig-lift);
+  box-shadow: var(--uig-btn-lit), 0 0 18px rgba(249, 33, 33, 0.32);
+}
+
+/* Warning */
+.btn-warning {
+  --bs-btn-color: #231603;
+  --bs-btn-bg: #f59e0b;
+  --bs-btn-border-color: #f59e0b;
+  --bs-btn-hover-color: #231603;
+  --bs-btn-hover-bg: #de8f06;
+  --bs-btn-hover-border-color: #de8f06;
+  --bs-btn-active-color: #231603;
+  --bs-btn-active-bg: #d97706;
+  --bs-btn-active-border-color: #d97706;
+  --bs-btn-focus-shadow-rgb: 245, 158, 11;
+  --bs-btn-disabled-color: #231603;
+  --bs-btn-disabled-bg: #f59e0b;
+  --bs-btn-disabled-border-color: #f59e0b;
+}
+
+.btn-warning:hover:not(:disabled) {
+  transform: var(--uig-lift);
+}
+
+/* Info */
+.btn-info {
+  --bs-btn-color: #05202e;
+  --bs-btn-bg: #38bdf8;
+  --bs-btn-border-color: #38bdf8;
+  --bs-btn-hover-color: #05202e;
+  --bs-btn-hover-bg: #21a9ee;
+  --bs-btn-hover-border-color: #21a9ee;
+  --bs-btn-active-color: #05202e;
+  --bs-btn-active-bg: #0ea5e9;
+  --bs-btn-active-border-color: #0ea5e9;
+  --bs-btn-focus-shadow-rgb: 56, 189, 248;
+  --bs-btn-disabled-color: #05202e;
+  --bs-btn-disabled-bg: #38bdf8;
+  --bs-btn-disabled-border-color: #38bdf8;
+}
+
+.btn-info:hover:not(:disabled) {
+  transform: var(--uig-lift);
+}
+
+/* Light — a true light surface, the high-contrast alternate */
+.btn-light {
+  --bs-btn-color: #141414;
+  --bs-btn-bg: #e4e4e7;
+  --bs-btn-border-color: #e4e4e7;
+  --bs-btn-hover-color: #141414;
+  --bs-btn-hover-bg: #ffffff;
+  --bs-btn-hover-border-color: #ffffff;
+  --bs-btn-active-color: #141414;
+  --bs-btn-active-bg: #cfcfd3;
+  --bs-btn-active-border-color: #cfcfd3;
+  --bs-btn-focus-shadow-rgb: 212, 212, 216;
+  --bs-btn-disabled-color: #141414;
+  --bs-btn-disabled-bg: #e4e4e7;
+  --bs-btn-disabled-border-color: #e4e4e7;
+}
+
+.btn-light:hover:not(:disabled) {
+  transform: var(--uig-lift);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* Dark — deepest surface action */
+.btn-dark {
+  --bs-btn-color: #ededed;
+  --bs-btn-bg: #111111;
+  --bs-btn-border-color: #1f1f1f;
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: #1a1a1a;
+  --bs-btn-hover-border-color: #2f2f2f;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #0c0c0c;
+  --bs-btn-active-border-color: #1f1f1f;
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+  --bs-btn-disabled-color: #6b7280;
+  --bs-btn-disabled-bg: #0d0d0d;
+  --bs-btn-disabled-border-color: #1a1a1a;
+}
+
+.btn-dark:hover:not(:disabled) {
+  transform: var(--uig-lift);
+}
+
+/* Outline variants — quiet by default, fill on hover */
+.btn-outline-primary {
+  --bs-btn-color: var(--uig-red);
+  --bs-btn-border-color: rgba(249, 33, 33, 0.6);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: var(--uig-red-slab);
+  --bs-btn-hover-border-color: var(--uig-red-slab);
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: var(--uig-red-lo);
+  --bs-btn-active-border-color: var(--uig-red-lo);
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+  --bs-btn-disabled-color: #6b7280;
+  --bs-btn-disabled-border-color: rgba(249, 33, 33, 0.3);
+}
+
+.btn-outline-primary:hover:not(:disabled) {
+  transform: var(--uig-lift);
+  box-shadow: var(--uig-glow-red);
+}
+
+.btn-outline-secondary {
+  --bs-btn-color: #a1a1aa;
+  --bs-btn-border-color: #2a2a2a;
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: #1f1f1f;
+  --bs-btn-hover-border-color: #a1a1aa;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #2a2a2a;
+  --bs-btn-active-border-color: #a1a1aa;
+  --bs-btn-focus-shadow-rgb: 161, 161, 170;
+  --bs-btn-disabled-color: #6b7280;
+  --bs-btn-disabled-border-color: #1f1f1f;
+}
+
+.btn-outline-secondary:hover:not(:disabled) {
+  transform: var(--uig-lift);
+}
+
+.btn-outline-success {
+  --bs-btn-color: #22c55e;
+  --bs-btn-border-color: rgba(34, 197, 94, 0.55);
+  --bs-btn-hover-color: #04140a;
+  --bs-btn-hover-bg: #22c55e;
+  --bs-btn-hover-border-color: #22c55e;
+  --bs-btn-active-color: #04140a;
+  --bs-btn-active-bg: #16a34a;
+  --bs-btn-active-border-color: #16a34a;
+  --bs-btn-focus-shadow-rgb: 34, 197, 94;
+}
+
+.btn-outline-danger {
+  --bs-btn-color: #ff4d44; /* Red 300 */
+  --bs-btn-border-color: rgba(249, 33, 33, 0.55);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: var(--uig-red-deep);
+  --bs-btn-hover-border-color: var(--uig-red-deep);
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #410200;
+  --bs-btn-active-border-color: #410200;
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+}
+
+.btn-outline-warning {
+  --bs-btn-color: #f59e0b;
+  --bs-btn-border-color: rgba(245, 158, 11, 0.55);
+  --bs-btn-hover-color: #231603;
+  --bs-btn-hover-bg: #f59e0b;
+  --bs-btn-hover-border-color: #f59e0b;
+  --bs-btn-active-color: #231603;
+  --bs-btn-active-bg: #d97706;
+  --bs-btn-active-border-color: #d97706;
+  --bs-btn-focus-shadow-rgb: 245, 158, 11;
+}
+
+.btn-outline-info {
+  --bs-btn-color: #38bdf8;
+  --bs-btn-border-color: rgba(56, 189, 248, 0.55);
+  --bs-btn-hover-color: #05202e;
+  --bs-btn-hover-bg: #38bdf8;
+  --bs-btn-hover-border-color: #38bdf8;
+  --bs-btn-active-color: #05202e;
+  --bs-btn-active-bg: #0ea5e9;
+  --bs-btn-active-border-color: #0ea5e9;
+  --bs-btn-focus-shadow-rgb: 56, 189, 248;
+}
+
+.btn-outline-light {
+  --bs-btn-color: #d4d4d8;
+  --bs-btn-border-color: #2a2a2a;
+  --bs-btn-hover-color: #141414;
+  --bs-btn-hover-bg: #e4e4e7;
+  --bs-btn-hover-border-color: #e4e4e7;
+  --bs-btn-active-color: #141414;
+  --bs-btn-active-bg: #cfcfd3;
+  --bs-btn-active-border-color: #cfcfd3;
+  --bs-btn-focus-shadow-rgb: 212, 212, 216;
+}
+
+.btn-outline-dark {
+  --bs-btn-color: #ededed;
+  --bs-btn-border-color: #1f1f1f;
+  --bs-btn-hover-color: #141414;
+  --bs-btn-hover-bg: #ededed;
+  --bs-btn-hover-border-color: #ededed;
+  --bs-btn-active-color: #141414;
+  --bs-btn-active-bg: #d4d4d8;
+  --bs-btn-active-border-color: #d4d4d8;
+  --bs-btn-focus-shadow-rgb: 237, 237, 237;
+}
+
+/* Link button — inline, understated */
+.btn-link {
+  --bs-btn-color: var(--uig-red);
+  --bs-btn-hover-color: var(--uig-red-hi);
+  --bs-btn-active-color: var(--uig-red-hi);
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  padding: 0.25rem 0.3rem;
+  text-underline-offset: 3px;
+}
+
+.btn-link:hover:not(:disabled) {
+  text-decoration: underline;
+}
+
+/* Press — every variant feels the click (last, so it wins over hover) */
+.btn:active:not(:disabled) {
+  transform: var(--uig-press);
+  box-shadow: var(--uig-inset-press);
+  transition-duration: 0.06s;
+}
+
+/* Disabled — inert: no glow, no lift */
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.42;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Keyboard focus — one ring, no lift */
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--uig-ring);
+}
+
+/* =========================================
+   4. CARDS
+   ========================================= */
+.card {
+  --bs-card-bg: var(--uig-surface);
+  --bs-card-border-color: var(--uig-line);
+  --bs-card-border-radius: var(--bs-border-radius-lg);
+  --bs-card-cap-bg: var(--uig-tint);
+  --bs-card-color: var(--uig-text);
+  --bs-card-title-color: var(--uig-heading);
+  --bs-card-subtitle-color: var(--uig-text-dim);
+  background-color: var(--bs-card-bg);
+  border: 1px solid var(--bs-card-border-color);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  /* Subtle inner highlight — top edge lit */
+  box-shadow: inset 0 1px 0 var(--uig-tint), 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.card:hover {
+  border-color: rgba(249, 33, 33, 0.5);
+  box-shadow: 0 0 0 1px rgba(249, 33, 33, 0.25), 0 12px 32px rgba(0, 0, 0, 0.6);
+  transform: translateY(-6px);
+}
+
+.card-header {
+  background-color: var(--uig-tint);
+  border-bottom-color: var(--uig-line);
+}
+
+.card-footer {
+  background-color: var(--uig-tint);
+  border-top-color: var(--uig-line);
+}
+
+.card-title {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Featured card — the one element a view is allowed to elevate.
+   Sin chaflán: la silueta queda intacta y la firma la pone la
+   línea de sector (Brandbook CVR §07, Elemento 02) más el glow. */
+.card-featured {
+  position: relative;
+  border-color: rgba(249, 33, 33, 0.55);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.55);
+}
+
+.card-featured::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--uig-red);
+  pointer-events: none;
+}
+
+.card-featured:hover {
+  border-color: var(--uig-red);
+  box-shadow: 0 18px 38px rgba(0, 0, 0, 0.6), var(--uig-glow-red);
+}
+
+/* Stat / KPI block — a reusable home for the telemetry figure.
+   Brandbook CVR §06: "Usar Rajdhani para tiempos, datos y
+   estadísticas" + cifras tabulares para que las columnas no bailen. */
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.stat-label {
+  font-family: var(--uig-font-display);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--uig-text-muted);
+}
+
+.stat-value {
+  font-family: var(--uig-font-data);
+  font-weight: 600;
+  font-size: 2.1rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  font-variant-numeric: tabular-nums;
+  color: var(--uig-heading);
+}
+
+.stat-value .unit {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--uig-text-dim);
+}
+
+.stat-delta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--uig-font-data);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  font-size: 0.8rem;
+  color: var(--uig-text-muted);
+}
+
+/* =========================================
+   5. NAVBAR
+   ========================================= */
+.navbar {
+  --bs-navbar-color: var(--uig-text-dim);
+  --bs-navbar-hover-color: var(--uig-heading);
+  --bs-navbar-active-color: var(--bs-primary-text-emphasis);
+  --bs-navbar-brand-color: var(--uig-heading);
+  --bs-navbar-brand-hover-color: var(--uig-red);
+  --bs-navbar-toggler-border-color: var(--uig-line-strong);
+  background-color: var(--uig-nav-bg) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--uig-line);
+}
+
+.navbar-brand {
+  /* La navbar brand ES el logotipo de la app: usa la voz de marca
+     (Korataki si está instalada, si no Barlow Condensed 900 itálica). */
+  font-family: var(--uig-font-brand);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.navbar-nav .nav-link {
+  font-family: var(--uig-font-display);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link:hover {
+  color: var(--bs-primary-text-emphasis) !important;
+}
+
+/* Stripe accent under active link */
+.navbar-nav .nav-link.active::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--uig-red);
+  margin-top: 2px;
+  border-radius: 1px;
+  box-shadow: var(--uig-glow-red);
+}
+
+.navbar-toggler-icon {
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28237,237,237,0.7%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* =========================================
+   6. FORMS
+   ========================================= */
+.form-control,
+.form-select {
+  background-color: var(--uig-surface);
+  border-color: var(--uig-line);
+  border-radius: var(--bs-border-radius);
+  color: var(--uig-text);
+  font-family: var(--uig-font-body);
+  font-weight: 500;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--uig-surface);
+  border-color: var(--uig-red);
+  box-shadow: 0 0 0 3px rgba(249, 33, 33, 0.2);
+  color: var(--uig-text);
+  outline: 0;
+}
+
+.form-control::placeholder {
+  color: var(--uig-text-muted);
+  opacity: 1;
+}
+
+.form-control:disabled,
+.form-select:disabled {
+  background-color: var(--uig-bg-deep);
+  color: var(--uig-text-muted);
+  opacity: 0.6;
+}
+
+.form-label {
+  font-family: var(--uig-font-display);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--uig-text-dim);
+  font-size: 0.85rem;
+}
+
+.form-text {
+  color: var(--uig-text-muted);
+}
+
+/* Input group */
+.input-group-text {
+  background-color: var(--uig-surface-2);
+  border-color: var(--uig-line);
+  color: var(--uig-text-dim);
+}
+
+/* Form select arrow color */
+.form-select {
+  --bs-form-select-bg-img: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23a1a1aa' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+}
+
+/* Check & radio */
+.form-check-input {
+  --bs-form-check-bg: var(--uig-surface);
+  border-color: var(--uig-line-strong);
+  background-color: var(--uig-surface);
+}
+
+.form-check-input:checked {
+  /* El tick es blanco: el fondo va en el slab (4.97:1) */
+  background-color: var(--uig-red-slab);
+  border-color: var(--uig-red-slab);
+}
+
+.form-check-input:focus {
+  border-color: var(--uig-red);
+  box-shadow: 0 0 0 3px rgba(249, 33, 33, 0.2);
+}
+
+/* Range */
+.form-range::-webkit-slider-thumb {
+  background-color: var(--uig-red);
+}
+
+.form-range::-moz-range-thumb {
+  background-color: var(--uig-red);
+}
+
+.form-range::-webkit-slider-runnable-track {
+  background-color: var(--uig-line);
+}
+
+.form-range::-moz-range-track {
+  background-color: var(--uig-line);
+}
+
+/* Validation */
+.form-control.is-valid, .was-validated .form-control:valid {
+  border-color: #22c55e;
+}
+
+.form-control.is-valid:focus, .was-validated .form-control:valid:focus {
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.2);
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+  border-color: var(--uig-red);
+}
+
+.form-control.is-invalid:focus, .was-validated .form-control:invalid:focus {
+  box-shadow: 0 0 0 3px rgba(249, 33, 33, 0.2);
+}
+
+.valid-feedback {
+  color: #22c55e;
+}
+
+.invalid-feedback {
+  color: var(--bs-danger-text-emphasis);
+}
+
+/* =========================================
+   7. TABLES
+   ========================================= */
+.table {
+  font-variant-numeric: tabular-nums;
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--uig-text);
+  --bs-table-border-color: var(--uig-line);
+  --bs-table-striped-bg: var(--uig-tint);
+  --bs-table-striped-color: var(--uig-text);
+  --bs-table-hover-bg: rgba(249, 33, 33, 0.05);
+  --bs-table-hover-color: var(--uig-heading);
+  --bs-table-active-bg: rgba(249, 33, 33, 0.1);
+  --bs-table-active-color: var(--uig-heading);
+}
+
+.table > thead > tr > th {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--uig-text-dim);
+  font-size: 0.8rem;
+  border-bottom-color: var(--uig-line-strong);
+}
+
+/* Dark table variant */
+.table-dark {
+  --bs-table-bg: var(--uig-surface);
+  --bs-table-color: var(--uig-text);
+  --bs-table-border-color: var(--uig-line);
+  --bs-table-striped-bg: var(--uig-tint);
+  --bs-table-hover-bg: rgba(249, 33, 33, 0.08);
+}
+
+/* Primary table */
+.table-primary {
+  --bs-table-bg: rgba(249, 33, 33, 0.1);
+  --bs-table-color: var(--uig-text);
+  --bs-table-border-color: rgba(249, 33, 33, 0.25);
+}
+
+/* =========================================
+   8. BADGES
+   ========================================= */
+.badge {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border-radius: var(--bs-border-radius);
+  padding: 0.32em 0.72em;
+  line-height: 1.05;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+  vertical-align: middle;
+}
+
+.bg-primary {
+  background-color: var(--uig-red-slab) !important;
+}
+
+.bg-secondary {
+  background-color: var(--uig-line) !important;
+}
+
+.bg-success {
+  background-color: #22c55e !important;
+}
+
+.bg-danger {
+  background-color: var(--uig-red-slab) !important;
+}
+
+.bg-warning {
+  background-color: #f59e0b !important;
+}
+
+.bg-info {
+  background-color: #38bdf8 !important;
+}
+
+.bg-light {
+  background-color: var(--uig-line) !important;
+}
+
+.bg-dark {
+  background-color: #0c0c0c !important;
+}
+
+.text-bg-primary {
+  background-color: var(--uig-red-slab) !important;
+  color: #fff !important;
+}
+
+.text-bg-secondary {
+  background-color: var(--uig-line) !important;
+  color: var(--uig-text-dim) !important;
+}
+
+.text-bg-success {
+  background-color: #22c55e !important;
+  color: #000 !important;
+}
+
+.text-bg-danger {
+  background-color: var(--uig-red-slab) !important;
+  color: #fff !important;
+}
+
+.text-bg-warning {
+  background-color: #f59e0b !important;
+  color: #000 !important;
+}
+
+.text-bg-info {
+  background-color: #38bdf8 !important;
+  color: #000 !important;
+}
+
+.text-bg-light {
+  background-color: var(--uig-line) !important;
+  color: var(--uig-text) !important;
+}
+
+.text-bg-dark {
+  background-color: #0c0c0c !important;
+  color: var(--uig-text) !important;
+}
+
+/* Soft / tinted badges — quiet status without the solid slab.
+   Usage: <span class="badge badge-soft badge-soft-success">EN PISTA</span> */
+.badge-soft {
+  background-color: var(--uig-badge-bg);
+  color: var(--uig-badge-fg) !important;
+  border: 1px solid var(--uig-badge-bd);
+}
+
+.badge-soft-primary {
+  --uig-badge-fg:#ff4d44;
+  --uig-badge-bg:rgba(249,33,33,.14);
+  --uig-badge-bd:rgba(249,33,33,.42);
+}
+
+.badge-soft-secondary {
+  --uig-badge-fg:var(--uig-text-soft);
+  --uig-badge-bg:rgba(161,161,170,.12);
+  --uig-badge-bd:rgba(161,161,170,.32);
+}
+
+.badge-soft-success {
+  --uig-badge-fg:#4ade80;
+  --uig-badge-bg:rgba(34,197,94,.14);
+  --uig-badge-bd:rgba(34,197,94,.38);
+}
+
+.badge-soft-danger {
+  --uig-badge-fg:#ff4d44;
+  --uig-badge-bg:rgba(249,33,33,.14);
+  --uig-badge-bd:rgba(249,33,33,.42);
+}
+
+.badge-soft-warning {
+  --uig-badge-fg:#fbbf24;
+  --uig-badge-bg:rgba(245,158,11,.14);
+  --uig-badge-bd:rgba(245,158,11,.38);
+}
+
+.badge-soft-info {
+  --uig-badge-fg:#7dd3fc;
+  --uig-badge-bg:rgba(56,189,248,.14);
+  --uig-badge-bd:rgba(56,189,248,.38);
+}
+
+.badge-soft-light {
+  --uig-badge-fg:var(--uig-text-soft);
+  --uig-badge-bg:rgba(212,212,216,.1);
+  --uig-badge-bd:var(--uig-line-strong);
+}
+
+.badge-soft-dark {
+  --uig-badge-fg:var(--uig-text-dim);
+  --uig-badge-bg:rgba(0,0,0,.4);
+  --uig-badge-bd:var(--uig-line);
+}
+
+/* =========================================
+   9. ALERTS & CALLOUTS
+   ─────────────────────────────────────────
+   A full hairline border, a tinted surface and
+   a status mark — no side stripe.
+   ========================================= */
+.alert {
+  border-radius: var(--bs-border-radius-lg);
+  border: 1px solid var(--bs-alert-border-color, var(--uig-line));
+  background-color: var(--bs-alert-bg);
+  color: var(--bs-alert-color);
+  font-family: var(--uig-font-body);
+  font-weight: 500;
+  padding: 1rem 1.25rem 1rem 3rem;
+  position: relative;
+}
+
+.alert::before {
+  content: "";
+  position: absolute;
+  left: 1.15rem;
+  top: 1.2rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 2px;
+  background-color: var(--bs-alert-color);
+}
+
+.alert-heading {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--bs-alert-color);
+  margin-bottom: 0.25rem;
+}
+
+.alert-dismissible {
+  padding-right: 3rem;
+}
+
+.alert a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.alert-primary {
+  --bs-alert-bg: rgba(249, 33, 33, 0.1);
+  --bs-alert-border-color: rgba(249, 33, 33, 0.45);
+  --bs-alert-color: #ff4d44;
+}
+
+.alert-secondary {
+  --bs-alert-bg: rgba(161, 161, 170, 0.08);
+  --bs-alert-border-color: rgba(161, 161, 170, 0.32);
+  --bs-alert-color: var(--uig-text-soft);
+}
+
+.alert-success {
+  --bs-alert-bg: rgba(34, 197, 94, 0.1);
+  --bs-alert-border-color: rgba(34, 197, 94, 0.38);
+  --bs-alert-color: #4ade80;
+}
+
+.alert-danger {
+  --bs-alert-bg: rgba(249, 33, 33, 0.1);
+  --bs-alert-border-color: rgba(249, 33, 33, 0.5);
+  --bs-alert-color: #ff4d44;
+}
+
+.alert-warning {
+  --bs-alert-bg: rgba(245, 158, 11, 0.1);
+  --bs-alert-border-color: rgba(245, 158, 11, 0.38);
+  --bs-alert-color: #fbbf24;
+}
+
+.alert-info {
+  --bs-alert-bg: rgba(56, 189, 248, 0.1);
+  --bs-alert-border-color: rgba(56, 189, 248, 0.38);
+  --bs-alert-color: #7dd3fc;
+}
+
+.alert-light {
+  --bs-alert-bg: rgba(212, 212, 216, 0.06);
+  --bs-alert-border-color: var(--uig-line-strong);
+  --bs-alert-color: var(--uig-text-soft);
+}
+
+.alert-dark {
+  --bs-alert-bg: rgba(0, 0, 0, 0.4);
+  --bs-alert-border-color: var(--uig-line);
+  --bs-alert-color: var(--uig-text-dim);
+}
+
+/* =========================================
+   10. MODALS
+   ========================================= */
+.modal-content {
+  background-color: var(--uig-surface);
+  border: 1px solid var(--uig-line);
+  border-radius: var(--bs-border-radius-xl);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.8), 0 0 0 1px var(--uig-tint);
+  color: var(--uig-text);
+}
+
+.modal-header {
+  border-bottom-color: var(--uig-line);
+  background-color: var(--uig-tint);
+  border-top-left-radius: calc(var(--bs-border-radius-xl) - 1px);
+  border-top-right-radius: calc(var(--bs-border-radius-xl) - 1px);
+}
+
+.modal-title {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--uig-heading);
+}
+
+.modal-footer {
+  border-top-color: var(--uig-line);
+  background-color: var(--uig-tint);
+}
+
+.modal-backdrop {
+  background-color: #000;
+}
+
+.modal-backdrop.show {
+  opacity: 0.7;
+}
+
+/* =========================================
+   11. DROPDOWNS
+   ========================================= */
+.dropdown-menu {
+  --bs-dropdown-bg: var(--uig-surface);
+  --bs-dropdown-border-color: var(--uig-line);
+  --bs-dropdown-border-radius: var(--bs-border-radius-lg);
+  --bs-dropdown-color: var(--uig-text);
+  --bs-dropdown-link-color: var(--uig-text-dim);
+  --bs-dropdown-link-hover-color: var(--uig-heading);
+  --bs-dropdown-link-hover-bg: rgba(249, 33, 33, 0.1);
+  --bs-dropdown-link-active-color: var(--uig-heading);
+  --bs-dropdown-link-active-bg: var(--uig-red-slab);
+  --bs-dropdown-divider-bg: var(--uig-line);
+  --bs-dropdown-box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  --bs-dropdown-header-color: var(--uig-text-muted);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--uig-line);
+}
+
+.dropdown-item {
+  font-family: var(--uig-font-body);
+  font-weight: 500;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-header {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+/* =========================================
+   12. TOASTS
+   ========================================= */
+.toast {
+  --bs-toast-bg: rgba(17, 17, 17, 0.95);
+  --bs-toast-border-color: var(--uig-line);
+  --bs-toast-border-radius: var(--bs-border-radius-lg);
+  --bs-toast-box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  --bs-toast-color: var(--uig-text);
+  --bs-toast-header-color: var(--uig-text-dim);
+  --bs-toast-header-bg: var(--uig-tint);
+  --bs-toast-header-border-color: var(--uig-line);
+  backdrop-filter: blur(8px);
+}
+
+/* =========================================
+   13. PROGRESS BARS
+   ========================================= */
+.progress {
+  --bs-progress-bg: var(--uig-surface-2);
+  --bs-progress-border-radius: var(--bs-border-radius-pill);
+  --bs-progress-bar-bg: var(--uig-red-slab);
+  --bs-progress-bar-color: #ffffff;
+  --bs-progress-height: 0.6rem;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.progress-bar {
+  background-color: var(--uig-red-slab);
+  transition: width 0.5s ease;
+}
+
+.progress-bar.bg-success {
+  background-color: #22c55e !important;
+}
+
+.progress-bar.bg-warning {
+  background-color: #f59e0b !important;
+}
+
+.progress-bar.bg-info {
+  background-color: #38bdf8 !important;
+}
+
+/* =========================================
+   14. LIST GROUPS
+   ========================================= */
+.list-group {
+  --bs-list-group-bg: var(--uig-surface);
+  --bs-list-group-border-color: var(--uig-line);
+  --bs-list-group-color: var(--uig-text);
+  --bs-list-group-border-radius: var(--bs-border-radius-lg);
+  --bs-list-group-action-color: var(--uig-text-dim);
+  --bs-list-group-action-hover-color: var(--uig-heading);
+  --bs-list-group-action-hover-bg: rgba(249, 33, 33, 0.08);
+  --bs-list-group-action-active-color: var(--uig-heading);
+  --bs-list-group-action-active-bg: var(--uig-line);
+  --bs-list-group-active-color: #ffffff;
+  --bs-list-group-active-bg: var(--uig-red-slab);
+  --bs-list-group-active-border-color: var(--uig-red-slab);
+  --bs-list-group-disabled-color: var(--uig-text-muted);
+  --bs-list-group-disabled-bg: var(--uig-bg-deep);
+}
+
+/* =========================================
+   15. PAGINATION
+   ========================================= */
+.pagination {
+  --bs-pagination-color: var(--uig-text-dim);
+  --bs-pagination-bg: var(--uig-surface);
+  --bs-pagination-border-color: var(--uig-line);
+  --bs-pagination-border-radius: var(--bs-border-radius);
+  --bs-pagination-hover-color: var(--uig-heading);
+  --bs-pagination-hover-bg: var(--uig-line);
+  --bs-pagination-hover-border-color: var(--uig-line-strong);
+  --bs-pagination-focus-color: var(--uig-red);
+  --bs-pagination-focus-bg: rgba(249, 33, 33, 0.08);
+  --bs-pagination-focus-box-shadow: 0 0 0 3px rgba(249, 33, 33, 0.25);
+  --bs-pagination-active-color: #ffffff;
+  --bs-pagination-active-bg: var(--uig-red-slab);
+  --bs-pagination-active-border-color: var(--uig-red-slab);
+  --bs-pagination-disabled-color: var(--uig-text-muted);
+  --bs-pagination-disabled-bg: var(--uig-bg-deep);
+  --bs-pagination-disabled-border-color: var(--uig-surface-2);
+}
+
+.page-link {
+  font-family: var(--uig-font-display);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.active > .page-link,
+.page-link.active {
+  box-shadow: var(--uig-glow-red);
+}
+
+/* =========================================
+   16. ACCORDION
+   ========================================= */
+.accordion {
+  --bs-accordion-bg: var(--uig-surface);
+  --bs-accordion-border-color: var(--uig-line);
+  --bs-accordion-border-radius: var(--bs-border-radius-lg);
+  --bs-accordion-inner-border-radius: calc(var(--bs-border-radius-lg) - 1px);
+  --bs-accordion-btn-color: var(--uig-text);
+  --bs-accordion-btn-bg: var(--uig-surface);
+  --bs-accordion-btn-active-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23f92121' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e");
+  --bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23a1a1aa' stroke-linecap='round' stroke-linejoin='round'%3e%3cpath d='M2 5L8 11L14 5'/%3e%3c/svg%3e");
+  --bs-accordion-btn-focus-box-shadow: 0 0 0 3px rgba(249, 33, 33, 0.2);
+  --bs-accordion-active-color: var(--uig-red);
+  --bs-accordion-active-bg: rgba(249, 33, 33, 0.06);
+  --bs-accordion-color: var(--uig-text);
+  --bs-accordion-transition: all 0.2s ease;
+}
+
+.accordion-button {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.accordion-button:not(.collapsed) {
+  color: var(--bs-primary-text-emphasis);
+  background-color: rgba(249, 33, 33, 0.06);
+  box-shadow: inset 0 -1px 0 var(--uig-line);
+}
+
+/* =========================================
+   17. TABS & NAVS
+   ========================================= */
+.nav-tabs {
+  --bs-nav-tabs-border-color: var(--uig-line);
+  --bs-nav-tabs-border-radius: var(--bs-border-radius);
+  --bs-nav-tabs-link-hover-border-color: transparent transparent var(--uig-line-strong);
+  --bs-nav-tabs-link-active-color: var(--uig-red);
+  --bs-nav-tabs-link-active-bg: transparent;
+  --bs-nav-tabs-link-active-border-color: transparent transparent var(--uig-red);
+  border-bottom-color: var(--uig-line);
+}
+
+.nav-tabs .nav-link {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--uig-text-muted);
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.nav-tabs .nav-link:hover {
+  color: var(--uig-text);
+  border-color: transparent transparent var(--uig-line-strong);
+}
+
+.nav-tabs .nav-link.active {
+  color: var(--bs-primary-text-emphasis);
+  border-bottom-color: var(--uig-red);
+}
+
+.nav-pills {
+  --bs-nav-pills-border-radius: var(--bs-border-radius);
+  --bs-nav-pills-link-active-color: #ffffff;
+  --bs-nav-pills-link-active-bg: var(--uig-red-slab);
+}
+
+.nav-pills .nav-link {
+  color: var(--uig-text-dim);
+  font-family: var(--uig-font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.nav-pills .nav-link.active {
+  box-shadow: var(--uig-glow-red);
+}
+
+/* =========================================
+   18. BREADCRUMB
+   ========================================= */
+.breadcrumb {
+  --bs-breadcrumb-divider-color: var(--uig-text-muted);
+  --bs-breadcrumb-item-active-color: var(--uig-text);
+  font-family: var(--uig-font-body);
+  font-weight: 500;
+}
+
+.breadcrumb-item a {
+  color: var(--uig-text-dim);
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  color: var(--bs-link-hover-color);
+}
+
+.breadcrumb-item.active {
+  color: var(--uig-text);
+}
+
+/* =========================================
+   19. TOOLTIPS & POPOVERS
+   ========================================= */
+.tooltip-inner {
+  background-color: var(--uig-surface-2);
+  color: var(--uig-text);
+  border: 1px solid var(--uig-line-strong);
+  border-radius: var(--bs-border-radius);
+  font-family: var(--uig-font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.4rem 0.75rem;
+}
+
+.bs-tooltip-top .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before {
+  border-top-color: var(--uig-line-strong);
+}
+
+.bs-tooltip-bottom .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow::before {
+  border-bottom-color: var(--uig-line-strong);
+}
+
+.bs-tooltip-start .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^=left] .tooltip-arrow::before {
+  border-left-color: var(--uig-line-strong);
+}
+
+.bs-tooltip-end .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^=right] .tooltip-arrow::before {
+  border-right-color: var(--uig-line-strong);
+}
+
+.popover {
+  --bs-popover-bg: var(--uig-surface);
+  --bs-popover-border-color: var(--uig-line);
+  --bs-popover-border-radius: var(--bs-border-radius-lg);
+  --bs-popover-box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+  --bs-popover-body-color: var(--uig-text);
+  --bs-popover-header-bg: var(--uig-tint);
+  --bs-popover-header-color: var(--uig-heading);
+  backdrop-filter: blur(8px);
+}
+
+/* =========================================
+   20. SPINNERS
+   ========================================= */
+.spinner-border {
+  color: var(--uig-red);
+}
+
+.spinner-grow {
+  color: var(--uig-red);
+}
+
+.text-primary .spinner-border,
+.spinner-border.text-primary {
+  color: var(--uig-red);
+}
+
+/* =========================================
+   21. CLOSE BUTTON
+   ========================================= */
+.btn-close {
+  --bs-btn-close-color: var(--uig-text-dim);
+  --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23a1a1aa'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+  --bs-btn-close-hover-opacity: 1;
+  filter: none;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.btn-close:hover {
+  opacity: 1;
+  transform: rotate(90deg);
+}
+
+/* =========================================
+   22. OFFCANVAS
+   ========================================= */
+.offcanvas {
+  --bs-offcanvas-bg: var(--uig-bg-deep);
+  --bs-offcanvas-color: var(--uig-text);
+  --bs-offcanvas-border-color: var(--uig-line);
+  --bs-offcanvas-box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+}
+
+.offcanvas-header {
+  border-bottom: 1px solid var(--uig-line);
+}
+
+.offcanvas-title {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.offcanvas-backdrop.show {
+  opacity: 0.7;
+}
+
+/* =========================================
+   23. CAROUSEL
+   ========================================= */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  padding: 1rem;
+  background-size: 60%;
+}
+
+.carousel-indicators [data-bs-target] {
+  background-color: var(--uig-text-dim);
+  border-radius: 2px;
+  height: 3px;
+  opacity: 0.5;
+}
+
+.carousel-indicators .active {
+  background-color: var(--uig-red);
+  opacity: 1;
+  box-shadow: var(--uig-glow-red);
+}
+
+/* =========================================
+   24. TEXT UTILITIES (color overrides)
+   ========================================= */
+.text-primary {
+  color: var(--bs-primary-text-emphasis) !important;
+}
+
+.text-secondary {
+  color: var(--uig-text-dim) !important;
+}
+
+.text-success {
+  color: #22c55e !important;
+}
+
+.text-danger {
+  color: var(--bs-danger-text-emphasis) !important;
+}
+
+.text-warning {
+  color: #f59e0b !important;
+}
+
+.text-info {
+  color: #38bdf8 !important;
+}
+
+.text-light {
+  color: var(--uig-text-soft) !important;
+}
+
+.text-dark {
+  color: var(--uig-text) !important;
+}
+
+.text-muted {
+  color: var(--uig-text-muted) !important;
+}
+
+.text-white {
+  color: #ffffff !important;
+}
+
+.text-body {
+  color: var(--uig-text) !important;
+}
+
+.text-body-secondary {
+  color: var(--uig-text-dim) !important;
+}
+
+.text-body-emphasis {
+  color: var(--uig-heading) !important;
+}
+
+/* =========================================
+   25. BACKGROUND UTILITIES
+   ========================================= */
+.bg-body {
+  background-color: var(--uig-bg) !important;
+}
+
+.bg-body-secondary {
+  background-color: var(--uig-surface) !important;
+}
+
+.bg-body-tertiary {
+  background-color: var(--uig-surface-2) !important;
+}
+
+.bg-black {
+  background-color: #000000 !important;
+}
+
+.bg-white {
+  background-color: #ffffff !important;
+}
+
+.bg-transparent {
+  background-color: transparent !important;
+}
+
+/* =========================================
+   26. BORDER UTILITIES
+   ========================================= */
+.border {
+  border-color: var(--uig-line) !important;
+}
+
+.border-primary {
+  --bs-border-opacity:1;
+  border-color: rgba(249, 33, 33, var(--bs-border-opacity)) !important;
+}
+
+.border-secondary {
+  border-color: rgba(161, 161, 170, var(--bs-border-opacity, 1)) !important;
+}
+
+.border-success {
+  border-color: rgba(34, 197, 94, var(--bs-border-opacity, 1)) !important;
+}
+
+.border-danger {
+  border-color: rgba(249, 33, 33, var(--bs-border-opacity, 1)) !important;
+}
+
+.border-warning {
+  border-color: rgba(245, 158, 11, var(--bs-border-opacity, 1)) !important;
+}
+
+.border-info {
+  border-color: rgba(56, 189, 248, var(--bs-border-opacity, 1)) !important;
+}
+
+.border-light {
+  border-color: var(--uig-line-strong) !important;
+}
+
+.border-dark {
+  border-color: var(--uig-line) !important;
+}
+
+.border-white {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+/* =========================================
+   27. SHADOWS
+   ========================================= */
+.shadow {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5) !important;
+}
+
+.shadow-sm {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35) !important;
+}
+
+.shadow-lg {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65) !important;
+}
+
+/* =========================================
+   28. BLOCKQUOTES — racing telemetry feel
+   ========================================= */
+.blockquote {
+  position: relative;
+  padding-left: 1.9rem;
+  color: var(--uig-text-dim);
+  font-family: var(--uig-font-data);
+  font-weight: 500;
+  font-size: 1.15rem;
+}
+
+.blockquote::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 2px;
+  background: var(--uig-red);
+}
+
+.blockquote-footer {
+  color: var(--uig-text-muted);
+}
+
+/* =========================================
+   29. CODE
+   ========================================= */
+code {
+  color: #ff4d44;
+  background-color: rgba(249, 33, 33, 0.1);
+  padding: 0.1em 0.35em;
+  border-radius: var(--bs-border-radius);
+  font-size: 0.875em;
+}
+
+pre {
+  background-color: var(--uig-bg-deep);
+  border: 1px solid var(--uig-line);
+  border-radius: var(--bs-border-radius-lg);
+  padding: 1.25rem;
+  color: var(--uig-text);
+}
+
+pre code {
+  color: inherit;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+
+kbd {
+  background-color: var(--uig-surface-2);
+  color: var(--uig-text);
+  border: 1px solid var(--uig-line-strong);
+  border-radius: var(--bs-border-radius-sm);
+  font-size: 0.8em;
+  padding: 0.15em 0.45em;
+}
+
+/* =========================================
+   30. IMAGES & FIGURES
+   ========================================= */
+.img-thumbnail {
+  background-color: var(--uig-surface);
+  border-color: var(--uig-line);
+}
+
+.figure-caption {
+  color: var(--uig-text-muted);
+}
+
+/* =========================================
+   31. PLACEHOLDER
+   ========================================= */
+.placeholder {
+  background-color: var(--uig-line);
+}
+
+.placeholder-glow .placeholder {
+  animation: uigas-glow-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes uigas-glow-pulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.15;
+  }
+}
+/* =========================================
+   32. HR / DIVIDERS
+   ========================================= */
+hr {
+  border-color: var(--uig-line);
+  opacity: 1;
+}
+
+/* =========================================
+   33. MISC — mark, abbr
+   ========================================= */
+.mark, mark {
+  background-color: rgba(249, 33, 33, 0.18);
+  color: #ff4d44;
+  border-radius: var(--bs-border-radius-sm);
+  padding: 0.08em 0.32em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* =========================================
+   34. FUTURISTIC BACKGROUND HELPERS
+   ─────────────────────────────────────────
+   These are layout/presentation classes
+   that Bootstrap uses on container elements.
+   We add ambient texture without new classes.
+   ========================================= */
+/* bg-dark — "grid de pista" (Brandbook CVR §07, Elemento 01):
+   líneas finas paralelas inclinadas 15°, tinte de marca. Fondo
+   estructural, no decoración suelta. */
+.bg-dark {
+  background-color: #0c0c0c !important;
+  background-image: repeating-linear-gradient(105deg, rgba(249, 33, 33, 0.055) 0 1px, transparent 1px 34px);
+}
+
+/* bg-light — superficie clara plana, sin degradados decorativos */
+.bg-light {
+  background-color: var(--uig-surface-2) !important;
+  color: var(--uig-text);
+}
+
+/* bg-primary — plano: el brandbook (§11) prohíbe gradientes
+   decorativos no previstos y la estética es "deliberadamente flat". */
+.bg-primary {
+  background-color: var(--uig-red-slab) !important;
+}
+
+/* bg-secondary */
+.bg-secondary {
+  background-color: var(--uig-surface-2) !important;
+}
+
+/* =========================================
+   35. RESPONSIVE OVERRIDES
+   ========================================= */
+@media (max-width: 768px) {
+  .modal-content {
+    border-radius: var(--bs-border-radius-lg);
+  }
+  .card {
+    border-radius: var(--bs-border-radius);
+  }
+  .card:hover {
+    transform: translateY(-3px);
+  }
+}
+/* =========================================
+   36. FOCUS RING — global keyboard nav
+   ========================================= */
+:focus-visible {
+  outline: 2px solid rgba(249, 33, 33, 0.7);
+  outline-offset: 3px;
+}
+
+.btn:focus-visible, a:focus-visible {
+  box-shadow: var(--uig-ring);
+  outline: none;
+}
+
+/* =========================================
+   37. LAYOUT APP WEB — SIDEBAR & TOPBAR (UiGas integration)
+   ========================================= */
+/* Layout tipo app web */
+.app-wrapper {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bs-body-bg);
+}
+
+/* Sidebar mejorado - usa clases de UiGas para fondo y bordes */
+.app-sidebar {
+  width: 280px;
+  flex-shrink: 0;
+  background: var(--uig-bg);
+  border-right: 1px solid var(--uig-line);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+/* Logo área */
+.sidebar-header {
+  padding: 1.5rem 1.25rem;
+  border-bottom: 1px solid var(--uig-line);
+}
+
+/* Navegación - reutilizando .nav-item-custom ya definido arriba */
+/* Nota: .nav-item-custom ya existe en la sección 5, pero lo dejamos definido aquí también para consistencia */
+.nav-item-custom {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.7rem 1rem;
+  border-radius: var(--bs-border-radius-sm);
+  font-family: var(--uig-font-display);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: var(--uig-text-dim);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+}
+
+.nav-item-custom i {
+  font-size: 1.2rem;
+  width: 24px;
+}
+
+.nav-item-custom:hover {
+  background: rgba(249, 33, 33, 0.08);
+  color: var(--uig-heading);
+}
+
+.nav-item-custom.active {
+  background: rgba(249, 33, 33, 0.12);
+  color: var(--bs-primary-text-emphasis);
+  box-shadow: inset 0 0 0 1px rgba(249, 33, 33, 0.35);
+}
+
+/* Badge en sidebar */
+.nav-badge {
+  margin-left: auto;
+  background: rgba(249, 33, 33, 0.2);
+  color: var(--bs-primary-text-emphasis);
+  font-size: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--bs-border-radius-sm);
+  font-weight: 700;
+}
+
+/* Footer del sidebar */
+.sidebar-footer {
+  padding: 1rem 0.75rem;
+  border-top: 1px solid var(--uig-line);
+}
+
+/* Main content area */
+.app-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* Top bar */
+.top-bar {
+  padding: 1rem 1.5rem;
+  background: var(--uig-nav-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--uig-line);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Content area */
+.app-content {
+  padding: 1.5rem;
+  flex: 1;
+}
+
+/* Stats cards minimal */
+.stat-mini {
+  background: var(--uig-surface);
+  border: 1px solid var(--uig-line);
+  border-radius: var(--bs-border-radius-lg);
+  padding: 1rem;
+}
+
+/* Tabla responsive */
+.table-custom {
+  background: var(--uig-surface);
+  border: 1px solid var(--uig-line);
+  border-radius: var(--bs-border-radius-lg);
+  overflow: hidden;
+}
+
+.table-custom th {
+  background: var(--uig-tint);
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  color: var(--uig-text-dim);
+  border-bottom-color: var(--uig-line);
+}
+
+.table-custom td {
+  border-bottom-color: var(--uig-line);
+  color: var(--uig-text);
+  font-family: var(--uig-font-data);
+}
+
+/* Botón mobile toggle */
+.mobile-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--uig-line);
+  color: var(--uig-text);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--bs-border-radius);
+}
+
+@media (max-width: 768px) {
+  .app-sidebar {
+    position: fixed;
+    left: -280px;
+    z-index: 1050;
+    transition: left 0.3s ease;
+  }
+  .app-sidebar.show {
+    left: 0;
+  }
+  .mobile-toggle {
+    display: block;
+  }
+  .top-bar {
+    padding: 0.75rem 1rem;
+  }
+  .app-content {
+    padding: 1rem;
+  }
+}
+/* Overlay para mobile */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1040;
+}
+
+.sidebar-overlay.show {
+  display: block;
+}
+
+/* Animaciones suaves (los botones ya tienen su propia transición de estados) */
+.nav-item-custom, .stat-mini {
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+/* =========================================
+   39. LÍNEA DE SECTOR — firma gráfica de marca
+   ─────────────────────────────────────────
+   Brandbook CVR §07, Elemento 02: "Barras horizontales delgadas
+   en rojo que actúan como separadores de módulos o indicadores
+   de posición en la jerarquía."
+
+   Sustituye al chaflán: mismo gesto de velocidad sin recortar la
+   silueta del componente, sin filter: drop-shadow() y sin robarle
+   el foco de teclado (el anillo vuelve al outline global).
+
+   Uso: <div class="card uig-sector"> …
+   ========================================= */
+.uig-sector {
+  position: relative;
+}
+
+.uig-sector::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--uig-red);
+  pointer-events: none;
+}
+
+/* =========================================
+   40. AJUSTES DEL TEMA CLARO
+   ─────────────────────────────────────────
+   Los botones conservan su par de color; aquí se
+   corrige lo que sobre blanco quedaría ilegible.
+   ========================================= */
+[data-bs-theme=light] .navbar-toggler-icon {
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2824,24,27,0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+[data-bs-theme=light] .text-bg-light {
+  background-color: #e4e4e7 !important;
+  color: #141414 !important;
+}
+
+[data-bs-theme=light] .text-bg-secondary {
+  background-color: #e4e4e7 !important;
+  color: #3f3f46 !important;
+}
+
+[data-bs-theme=light] .text-bg-dark {
+  background-color: #141414 !important;
+  color: #f4f4f5 !important;
+}
+
+[data-bs-theme=light] .btn-secondary {
+  --bs-btn-color: var(--uig-text);
+  --bs-btn-bg: var(--uig-surface-2);
+  --bs-btn-border-color: var(--uig-line-strong);
+  --bs-btn-hover-color: var(--uig-heading);
+  --bs-btn-hover-bg: var(--uig-surface-3);
+  --bs-btn-hover-border-color: var(--uig-text-dim);
+  --bs-btn-active-color: var(--uig-heading);
+  --bs-btn-active-bg: var(--uig-line-strong);
+  --bs-btn-active-border-color: var(--uig-text-dim);
+  --bs-btn-disabled-color: var(--uig-text-dim);
+  --bs-btn-disabled-bg: var(--uig-surface-2);
+  --bs-btn-disabled-border-color: var(--uig-line);
+}
+
+[data-bs-theme=light] .btn-light {
+  --bs-btn-bg: #ffffff;
+  --bs-btn-border-color: var(--uig-line-strong);
+  --bs-btn-color: #141414;
+  --bs-btn-hover-bg: #ececf0;
+  --bs-btn-hover-border-color: var(--uig-text-dim);
+  --bs-btn-hover-color: #141414;
+  --bs-btn-active-bg: #e4e4e7;
+  --bs-btn-active-border-color: var(--uig-text-dim);
+  --bs-btn-active-color: #141414;
+}
+
+[data-bs-theme=light] code {
+  color: #b30500;
+  background-color: rgba(249, 33, 33, 0.12);
+}
+
+[data-bs-theme=light] .mark,
+[data-bs-theme=light] mark {
+  color: #b91c1c;
+}
+
+[data-bs-theme=light] .sidebar-overlay {
+  background: rgba(20, 20, 20, 0.45);
+}
+
+/* Superficies claras: sombras más suaves y verdes que en oscuro */
+[data-bs-theme=light] .card {
+  box-shadow: inset 0 1px 0 #ffffff, 0 2px 8px rgba(20, 20, 20, 0.07);
+}
+
+[data-bs-theme=light] .card:hover {
+  box-shadow: 0 0 0 1px rgba(249, 33, 33, 0.3), 0 12px 28px rgba(20, 20, 20, 0.14);
+}
+
+[data-bs-theme=light] .card-featured {
+  box-shadow: 0 16px 30px rgba(20, 20, 20, 0.12);
+}
+
+[data-bs-theme=light] .card-featured:hover {
+  box-shadow: 0 18px 34px rgba(20, 20, 20, 0.16), 0 0 16px rgba(249, 33, 33, 0.3);
+}
+
+/* Badges tenues en claro: acentos más profundos para contrastar */
+[data-bs-theme=light] .badge-soft-primary,
+[data-bs-theme=light] .badge-soft-danger {
+  --uig-badge-fg: #b30500;
+  --uig-badge-bd: rgba(249, 33, 33, 0.35);
+}
+
+[data-bs-theme=light] .badge-soft-success {
+  --uig-badge-fg: #15803d;
+  --uig-badge-bd: rgba(34, 197, 94, 0.4);
+}
+
+[data-bs-theme=light] .badge-soft-warning {
+  --uig-badge-fg: #b45309;
+  --uig-badge-bd: rgba(245, 158, 11, 0.4);
+}
+
+[data-bs-theme=light] .badge-soft-info {
+  --uig-badge-fg: #0369a1;
+  --uig-badge-bd: rgba(56, 189, 248, 0.4);
+}
+
+/* Alertas: el color de la familia se usa como texto y marcador. Sobre
+   la base clara esos colores planos (#ff4d44, #4ade80, #fbbf24…) no
+   contrastan; se reescriben con los versantes oscuros de la rampa. */
+[data-bs-theme=light] .alert-primary {
+  --bs-alert-bg: rgba(179, 5, 0, 0.09);
+  --bs-alert-border-color: rgba(179, 5, 0, 0.4);
+  --bs-alert-color: #b30500;
+}
+
+[data-bs-theme=light] .alert-secondary {
+  --bs-alert-bg: rgba(20, 20, 20, 0.06);
+  --bs-alert-border-color: rgba(20, 20, 20, 0.25);
+  --bs-alert-color: #3f3f46;
+}
+
+[data-bs-theme=light] .alert-success {
+  --bs-alert-bg: rgba(22, 101, 52, 0.09);
+  --bs-alert-border-color: rgba(22, 101, 52, 0.4);
+  --bs-alert-color: #166534;
+}
+
+[data-bs-theme=light] .alert-danger {
+  --bs-alert-bg: rgba(179, 5, 0, 0.09);
+  --bs-alert-border-color: rgba(179, 5, 0, 0.4);
+  --bs-alert-color: #b30500;
+}
+
+[data-bs-theme=light] .alert-warning {
+  --bs-alert-bg: rgba(146, 64, 14, 0.09);
+  --bs-alert-border-color: rgba(146, 64, 14, 0.4);
+  --bs-alert-color: #92400e;
+}
+
+[data-bs-theme=light] .alert-info {
+  --bs-alert-bg: rgba(3, 105, 161, 0.09);
+  --bs-alert-border-color: rgba(3, 105, 161, 0.4);
+  --bs-alert-color: #0369a1;
+}
+
+[data-bs-theme=light] .alert-light {
+  --bs-alert-bg: rgba(20, 20, 20, 0.06);
+  --bs-alert-border-color: rgba(20, 20, 20, 0.25);
+  --bs-alert-color: #3f3f46;
+}
+
+[data-bs-theme=light] .alert-dark {
+  --bs-alert-bg: rgba(20, 20, 20, 0.08);
+  --bs-alert-border-color: var(--uig-line);
+  --bs-alert-color: #52525b;
+}
+
+/* Outline buttons: el color de la familia se usa como texto. En claro
+   ese color plano (#22c55e, #38bdf8…) apenas se ve; se reescribe con
+   los versantes oscuros usados en el resto del tema claro. */
+[data-bs-theme=light] .btn-outline-secondary {
+  --bs-btn-color: #3f3f46;
+  --bs-btn-border-color: var(--uig-line-strong);
+  --bs-btn-hover-color: #141414;
+  --bs-btn-hover-bg: #ececf0;
+  --bs-btn-hover-border-color: var(--uig-line-strong);
+  --bs-btn-active-color: #141414;
+  --bs-btn-active-bg: #d8d8dc;
+  --bs-btn-active-border-color: var(--uig-line-strong);
+}
+
+[data-bs-theme=light] .btn-outline-light {
+  --bs-btn-color: #141414;
+  --bs-btn-border-color: var(--uig-line-strong);
+  --bs-btn-hover-color: #141414;
+  --bs-btn-hover-bg: #ececf0;
+  --bs-btn-hover-border-color: var(--uig-line-strong);
+  --bs-btn-active-color: #141414;
+  --bs-btn-active-bg: #d8d8dc;
+  --bs-btn-active-border-color: var(--uig-line-strong);
+}
+
+[data-bs-theme=light] .btn-outline-dark {
+  --bs-btn-color: #141414;
+  --bs-btn-border-color: var(--uig-line-strong);
+  --bs-btn-hover-color: #141414;
+  --bs-btn-hover-bg: #ececf0;
+  --bs-btn-hover-border-color: var(--uig-line-strong);
+  --bs-btn-active-color: #141414;
+  --bs-btn-active-bg: #d8d8dc;
+  --bs-btn-active-border-color: var(--uig-line-strong);
+}
+
+[data-bs-theme=light] .btn-outline-success {
+  --bs-btn-color: #166534;
+  --bs-btn-border-color: rgba(22, 101, 52, 0.55);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: #166534;
+  --bs-btn-hover-border-color: #166534;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #14532d;
+  --bs-btn-active-border-color: #14532d;
+}
+
+[data-bs-theme=light] .btn-outline-warning {
+  --bs-btn-color: #92400e;
+  --bs-btn-border-color: rgba(146, 64, 14, 0.55);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: #92400e;
+  --bs-btn-hover-border-color: #92400e;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #78350f;
+  --bs-btn-active-border-color: #78350f;
+}
+
+[data-bs-theme=light] .btn-outline-info {
+  --bs-btn-color: #0369a1;
+  --bs-btn-border-color: rgba(3, 105, 161, 0.55);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: #0369a1;
+  --bs-btn-hover-border-color: #0369a1;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #075985;
+  --bs-btn-active-border-color: #075985;
+}
+
+[data-bs-theme=light] .btn-outline-danger {
+  --bs-btn-color: #b30500;
+  --bs-btn-border-color: rgba(179, 5, 0, 0.55);
+  --bs-btn-hover-color: #ffffff;
+  --bs-btn-hover-bg: #b30500;
+  --bs-btn-hover-border-color: #b30500;
+  --bs-btn-active-color: #ffffff;
+  --bs-btn-active-bg: #8a0400;
+  --bs-btn-active-border-color: #8a0400;
+}
+
+/* Validación: el verde plano (#22c55e) mide 2:1 sobre la superficie
+   clara — ni el borde ni el mensaje se leen. Se baja al versante
+   oscuro de la misma familia. El rojo ya pasa por --bs-danger-
+   text-emphasis, que sí está redefinido para claro. */
+[data-bs-theme=light] .form-control.is-valid,
+[data-bs-theme=light] .was-validated .form-control:valid,
+[data-bs-theme=light] .form-select.is-valid,
+[data-bs-theme=light] .was-validated .form-select:valid {
+  border-color: #166534;
+}
+
+[data-bs-theme=light] .form-control.is-valid:focus,
+[data-bs-theme=light] .was-validated .form-control:valid:focus,
+[data-bs-theme=light] .form-select.is-valid:focus,
+[data-bs-theme=light] .was-validated .form-select:valid:focus {
+  box-shadow: 0 0 0 3px rgba(22, 101, 52, 0.2);
+}
+
+[data-bs-theme=light] .valid-feedback {
+  color: #166534;
+}
+
+/* El pulgar del range usa --uig-red: en claro eso lo baja a #b30500,
+   de 3.5:1 a 6.3:1 sobre la superficie. */
+[data-bs-theme=light] .form-range::-webkit-slider-thumb {
+  background-color: var(--uig-red);
+}
+
+[data-bs-theme=light] .form-range::-moz-range-thumb {
+  background-color: var(--uig-red);
+}
+
+/* btn-ghost: sus valores son blancos translúcidos pensados para fondo
+   oscuro. Sobre superficie clara el texto queda en 2.25:1 y el hover
+   no se ve. Se reescriben con el equivalente oscuro. */
+[data-bs-theme=light] .btn-ghost {
+  --bs-btn-color: #3f3f46;
+  --bs-btn-hover-color: #141414;
+  --bs-btn-hover-bg: rgba(20, 20, 20, 0.05);
+  --bs-btn-active-color: #141414;
+  --bs-btn-active-bg: rgba(20, 20, 20, 0.08);
+}
+
+/* El spinner de btn-loading es blanco: invisible sobre claro. */
+[data-bs-theme=light] .btn-loading::after {
+  border-color: rgba(20, 20, 20, 0.2);
+  border-top-color: var(--uig-red);
+}
+
+/* El SVG del botón de cierre trae el gris fijo del tema oscuro. */
+[data-bs-theme=light] .btn-close {
+  --bs-btn-close-color: #52525b;
+  --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2352525b'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 1 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+  opacity: 0.75;
+}
+
+/* Texto de acento: _utilities.scss los escribe con los tonos planos
+   (#22c55e, #f59e0b, #38bdf8), pensados para fondo oscuro. Sobre la
+   superficie clara quedan en 1.6:1 - 2.0:1: ilegibles. Se pasan al
+   versante oscuro de cada familia, el mismo criterio de alertas,
+   badges, botones outline y validación. */
+[data-bs-theme=light] .text-success {
+  color: #166534 !important;
+}
+
+[data-bs-theme=light] .text-warning {
+  color: #92400e !important;
+}
+
+[data-bs-theme=light] .text-info {
+  color: #0369a1 !important;
+}
+
+/* Focus ring: el rojo al 70% de opacidad se mezcla con la superficie
+   clara y queda en 2.5:1 - 2.8:1, por debajo del 3:1 que pide la
+   WCAG para contraste no textual. En claro va rojo pleno. */
+[data-bs-theme=light] :focus-visible {
+  outline-color: #b30500;
+}

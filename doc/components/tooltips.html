@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tooltips · UiGas</title>
+<meta name="description" content="**El tooltip de UiGas es un cambio de fondo, no un overlay.** Bootstrap usa negro con texto blanco y la flecha del mismo negro. UiGas invierte el modelo: superficie elevada, texto del tema, borde visible.  La razón es que el tooltip no es un modal: informa, no bloquea. Un negro puro encima de una superficie oscura se lee como un agujero. Con `--uig-surface-2` el tooltip pertenece a la misma página.  En tema claro queda `#e6e7eb` con texto `#2a2a2a`: la caja **se distingue por el borde**, no por el fondo. El borde es el que hace el trabajo.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../dist/uigas.min.css">
+<link rel="stylesheet" href="../assets/docs.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('theme');
+var s=localStorage.getItem('uig-theme');
+var t=q||s||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+document.documentElement.setAttribute('data-bs-theme',t);})();</script>
+</head>
+<body>
+<a class="skip" href="#main">Ir al contenido</a>
+
+<header class="topbar">
+  <button class="burger" id="burger" aria-label="Menú" aria-expanded="false">☰</button>
+  <a class="brandmark" href="../index.html">Ui<span>Gas</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Buscar en la documentación…" autocomplete="off" aria-label="Buscar">
+    <div class="qout" id="qout" hidden></div>
+  </div>
+  <div class="top-actions">
+    <a class="btn btn-outline-secondary btn-sm d-none d-lg-inline-flex" href="../showcase.html">Showcase</a>
+    <a class="btn btn-outline-secondary btn-sm d-none d-md-inline-flex" href="https://github.com/softcronos/ui_gas" rel="noopener">GitHub</a>
+    <button class="btn btn-outline-secondary btn-sm theme-btn" id="tt" aria-label="Cambiar tema">◐</button>
+  </div>
+</header>
+
+<div class="shell">
+<aside class="sidebar" id="sidebar"><div class="side-inner"><details class="side-group"><summary class="side-title">Primeros pasos<span class="side-count">5</span></summary><div class="side-items"><a class="side-link" href="../getting-started/introduction.html">Introducción</a><a class="side-link" href="../getting-started/installation.html">Instalación</a><a class="side-link" href="../getting-started/contents.html">Contenido</a><a class="side-link" href="../getting-started/browsers-devices.html">Navegadores y dispositivos</a><a class="side-link" href="../getting-started/build-tools.html">Herramientas de build</a></div></details><details class="side-group"><summary class="side-title">Layout<span class="side-count">6</span></summary><div class="side-items"><a class="side-link" href="../layout/breakpoints.html">Breakpoints</a><a class="side-link" href="../layout/containers.html">Contenedores</a><a class="side-link" href="../layout/grid.html">Grid</a><a class="side-link" href="../layout/columns.html">Columnas</a><a class="side-link" href="../layout/gutters.html">Gutters</a><a class="side-link" href="../layout/utilities-for-layout.html">Utilidades de layout</a></div></details><details class="side-group"><summary class="side-title">Contenido<span class="side-count">5</span></summary><div class="side-items"><a class="side-link" href="../content/reboot.html">Reboot</a><a class="side-link" href="../content/typography.html">Tipografía</a><a class="side-link" href="../content/images.html">Imágenes</a><a class="side-link" href="../content/tables.html">Tablas</a><a class="side-link" href="../content/figures.html">Figuras</a></div></details><details class="side-group"><summary class="side-title">Formularios<span class="side-count">10</span></summary><div class="side-items"><a class="side-link" href="../forms/overview.html">Overview</a><a class="side-link" href="../forms/form-control.html">Form control</a><a class="side-link" href="../forms/select.html">Select</a><a class="side-link" href="../forms/checks-radios.html">Checks y radios</a><a class="side-link" href="../forms/range.html">Range</a><a class="side-link" href="../forms/input-group.html">Input group</a><a class="side-link" href="../forms/floating-labels.html">Labels flotantes</a><a class="side-link" href="../forms/layout.html">Layout</a><a class="side-link" href="../forms/validation.html">Validación</a><a class="side-link" href="../forms/accessibility.html">Accesibilidad</a></div></details><details class="side-group" open><summary class="side-title">Componentes<span class="side-count">24</span></summary><div class="side-items"><a class="side-link" href="../components/accordion.html">Acordeón</a><a class="side-link" href="../components/alerts.html">Alertas</a><a class="side-link" href="../components/badges.html">Badges</a><a class="side-link" href="../components/breadcrumb.html">Breadcrumb</a><a class="side-link" href="../components/buttons.html">Botones</a><a class="side-link" href="../components/button-group.html">Grupo de botones</a><a class="side-link" href="../components/card.html">Tarjetas</a><a class="side-link" href="../components/carousel.html">Carrusel</a><a class="side-link" href="../components/close-button.html">Botón de cierre</a><a class="side-link" href="../components/collapse.html">Collapse</a><a class="side-link" href="../components/dropdowns.html">Dropdowns</a><a class="side-link" href="../components/list-group.html">List group</a><a class="side-link" href="../components/modal.html">Modal</a><a class="side-link" href="../components/navs-tabs.html">Navs y tabs</a><a class="side-link" href="../components/navbar.html">Navbar</a><a class="side-link" href="../components/offcanvas.html">Offcanvas</a><a class="side-link" href="../components/pagination.html">Paginación</a><a class="side-link" href="../components/placeholders.html">Placeholders</a><a class="side-link" href="../components/popovers.html">Popovers</a><a class="side-link" href="../components/progress.html">Progreso</a><a class="side-link" href="../components/scrollspy.html">Scrollspy</a><a class="side-link" href="../components/spinners.html">Spinners</a><a class="side-link" href="../components/toasts.html">Toasts</a><a class="side-link is-here" href="../components/tooltips.html">Tooltips</a></div></details><details class="side-group"><summary class="side-title">Helpers<span class="side-count">11</span></summary><div class="side-items"><a class="side-link" href="../helpers/clearfix.html">Clearfix</a><a class="side-link" href="../helpers/color-background.html">Color y fondo</a><a class="side-link" href="../helpers/colored-links.html">Enlaces de color</a><a class="side-link" href="../helpers/focus-ring.html">Focus ring</a><a class="side-link" href="../helpers/icon-link.html">Icon link</a><a class="side-link" href="../helpers/position.html">Posición</a><a class="side-link" href="../helpers/ratio.html">Ratio</a><a class="side-link" href="../helpers/stacks.html">Stacks</a><a class="side-link" href="../helpers/stretched-link.html">Stretched link</a><a class="side-link" href="../helpers/text-truncation.html">Truncado de texto</a><a class="side-link" href="../helpers/vertical-rule.html">Regla vertical</a></div></details><details class="side-group"><summary class="side-title">Utilidades<span class="side-count">18</span></summary><div class="side-items"><a class="side-link" href="../utilities/api.html">API</a><a class="side-link" href="../utilities/background.html">Background</a><a class="side-link" href="../utilities/borders.html">Bordes</a><a class="side-link" href="../utilities/colors.html">Colores</a><a class="side-link" href="../utilities/display.html">Display</a><a class="side-link" href="../utilities/flex.html">Flex</a><a class="side-link" href="../utilities/float.html">Float</a><a class="side-link" href="../utilities/interactions.html">Interacciones</a><a class="side-link" href="../utilities/opacity.html">Opacidad</a><a class="side-link" href="../utilities/overflow.html">Overflow</a><a class="side-link" href="../utilities/position.html">Posición</a><a class="side-link" href="../utilities/shadows.html">Sombras</a><a class="side-link" href="../utilities/sizing.html">Sizing</a><a class="side-link" href="../utilities/spacing.html">Espaciado</a><a class="side-link" href="../utilities/text.html">Texto</a><a class="side-link" href="../utilities/vertical-align.html">Alineación vertical</a><a class="side-link" href="../utilities/visibility.html">Visibilidad</a><a class="side-link" href="../utilities/z-index.html">Z-index</a></div></details><details class="side-group"><summary class="side-title">Customizar<span class="side-count">7</span></summary><div class="side-items"><a class="side-link" href="../customize/overview.html">Overview</a><a class="side-link" href="../customize/sass.html">Sass</a><a class="side-link" href="../customize/options.html">Opciones</a><a class="side-link" href="../customize/color.html">Color</a><a class="side-link" href="../customize/components.html">Componentes</a><a class="side-link" href="../customize/css-variables.html">Variables CSS</a><a class="side-link" href="../customize/optimize.html">Optimizar</a></div></details><details class="side-group"><summary class="side-title">Extender<span class="side-count">3</span></summary><div class="side-items"><a class="side-link" href="../extend/approach.html">Enfoque</a><a class="side-link" href="../extend/icons.html">Iconos</a><a class="side-link" href="../extend/components.html">Componentes UiGas</a></div></details><a class="side-ext" href="../showcase.html">→ Showcase</a></div></aside>
+<main class="main" id="main">
+<nav class="crumbs"><a href="../index.html">UiGas</a><span>/</span><a href="../index.html#components">Componentes</a><span>/</span><span class="here">Tooltips</span></nav>
+<div class="doc-main">
+<p class="lead">Caja de <code>--uig-surface-2</code> con borde <code>--uig-line-strong</code> y flecha del mismo color. Oscuro en tema oscuro, con borde en tema claro.</p>
+<h2 id="basico">Básico</h2>
+<div class="ex"><div class="ex-demo"><button type="button" class="btn btn-outline-secondary"
+        data-bs-toggle="tooltip" data-bs-placement="top"
+        title="Última actualización: hace 2 minutos">
+  Info
+</button></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;button type=&quot;button&quot; class=&quot;btn btn-outline-secondary&quot;
+        data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot;
+        title=&quot;Última actualización: hace 2 minutos&quot;&gt;
+  Info
+&lt;/button&gt;</code></pre></details></div>
+<p>Con el atributo <code>title</code> HTML, el tooltip funciona <strong>sin JavaScript</strong>: el navegador lo muestra. No es tan bonito, pero es un fallback real.</p>
+<p class="lead">Inicializar con JS: ``<code>js document.querySelectorAll('[data-bs-toggle=&quot;tooltip&quot;]')   .forEach(function (el) { new bootstrap.Tooltip(el); }); </code>``</p>
+<h2 id="contenido">Contenido</h2>
+<div class="ex"><div class="ex-demo"><button data-bs-toggle="tooltip" data-bs-placement="bottom"
+        data-bs-title="Vueltas quick lap del Auto 7.">
+  ⓘ
+</button></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;button data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;bottom&quot;
+        data-bs-title=&quot;Vueltas quick lap del Auto 7.&quot;&gt;
+  ⓘ
+&lt;/button&gt;</code></pre></details></div>
+<p><code>data-bs-title</code> tiene prioridad sobre <code>title</code>. Si están los dos, el <code>title</code> nativo puede aparecer además y duplicar el texto.</p>
+<h2 id="posiciones">Posiciones</h2>
+<div class="ex"><div class="ex-demo"><div class="d-flex gap-2">
+  <button class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Arriba">Top</button>
+  <button class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Abajo">Bottom</button>
+  <button class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="start" data-bs-title="Izquierda">Start</button>
+  <button class="btn btn-outline-secondary" data-bs-toggle="tooltip" data-bs-placement="end" data-bs-title="Derecha">End</button>
+</div></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;div class=&quot;d-flex gap-2&quot;&gt;
+  &lt;button class=&quot;btn btn-outline-secondary&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;top&quot; data-bs-title=&quot;Arriba&quot;&gt;Top&lt;/button&gt;
+  &lt;button class=&quot;btn btn-outline-secondary&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;bottom&quot; data-bs-title=&quot;Abajo&quot;&gt;Bottom&lt;/button&gt;
+  &lt;button class=&quot;btn btn-outline-secondary&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;start&quot; data-bs-title=&quot;Izquierda&quot;&gt;Start&lt;/button&gt;
+  &lt;button class=&quot;btn btn-outline-secondary&quot; data-bs-toggle=&quot;tooltip&quot; data-bs-placement=&quot;end&quot; data-bs-title=&quot;Derecha&quot;&gt;End&lt;/button&gt;
+&lt;/div&gt;</code></pre></details></div>
+<p>En la página de esta doc: <strong>top</strong> y <strong>start</strong> no se ven, porque la caja recortaría el borde superior e izquierdo. <code>auto</code> (el default de Bootstrap) repositiona para evitarlo.</p>
+<h2 id="contenedor">Contenedor</h2>
+<div class="ex"><div class="ex-demo"><div class="tooltip" id="t" role="tooltip">
+  <div class="tooltip-arrow"></div>
+  <div class="tooltip-inner">…</div>
+</div></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;div class=&quot;tooltip&quot; id=&quot;t&quot; role=&quot;tooltip&quot;&gt;
+  &lt;div class=&quot;tooltip-arrow&quot;&gt;&lt;/div&gt;
+  &lt;div class=&quot;tooltip-inner&quot;&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre></details></div>
+<p><code>.tooltip-inner</code>, <code>.tooltip-arrow</code> y los cuatro <code>.bs-tooltip-*</code> son de UiGas.</p>
+<h2 id="uigas">UiGas</h2>
+<pre class="doc-pre"><code>.tooltip-inner {
+  background-color: var(--uig-surface-2);
+  color:            var(--uig-text);
+  border:           1px solid var(--uig-line-strong);
+  font-size:        0.85rem;
+  font-weight:      500;
+}</code></pre>
+<p class="lead"><strong>El tooltip de UiGas es un cambio de fondo, no un overlay.</strong> Bootstrap usa negro con texto blanco y la flecha del mismo negro. UiGas invierte el modelo: superficie elevada, texto del tema, borde visible.  La razón es que el tooltip no es un modal: informa, no bloquea. Un negro puro encima de una superficie oscura se lee como un agujero. Con <code>--uig-surface-2</code> el tooltip pertenece a la misma página.  En tema claro queda <code>#e6e7eb</code> con texto <code>#2a2a2a</code>: la caja <strong>se distingue por el borde</strong>, no por el fondo. El borde es el que hace el trabajo.</p>
+<h2 id="accesibilidad">Accesibilidad</h2>
+<p>Este es el punto crítico de la página, y la razón por la que muchos equipos evitan los tooltips:</p>
+<ul class="doc-list"><li><strong>Un tooltip no es accesible con teclado por defecto.</strong> Bootstrap 5.3 muestra el tooltip con <code>focus</code> solo si el elemento es enfocable. En un <code>&lt;span&gt;</code> o un <code>&lt;i&gt;</code>, no lo es: nunca se muestra con Tab.</li><li>Por eso la regla es: <strong>el disparador tiene que ser un <code>&lt;button&gt;</code> o un enlace</strong>, con <code>tabindex=&quot;0&quot;</code> si no lo es. Un tooltip sobre un ícono decorativo necesita un botón envolviendo al ícono.</li><li>El texto no puede estar <strong>solo</strong> en el tooltip. Si es información necesaria, va en el contenido visible o en un <code>aria-describedby</code> apuntando a un elemento oculto.</li><li>Bootstrap genera <code>role=&quot;tooltip&quot;</code> y lo conecta con <code>aria-describedby</code> al mostrarlo: eso ya lo hace bien.</li></ul>
+<h2 id="cuando-no-usarlo">Cuándo no usarlo</h2>
+<ul class="doc-list"><li><strong>Para contenido importante.</strong> Es invisible hasta que alguien hace hover o Tab, y no sobrevive a una impresión.</li><li><strong>En móvil.</strong> No hay hover; el tooltip aparece y desaparece al tocar. En táctil, un tooltip debería ser un popover o algo persistente.</li><li><strong>Dentro de una tabla o lista larga.</strong> El tooltip se reposiciona con Popper en cada scroll y puede parpadear.</li><li>Para contenido que necesita interacción, es un <a href="../components/popovers.html">popover</a>.</li></ul>
+<h2 id="que-sigue">Qué sigue</h2>
+<ul class="doc-list"><li><a href="../components/popovers.html">Popovers</a></li><li><a href="../components/buttons.html">Botones</a></li><li><a href="../forms/accessibility.html">Accesibilidad de formularios</a></li></ul>
+</div>
+<nav class="pager"><a class="p-prev" href="../components/toasts.html"><small>Anterior</small>Toasts</a><a class="p-next" href="../helpers/clearfix.html"><small>Siguiente</small>Clearfix</a></nav>
+<footer class="docfoot">
+  <p>UiGas · CSS framework · override de Bootstrap 5 · MIT © 2026 softcronos.com.ar</p>
+  <p>Bootstrap 5 es marca de sus autores. Korataki solo para logo y marca.</p>
+</footer>
+</main>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<script>window.UIGAS_NAV = [{"title":"Inicio","href":"index.html"},{"title":"Introducción · Primeros pasos","href":"../getting-started/introduction.html"},{"title":"Instalación · Primeros pasos","href":"../getting-started/installation.html"},{"title":"Contenido · Primeros pasos","href":"../getting-started/contents.html"},{"title":"Navegadores y dispositivos · Primeros pasos","href":"../getting-started/browsers-devices.html"},{"title":"Herramientas de build · Primeros pasos","href":"../getting-started/build-tools.html"},{"title":"Breakpoints · Layout","href":"../layout/breakpoints.html"},{"title":"Contenedores · Layout","href":"../layout/containers.html"},{"title":"Grid · Layout","href":"../layout/grid.html"},{"title":"Columnas · Layout","href":"../layout/columns.html"},{"title":"Gutters · Layout","href":"../layout/gutters.html"},{"title":"Utilidades de layout · Layout","href":"../layout/utilities-for-layout.html"},{"title":"Reboot · Contenido","href":"../content/reboot.html"},{"title":"Tipografía · Contenido","href":"../content/typography.html"},{"title":"Imágenes · Contenido","href":"../content/images.html"},{"title":"Tablas · Contenido","href":"../content/tables.html"},{"title":"Figuras · Contenido","href":"../content/figures.html"},{"title":"Overview · Formularios","href":"../forms/overview.html"},{"title":"Form control · Formularios","href":"../forms/form-control.html"},{"title":"Select · Formularios","href":"../forms/select.html"},{"title":"Checks y radios · Formularios","href":"../forms/checks-radios.html"},{"title":"Range · Formularios","href":"../forms/range.html"},{"title":"Input group · Formularios","href":"../forms/input-group.html"},{"title":"Labels flotantes · Formularios","href":"../forms/floating-labels.html"},{"title":"Layout · Formularios","href":"../forms/layout.html"},{"title":"Validación · Formularios","href":"../forms/validation.html"},{"title":"Accesibilidad · Formularios","href":"../forms/accessibility.html"},{"title":"Acordeón · Componentes","href":"../components/accordion.html"},{"title":"Alertas · Componentes","href":"../components/alerts.html"},{"title":"Badges · Componentes","href":"../components/badges.html"},{"title":"Breadcrumb · Componentes","href":"../components/breadcrumb.html"},{"title":"Botones · Componentes","href":"../components/buttons.html"},{"title":"Grupo de botones · Componentes","href":"../components/button-group.html"},{"title":"Tarjetas · Componentes","href":"../components/card.html"},{"title":"Carrusel · Componentes","href":"../components/carousel.html"},{"title":"Botón de cierre · Componentes","href":"../components/close-button.html"},{"title":"Collapse · Componentes","href":"../components/collapse.html"},{"title":"Dropdowns · Componentes","href":"../components/dropdowns.html"},{"title":"List group · Componentes","href":"../components/list-group.html"},{"title":"Modal · Componentes","href":"../components/modal.html"},{"title":"Navs y tabs · Componentes","href":"../components/navs-tabs.html"},{"title":"Navbar · Componentes","href":"../components/navbar.html"},{"title":"Offcanvas · Componentes","href":"../components/offcanvas.html"},{"title":"Paginación · Componentes","href":"../components/pagination.html"},{"title":"Placeholders · Componentes","href":"../components/placeholders.html"},{"title":"Popovers · Componentes","href":"../components/popovers.html"},{"title":"Progreso · Componentes","href":"../components/progress.html"},{"title":"Scrollspy · Componentes","href":"../components/scrollspy.html"},{"title":"Spinners · Componentes","href":"../components/spinners.html"},{"title":"Toasts · Componentes","href":"../components/toasts.html"},{"title":"Tooltips · Componentes","href":"../components/tooltips.html"},{"title":"Clearfix · Helpers","href":"../helpers/clearfix.html"},{"title":"Color y fondo · Helpers","href":"../helpers/color-background.html"},{"title":"Enlaces de color · Helpers","href":"../helpers/colored-links.html"},{"title":"Focus ring · Helpers","href":"../helpers/focus-ring.html"},{"title":"Icon link · Helpers","href":"../helpers/icon-link.html"},{"title":"Posición · Helpers","href":"../helpers/position.html"},{"title":"Ratio · Helpers","href":"../helpers/ratio.html"},{"title":"Stacks · Helpers","href":"../helpers/stacks.html"},{"title":"Stretched link · Helpers","href":"../helpers/stretched-link.html"},{"title":"Truncado de texto · Helpers","href":"../helpers/text-truncation.html"},{"title":"Regla vertical · Helpers","href":"../helpers/vertical-rule.html"},{"title":"API · Utilidades","href":"../utilities/api.html"},{"title":"Background · Utilidades","href":"../utilities/background.html"},{"title":"Bordes · Utilidades","href":"../utilities/borders.html"},{"title":"Colores · Utilidades","href":"../utilities/colors.html"},{"title":"Display · Utilidades","href":"../utilities/display.html"},{"title":"Flex · Utilidades","href":"../utilities/flex.html"},{"title":"Float · Utilidades","href":"../utilities/float.html"},{"title":"Interacciones · Utilidades","href":"../utilities/interactions.html"},{"title":"Opacidad · Utilidades","href":"../utilities/opacity.html"},{"title":"Overflow · Utilidades","href":"../utilities/overflow.html"},{"title":"Posición · Utilidades","href":"../utilities/position.html"},{"title":"Sombras · Utilidades","href":"../utilities/shadows.html"},{"title":"Sizing · Utilidades","href":"../utilities/sizing.html"},{"title":"Espaciado · Utilidades","href":"../utilities/spacing.html"},{"title":"Texto · Utilidades","href":"../utilities/text.html"},{"title":"Alineación vertical · Utilidades","href":"../utilities/vertical-align.html"},{"title":"Visibilidad · Utilidades","href":"../utilities/visibility.html"},{"title":"Z-index · Utilidades","href":"../utilities/z-index.html"},{"title":"Overview · Customizar","href":"../customize/overview.html"},{"title":"Sass · Customizar","href":"../customize/sass.html"},{"title":"Opciones · Customizar","href":"../customize/options.html"},{"title":"Color · Customizar","href":"../customize/color.html"},{"title":"Componentes · Customizar","href":"../customize/components.html"},{"title":"Variables CSS · Customizar","href":"../customize/css-variables.html"},{"title":"Optimizar · Customizar","href":"../customize/optimize.html"},{"title":"Enfoque · Extender","href":"../extend/approach.html"},{"title":"Iconos · Extender","href":"../extend/icons.html"},{"title":"Componentes UiGas · Extender","href":"../extend/components.html"}];</script>
+<script>
+(function(){
+  var tt = document.getElementById('tt');
+  tt.addEventListener('click', function(){
+    var el = document.documentElement;
+    var next = el.getAttribute('data-bs-theme') === 'light' ? 'dark' : 'light';
+    el.setAttribute('data-bs-theme', next);
+    try { localStorage.setItem('uig-theme', next); } catch (e) {}
+  });
+  var burger = document.getElementById('burger'), scrim = document.getElementById('scrim');
+  function close(){ document.body.classList.remove('nav-open'); scrim.hidden = true; burger.setAttribute('aria-expanded','false'); }
+  burger.addEventListener('click', function(){
+    var open = document.body.classList.toggle('nav-open');
+    scrim.hidden = !open;
+    burger.setAttribute('aria-expanded', String(open));
+  });
+  scrim.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+})();
+
+(function(){
+  var idx = window.UIGAS_NAV || [];
+  var box = document.getElementById('q'), out = document.getElementById('qout');
+  function hide(){ out.hidden = true; out.innerHTML = ''; }
+  function run(){
+    var q = box.value.trim().toLowerCase();
+    if (q.length < 2) return hide();
+    var hit = idx.filter(function(p){
+      return (p.title + ' ' + p.path).toLowerCase().indexOf(q) > -1;
+    }).slice(0, 12);
+    if (!hit.length) return hide();
+    out.innerHTML = hit.map(function(p){
+      return '<a href="' + p.href + '">' + p.title + '<small>' + p.path + '</small></a>';
+    }).join('');
+    out.hidden = false;
+  }
+  box.addEventListener('input', run);
+  box.addEventListener('focus', run);
+  document.addEventListener('click', function(e){
+    if (!out.contains(e.target) && e.target !== box) hide();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') { box.value = ''; hide(); box.blur(); }
+  });
+})();
+</script>
+</body>
+</html>

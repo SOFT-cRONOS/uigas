@@ -1,0 +1,376 @@
+/* =========================================
+   3. BUTTONS — hierarchy & interaction states
+   ─────────────────────────────────────────
+   The rest state is flat and solid. Lift, glow
+   and ring live only in hover / focus / press,
+   so the primary CTA keeps its rank. Red is the
+   brand; danger reads destructive through a
+   deeper tone that ignites on hover.
+   ========================================= */
+.btn {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  border-radius: var(--bs-border-radius);
+  padding: 0.55rem 1.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  line-height: 1.15;
+  transition:
+    transform 0.18s var(--uig-ease-out),
+    box-shadow 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* Icons inside a button keep an even rhythm */
+.btn > svg,
+.btn > img {
+  width: 1.05em;
+  height: 1.05em;
+  flex-shrink: 0;
+}
+.btn > .bi { font-size: 1.05em; line-height: 1; }
+
+/* Sizes — re-declared so our padding / radius win over Bootstrap's vars */
+.btn-sm {
+  padding: 0.34rem 0.85rem;
+  font-size: 0.82rem;
+  border-radius: var(--bs-border-radius-sm);
+}
+.btn-lg {
+  padding: 0.72rem 1.7rem;
+  font-size: 1.12rem;
+  border-radius: var(--bs-border-radius-lg);
+}
+
+/* Ghost — quiet tertiary action, no chrome until hover */
+.btn-ghost {
+  --bs-btn-color:            #a1a1aa;
+  --bs-btn-bg:               transparent;
+  --bs-btn-border-color:     transparent;
+  --bs-btn-hover-color:      #ffffff;
+  --bs-btn-hover-bg:         rgba(255, 255, 255, 0.06);
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-color:     #ffffff;
+  --bs-btn-active-bg:        rgba(255, 255, 255, 0.1);
+  --bs-btn-active-border-color: transparent;
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+}
+
+/* Loading — a spinner takes the label's place */
+.btn-loading {
+  position: relative;
+  color: transparent !important;
+  pointer-events: none;
+}
+.btn-loading::after {
+  content: '';
+  position: absolute;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  animation: uig-btn-spin 0.6s linear infinite;
+}
+@keyframes uig-btn-spin { to { transform: rotate(360deg); } }
+
+/* Primary — the one brand CTA. Flat until touched. */
+.btn-primary {
+  --bs-btn-color:            #ffffff;
+  --bs-btn-bg:               var(--uig-red-slab);
+  --bs-btn-border-color:     var(--uig-red-slab);
+  --bs-btn-hover-color:      #ffffff;
+  --bs-btn-hover-bg:         var(--uig-red-lo);
+  --bs-btn-hover-border-color: var(--uig-red-lo);
+  --bs-btn-active-color:     #ffffff;
+  --bs-btn-active-bg:        var(--uig-red-deep);
+  --bs-btn-active-border-color: var(--uig-red-deep);
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+  --bs-btn-disabled-color:   #ffffff;
+  --bs-btn-disabled-bg:      var(--uig-red-slab);
+  --bs-btn-disabled-border-color: var(--uig-red-slab);
+  box-shadow: var(--uig-btn-lit);
+}
+.btn-primary:hover:not(:disabled) {
+  transform: var(--uig-lift);
+  box-shadow: var(--uig-btn-lit), var(--uig-glow-red);
+}
+
+/* Secondary — neutral surface action */
+.btn-secondary {
+  --bs-btn-color:            #ededed;
+  --bs-btn-bg:               #1f1f1f;
+  --bs-btn-border-color:     #2a2a2a;
+  --bs-btn-hover-color:      #ffffff;
+  --bs-btn-hover-bg:         #262626;
+  --bs-btn-hover-border-color: #3a3a3a;
+  --bs-btn-active-color:     #ffffff;
+  --bs-btn-active-bg:        #2f2f2f;
+  --bs-btn-active-border-color: #3a3a3a;
+  --bs-btn-focus-shadow-rgb: 161, 161, 170;
+  --bs-btn-disabled-color:   #a1a1aa;
+  --bs-btn-disabled-bg:      #1a1a1a;
+  --bs-btn-disabled-border-color: #262626;
+}
+.btn-secondary:hover:not(:disabled) { transform: var(--uig-lift); }
+
+/* Success */
+.btn-success {
+  --bs-btn-color:            #04140a;
+  --bs-btn-bg:               #22c55e;
+  --bs-btn-border-color:     #22c55e;
+  --bs-btn-hover-color:      #04140a;
+  --bs-btn-hover-bg:         #1cae52;
+  --bs-btn-hover-border-color: #1cae52;
+  --bs-btn-active-color:     #04140a;
+  --bs-btn-active-bg:        #16a34a;
+  --bs-btn-active-border-color: #16a34a;
+  --bs-btn-focus-shadow-rgb: 34, 197, 94;
+  --bs-btn-disabled-color:   #04140a;
+  --bs-btn-disabled-bg:      #22c55e;
+  --bs-btn-disabled-border-color: #22c55e;
+}
+.btn-success:hover:not(:disabled) { transform: var(--uig-lift); }
+
+/* Danger — destructive. Deep Red CVR at rest, ignites on hover. */
+.btn-danger {
+  --bs-btn-color:            #ffffff;
+  --bs-btn-bg:               var(--uig-red-deep);
+  --bs-btn-border-color:     var(--uig-red-deep);
+  --bs-btn-hover-color:      #ffffff;
+  --bs-btn-hover-bg:         var(--uig-red-lo);
+  --bs-btn-hover-border-color: var(--uig-red-lo);
+  --bs-btn-active-color:     #ffffff;
+  --bs-btn-active-bg:        #410200;   /* Red 750 */
+  --bs-btn-active-border-color: #410200;
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+  --bs-btn-disabled-color:   #ffffff;
+  --bs-btn-disabled-bg:      var(--uig-red-deep);
+  --bs-btn-disabled-border-color: var(--uig-red-deep);
+  box-shadow: var(--uig-btn-lit);
+}
+.btn-danger:hover:not(:disabled) {
+  transform: var(--uig-lift);
+  box-shadow: var(--uig-btn-lit), 0 0 18px rgba(249, 33, 33, 0.32);
+}
+
+/* Warning */
+.btn-warning {
+  --bs-btn-color:            #231603;
+  --bs-btn-bg:               #f59e0b;
+  --bs-btn-border-color:     #f59e0b;
+  --bs-btn-hover-color:      #231603;
+  --bs-btn-hover-bg:         #de8f06;
+  --bs-btn-hover-border-color: #de8f06;
+  --bs-btn-active-color:     #231603;
+  --bs-btn-active-bg:        #d97706;
+  --bs-btn-active-border-color: #d97706;
+  --bs-btn-focus-shadow-rgb: 245, 158, 11;
+  --bs-btn-disabled-color:   #231603;
+  --bs-btn-disabled-bg:      #f59e0b;
+  --bs-btn-disabled-border-color: #f59e0b;
+}
+.btn-warning:hover:not(:disabled) { transform: var(--uig-lift); }
+
+/* Info */
+.btn-info {
+  --bs-btn-color:            #05202e;
+  --bs-btn-bg:               #38bdf8;
+  --bs-btn-border-color:     #38bdf8;
+  --bs-btn-hover-color:      #05202e;
+  --bs-btn-hover-bg:         #21a9ee;
+  --bs-btn-hover-border-color: #21a9ee;
+  --bs-btn-active-color:     #05202e;
+  --bs-btn-active-bg:        #0ea5e9;
+  --bs-btn-active-border-color: #0ea5e9;
+  --bs-btn-focus-shadow-rgb: 56, 189, 248;
+  --bs-btn-disabled-color:   #05202e;
+  --bs-btn-disabled-bg:      #38bdf8;
+  --bs-btn-disabled-border-color: #38bdf8;
+}
+.btn-info:hover:not(:disabled) { transform: var(--uig-lift); }
+
+/* Light — a true light surface, the high-contrast alternate */
+.btn-light {
+  --bs-btn-color:            #141414;
+  --bs-btn-bg:               #e4e4e7;
+  --bs-btn-border-color:     #e4e4e7;
+  --bs-btn-hover-color:      #141414;
+  --bs-btn-hover-bg:         #ffffff;
+  --bs-btn-hover-border-color: #ffffff;
+  --bs-btn-active-color:     #141414;
+  --bs-btn-active-bg:        #cfcfd3;
+  --bs-btn-active-border-color: #cfcfd3;
+  --bs-btn-focus-shadow-rgb: 212, 212, 216;
+  --bs-btn-disabled-color:   #141414;
+  --bs-btn-disabled-bg:      #e4e4e7;
+  --bs-btn-disabled-border-color: #e4e4e7;
+}
+.btn-light:hover:not(:disabled) {
+  transform: var(--uig-lift);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* Dark — deepest surface action */
+.btn-dark {
+  --bs-btn-color:            #ededed;
+  --bs-btn-bg:               #111111;
+  --bs-btn-border-color:     #1f1f1f;
+  --bs-btn-hover-color:      #ffffff;
+  --bs-btn-hover-bg:         #1a1a1a;
+  --bs-btn-hover-border-color: #2f2f2f;
+  --bs-btn-active-color:     #ffffff;
+  --bs-btn-active-bg:        #0c0c0c;
+  --bs-btn-active-border-color: #1f1f1f;
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+  --bs-btn-disabled-color:   #6b7280;
+  --bs-btn-disabled-bg:      #0d0d0d;
+  --bs-btn-disabled-border-color: #1a1a1a;
+}
+.btn-dark:hover:not(:disabled) { transform: var(--uig-lift); }
+
+/* Outline variants — quiet by default, fill on hover */
+.btn-outline-primary {
+  --bs-btn-color:            var(--uig-red);
+  --bs-btn-border-color:     rgba(249, 33, 33, 0.6);
+  --bs-btn-hover-color:      #ffffff;
+  --bs-btn-hover-bg:         var(--uig-red-slab);
+  --bs-btn-hover-border-color: var(--uig-red-slab);
+  --bs-btn-active-color:     #ffffff;
+  --bs-btn-active-bg:        var(--uig-red-lo);
+  --bs-btn-active-border-color: var(--uig-red-lo);
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+  --bs-btn-disabled-color:   #6b7280;
+  --bs-btn-disabled-border-color: rgba(249, 33, 33, 0.3);
+}
+.btn-outline-primary:hover:not(:disabled) {
+  transform: var(--uig-lift);
+  box-shadow: var(--uig-glow-red);
+}
+
+.btn-outline-secondary {
+  --bs-btn-color:            #a1a1aa;
+  --bs-btn-border-color:     #2a2a2a;
+  --bs-btn-hover-color:      #ffffff;
+  --bs-btn-hover-bg:         #1f1f1f;
+  --bs-btn-hover-border-color: #a1a1aa;
+  --bs-btn-active-color:     #ffffff;
+  --bs-btn-active-bg:        #2a2a2a;
+  --bs-btn-active-border-color: #a1a1aa;
+  --bs-btn-focus-shadow-rgb: 161, 161, 170;
+  --bs-btn-disabled-color:   #6b7280;
+  --bs-btn-disabled-border-color: #1f1f1f;
+}
+.btn-outline-secondary:hover:not(:disabled) { transform: var(--uig-lift); }
+
+.btn-outline-success {
+  --bs-btn-color:            #22c55e;
+  --bs-btn-border-color:     rgba(34, 197, 94, 0.55);
+  --bs-btn-hover-color:      #04140a;
+  --bs-btn-hover-bg:         #22c55e;
+  --bs-btn-hover-border-color: #22c55e;
+  --bs-btn-active-color:     #04140a;
+  --bs-btn-active-bg:        #16a34a;
+  --bs-btn-active-border-color: #16a34a;
+  --bs-btn-focus-shadow-rgb: 34, 197, 94;
+}
+
+.btn-outline-danger {
+  --bs-btn-color:            #ff4d44;   /* Red 300 */
+  --bs-btn-border-color:     rgba(249, 33, 33, 0.55);
+  --bs-btn-hover-color:      #ffffff;
+  --bs-btn-hover-bg:         var(--uig-red-deep);
+  --bs-btn-hover-border-color: var(--uig-red-deep);
+  --bs-btn-active-color:     #ffffff;
+  --bs-btn-active-bg:        #410200;
+  --bs-btn-active-border-color: #410200;
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+}
+
+.btn-outline-warning {
+  --bs-btn-color:            #f59e0b;
+  --bs-btn-border-color:     rgba(245, 158, 11, 0.55);
+  --bs-btn-hover-color:      #231603;
+  --bs-btn-hover-bg:         #f59e0b;
+  --bs-btn-hover-border-color: #f59e0b;
+  --bs-btn-active-color:     #231603;
+  --bs-btn-active-bg:        #d97706;
+  --bs-btn-active-border-color: #d97706;
+  --bs-btn-focus-shadow-rgb: 245, 158, 11;
+}
+
+.btn-outline-info {
+  --bs-btn-color:            #38bdf8;
+  --bs-btn-border-color:     rgba(56, 189, 248, 0.55);
+  --bs-btn-hover-color:      #05202e;
+  --bs-btn-hover-bg:         #38bdf8;
+  --bs-btn-hover-border-color: #38bdf8;
+  --bs-btn-active-color:     #05202e;
+  --bs-btn-active-bg:        #0ea5e9;
+  --bs-btn-active-border-color: #0ea5e9;
+  --bs-btn-focus-shadow-rgb: 56, 189, 248;
+}
+
+.btn-outline-light {
+  --bs-btn-color:            #d4d4d8;
+  --bs-btn-border-color:     #2a2a2a;
+  --bs-btn-hover-color:      #141414;
+  --bs-btn-hover-bg:         #e4e4e7;
+  --bs-btn-hover-border-color: #e4e4e7;
+  --bs-btn-active-color:     #141414;
+  --bs-btn-active-bg:        #cfcfd3;
+  --bs-btn-active-border-color: #cfcfd3;
+  --bs-btn-focus-shadow-rgb: 212, 212, 216;
+}
+
+.btn-outline-dark {
+  --bs-btn-color:            #ededed;
+  --bs-btn-border-color:     #1f1f1f;
+  --bs-btn-hover-color:      #141414;
+  --bs-btn-hover-bg:         #ededed;
+  --bs-btn-hover-border-color: #ededed;
+  --bs-btn-active-color:     #141414;
+  --bs-btn-active-bg:        #d4d4d8;
+  --bs-btn-active-border-color: #d4d4d8;
+  --bs-btn-focus-shadow-rgb: 237, 237, 237;
+}
+
+/* Link button — inline, understated */
+.btn-link {
+  --bs-btn-color:            var(--uig-red);
+  --bs-btn-hover-color:      var(--uig-red-hi);
+  --bs-btn-active-color:     var(--uig-red-hi);
+  --bs-btn-focus-shadow-rgb: 249, 33, 33;
+  text-transform: none;
+  letter-spacing: 0.01em;
+  padding: 0.25rem 0.3rem;
+  text-underline-offset: 3px;
+}
+.btn-link:hover:not(:disabled) { text-decoration: underline; }
+
+/* Press — every variant feels the click (last, so it wins over hover) */
+.btn:active:not(:disabled) {
+  transform: var(--uig-press);
+  box-shadow: var(--uig-inset-press);
+  transition-duration: 0.06s;
+}
+
+/* Disabled — inert: no glow, no lift */
+.btn:disabled,
+.btn.disabled {
+  opacity: 0.42;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Keyboard focus — one ring, no lift */
+.btn:focus-visible {
+  outline: none;
+  box-shadow: var(--uig-ring);
+}

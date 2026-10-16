@@ -1,0 +1,34 @@
+/* =========================================
+   11. DROPDOWNS
+   ========================================= */
+.dropdown-menu {
+  --bs-dropdown-bg:                var(--uig-surface);
+  --bs-dropdown-border-color:      var(--uig-line);
+  --bs-dropdown-border-radius:     var(--bs-border-radius-lg);
+  --bs-dropdown-color:             var(--uig-text);
+  --bs-dropdown-link-color:        var(--uig-text-dim);
+  --bs-dropdown-link-hover-color:  var(--uig-heading);
+  --bs-dropdown-link-hover-bg:     rgba(249, 33, 33, 0.1);
+  --bs-dropdown-link-active-color: var(--uig-heading);
+  --bs-dropdown-link-active-bg:    var(--uig-red-slab);
+  --bs-dropdown-divider-bg:        var(--uig-line);
+  --bs-dropdown-box-shadow:        0 12px 32px rgba(0, 0, 0, 0.6);
+  --bs-dropdown-header-color:      var(--uig-text-muted);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--uig-line);
+}
+
+.dropdown-item {
+  font-family: var(--uig-font-body);
+  font-weight: 500;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-header {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}

@@ -1,0 +1,19 @@
+/* =========================================
+   14. LIST GROUPS
+   ========================================= */
+.list-group {
+  --bs-list-group-bg:                  var(--uig-surface);
+  --bs-list-group-border-color:        var(--uig-line);
+  --bs-list-group-color:               var(--uig-text);
+  --bs-list-group-border-radius:       var(--bs-border-radius-lg);
+  --bs-list-group-action-color:        var(--uig-text-dim);
+  --bs-list-group-action-hover-color:  var(--uig-heading);
+  --bs-list-group-action-hover-bg:     rgba(249, 33, 33, 0.08);
+  --bs-list-group-action-active-color: var(--uig-heading);
+  --bs-list-group-action-active-bg:    var(--uig-line);
+  --bs-list-group-active-color:        #ffffff;
+  --bs-list-group-active-bg:           var(--uig-red-slab);
+  --bs-list-group-active-border-color: var(--uig-red-slab);
+  --bs-list-group-disabled-color:      var(--uig-text-muted);
+  --bs-list-group-disabled-bg:         var(--uig-bg-deep);
+}

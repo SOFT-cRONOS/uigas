@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toasts · UiGas</title>
+<meta name="description" content="**Un toast que se autoclose nunca debería llevar la única copia de algo importante.** Si es un aviso de &quot;guardado&quot;, perderlo no molesta. Si es un número de orden o un error que hay que reintentar, el toast no sirve: necesita algo persistente.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../dist/uigas.min.css">
+<link rel="stylesheet" href="../assets/docs.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('theme');
+var s=localStorage.getItem('uig-theme');
+var t=q||s||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+document.documentElement.setAttribute('data-bs-theme',t);})();</script>
+</head>
+<body>
+<a class="skip" href="#main">Ir al contenido</a>
+
+<header class="topbar">
+  <button class="burger" id="burger" aria-label="Menú" aria-expanded="false">☰</button>
+  <a class="brandmark" href="../index.html">Ui<span>Gas</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Buscar en la documentación…" autocomplete="off" aria-label="Buscar">
+    <div class="qout" id="qout" hidden></div>
+  </div>
+  <div class="top-actions">
+    <a class="btn btn-outline-secondary btn-sm d-none d-lg-inline-flex" href="../showcase.html">Showcase</a>
+    <a class="btn btn-outline-secondary btn-sm d-none d-md-inline-flex" href="https://github.com/softcronos/ui_gas" rel="noopener">GitHub</a>
+    <button class="btn btn-outline-secondary btn-sm theme-btn" id="tt" aria-label="Cambiar tema">◐</button>
+  </div>
+</header>
+
+<div class="shell">
+<aside class="sidebar" id="sidebar"><div class="side-inner"><details class="side-group"><summary class="side-title">Primeros pasos<span class="side-count">5</span></summary><div class="side-items"><a class="side-link" href="../getting-started/introduction.html">Introducción</a><a class="side-link" href="../getting-started/installation.html">Instalación</a><a class="side-link" href="../getting-started/contents.html">Contenido</a><a class="side-link" href="../getting-started/browsers-devices.html">Navegadores y dispositivos</a><a class="side-link" href="../getting-started/build-tools.html">Herramientas de build</a></div></details><details class="side-group"><summary class="side-title">Layout<span class="side-count">6</span></summary><div class="side-items"><a class="side-link" href="../layout/breakpoints.html">Breakpoints</a><a class="side-link" href="../layout/containers.html">Contenedores</a><a class="side-link" href="../layout/grid.html">Grid</a><a class="side-link" href="../layout/columns.html">Columnas</a><a class="side-link" href="../layout/gutters.html">Gutters</a><a class="side-link" href="../layout/utilities-for-layout.html">Utilidades de layout</a></div></details><details class="side-group"><summary class="side-title">Contenido<span class="side-count">5</span></summary><div class="side-items"><a class="side-link" href="../content/reboot.html">Reboot</a><a class="side-link" href="../content/typography.html">Tipografía</a><a class="side-link" href="../content/images.html">Imágenes</a><a class="side-link" href="../content/tables.html">Tablas</a><a class="side-link" href="../content/figures.html">Figuras</a></div></details><details class="side-group"><summary class="side-title">Formularios<span class="side-count">10</span></summary><div class="side-items"><a class="side-link" href="../forms/overview.html">Overview</a><a class="side-link" href="../forms/form-control.html">Form control</a><a class="side-link" href="../forms/select.html">Select</a><a class="side-link" href="../forms/checks-radios.html">Checks y radios</a><a class="side-link" href="../forms/range.html">Range</a><a class="side-link" href="../forms/input-group.html">Input group</a><a class="side-link" href="../forms/floating-labels.html">Labels flotantes</a><a class="side-link" href="../forms/layout.html">Layout</a><a class="side-link" href="../forms/validation.html">Validación</a><a class="side-link" href="../forms/accessibility.html">Accesibilidad</a></div></details><details class="side-group" open><summary class="side-title">Componentes<span class="side-count">24</span></summary><div class="side-items"><a class="side-link" href="../components/accordion.html">Acordeón</a><a class="side-link" href="../components/alerts.html">Alertas</a><a class="side-link" href="../components/badges.html">Badges</a><a class="side-link" href="../components/breadcrumb.html">Breadcrumb</a><a class="side-link" href="../components/buttons.html">Botones</a><a class="side-link" href="../components/button-group.html">Grupo de botones</a><a class="side-link" href="../components/card.html">Tarjetas</a><a class="side-link" href="../components/carousel.html">Carrusel</a><a class="side-link" href="../components/close-button.html">Botón de cierre</a><a class="side-link" href="../components/collapse.html">Collapse</a><a class="side-link" href="../components/dropdowns.html">Dropdowns</a><a class="side-link" href="../components/list-group.html">List group</a><a class="side-link" href="../components/modal.html">Modal</a><a class="side-link" href="../components/navs-tabs.html">Navs y tabs</a><a class="side-link" href="../components/navbar.html">Navbar</a><a class="side-link" href="../components/offcanvas.html">Offcanvas</a><a class="side-link" href="../components/pagination.html">Paginación</a><a class="side-link" href="../components/placeholders.html">Placeholders</a><a class="side-link" href="../components/popovers.html">Popovers</a><a class="side-link" href="../components/progress.html">Progreso</a><a class="side-link" href="../components/scrollspy.html">Scrollspy</a><a class="side-link" href="../components/spinners.html">Spinners</a><a class="side-link is-here" href="../components/toasts.html">Toasts</a><a class="side-link" href="../components/tooltips.html">Tooltips</a></div></details><details class="side-group"><summary class="side-title">Helpers<span class="side-count">11</span></summary><div class="side-items"><a class="side-link" href="../helpers/clearfix.html">Clearfix</a><a class="side-link" href="../helpers/color-background.html">Color y fondo</a><a class="side-link" href="../helpers/colored-links.html">Enlaces de color</a><a class="side-link" href="../helpers/focus-ring.html">Focus ring</a><a class="side-link" href="../helpers/icon-link.html">Icon link</a><a class="side-link" href="../helpers/position.html">Posición</a><a class="side-link" href="../helpers/ratio.html">Ratio</a><a class="side-link" href="../helpers/stacks.html">Stacks</a><a class="side-link" href="../helpers/stretched-link.html">Stretched link</a><a class="side-link" href="../helpers/text-truncation.html">Truncado de texto</a><a class="side-link" href="../helpers/vertical-rule.html">Regla vertical</a></div></details><details class="side-group"><summary class="side-title">Utilidades<span class="side-count">18</span></summary><div class="side-items"><a class="side-link" href="../utilities/api.html">API</a><a class="side-link" href="../utilities/background.html">Background</a><a class="side-link" href="../utilities/borders.html">Bordes</a><a class="side-link" href="../utilities/colors.html">Colores</a><a class="side-link" href="../utilities/display.html">Display</a><a class="side-link" href="../utilities/flex.html">Flex</a><a class="side-link" href="../utilities/float.html">Float</a><a class="side-link" href="../utilities/interactions.html">Interacciones</a><a class="side-link" href="../utilities/opacity.html">Opacidad</a><a class="side-link" href="../utilities/overflow.html">Overflow</a><a class="side-link" href="../utilities/position.html">Posición</a><a class="side-link" href="../utilities/shadows.html">Sombras</a><a class="side-link" href="../utilities/sizing.html">Sizing</a><a class="side-link" href="../utilities/spacing.html">Espaciado</a><a class="side-link" href="../utilities/text.html">Texto</a><a class="side-link" href="../utilities/vertical-align.html">Alineación vertical</a><a class="side-link" href="../utilities/visibility.html">Visibilidad</a><a class="side-link" href="../utilities/z-index.html">Z-index</a></div></details><details class="side-group"><summary class="side-title">Customizar<span class="side-count">7</span></summary><div class="side-items"><a class="side-link" href="../customize/overview.html">Overview</a><a class="side-link" href="../customize/sass.html">Sass</a><a class="side-link" href="../customize/options.html">Opciones</a><a class="side-link" href="../customize/color.html">Color</a><a class="side-link" href="../customize/components.html">Componentes</a><a class="side-link" href="../customize/css-variables.html">Variables CSS</a><a class="side-link" href="../customize/optimize.html">Optimizar</a></div></details><details class="side-group"><summary class="side-title">Extender<span class="side-count">3</span></summary><div class="side-items"><a class="side-link" href="../extend/approach.html">Enfoque</a><a class="side-link" href="../extend/icons.html">Iconos</a><a class="side-link" href="../extend/components.html">Componentes UiGas</a></div></details><a class="side-ext" href="../showcase.html">→ Showcase</a></div></aside>
+<main class="main" id="main">
+<nav class="crumbs"><a href="../index.html">UiGas</a><span>/</span><a href="../index.html#components">Componentes</a><span>/</span><span class="here">Toasts</span></nav>
+<div class="doc-main">
+<p class="lead">Aviso flotante que no interrumpe. Superficie del tema, borde hairline, borde de color a la izquierda para dar el estado.</p>
+<h2 id="basico">Básico</h2>
+<div class="ex"><div class="ex-demo"><button type="button" class="btn btn-primary" data-bs-toggle="toast" data-bs-target="#live">
+  Mostrar
+</button>
+
+<div class="toast" id="live" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="toast-header">
+    <span class="badge badge-soft badge-soft-success">GUARDADO</span>
+    <small class="text-muted">hace 5 s</small>
+    <button type="button" class="btn-close ms-auto mb-1" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+  </div>
+  <div class="toast-body">Inscripción confirmada. Número ARG-421.</div>
+</div></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot; data-bs-toggle=&quot;toast&quot; data-bs-target=&quot;#live&quot;&gt;
+  Mostrar
+&lt;/button&gt;
+
+&lt;div class=&quot;toast&quot; id=&quot;live&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot; aria-atomic=&quot;true&quot;&gt;
+  &lt;div class=&quot;toast-header&quot;&gt;
+    &lt;span class=&quot;badge badge-soft badge-soft-success&quot;&gt;GUARDADO&lt;/span&gt;
+    &lt;small class=&quot;text-muted&quot;&gt;hace 5 s&lt;/small&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn-close ms-auto mb-1&quot; data-bs-dismiss=&quot;toast&quot; aria-label=&quot;Cerrar&quot;&gt;&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;toast-body&quot;&gt;Inscripción confirmada. Número ARG-421.&lt;/div&gt;
+&lt;/div&gt;</code></pre></details></div>
+<h2 id="contenedor">Contenedor</h2>
+<div class="ex"><div class="ex-demo"><div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-body">Guardado.</div>
+  </div>
+</div></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;div class=&quot;toast-container position-fixed bottom-0 end-0 p-3&quot;&gt;
+  &lt;div class=&quot;toast&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot; aria-atomic=&quot;true&quot;&gt;
+    &lt;div class=&quot;toast-body&quot;&gt;Guardado.&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></div>
+<p><code>.toast-container</code>, <code>position-fixed</code> y las utilidades son de Bootstrap. <code>.toast</code>, <code>.toast-header</code> y <code>.toast-body</code> son de UiGas.</p>
+<h2 id="colores">Colores</h2>
+<div class="ex"><div class="ex-demo"><div class="toast align-items-center border-0 text-bg-success" role="alert">
+  <div class="d-flex">
+    <div class="toast-body">Operación correcta.</div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Cerrar"></button>
+  </div>
+</div></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;div class=&quot;toast align-items-center border-0 text-bg-success&quot; role=&quot;alert&quot;&gt;
+  &lt;div class=&quot;d-flex&quot;&gt;
+    &lt;div class=&quot;toast-body&quot;&gt;Operación correcta.&lt;/div&gt;
+    &lt;button type=&quot;button&quot; class=&quot;btn-close btn-close-white me-2 m-auto&quot; data-bs-dismiss=&quot;toast&quot; aria-label=&quot;Cerrar&quot;&gt;&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></div>
+<p class="lead"><code>.text-bg-*</code> con <code>border-0</code> es la variante sin borde de color. El <a href="../components/close-button.html">botón de cierre</a> con <code>.btn-close-white</code> no hace falta con UiGas: el SVG ya es gris metálico.</p>
+<h2 id="multiples">Múltiples</h2>
+<div class="ex"><div class="ex-demo"><div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div class="toast" role="alert">…</div>
+  <div class="toast" role="alert">…</div>
+</div></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;div class=&quot;toast-container position-fixed bottom-0 end-0 p-3&quot;&gt;
+  &lt;div class=&quot;toast&quot; role=&quot;alert&quot;&gt;…&lt;/div&gt;
+  &lt;div class=&quot;toast&quot; role=&quot;alert&quot;&gt;…&lt;/div&gt;
+&lt;/div&gt;</code></pre></details></div>
+<h2 id="autocierre">Autocierre</h2>
+<div class="ex"><div class="ex-demo"><div class="toast autohide" data-bs-delay="5000" role="alert"></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;div class=&quot;toast autohide&quot; data-bs-delay=&quot;5000&quot; role=&quot;alert&quot;&gt;</code></pre></details></div>
+<p><code>data-bs-delay</code> en milisegundos, <code>autohide</code> para que se cierre solo, <code>data-bs-autohide=&quot;false&quot;</code> para que no lo haga.</p>
+<p class="lead"><strong>Un toast que se autoclose nunca debería llevar la única copia de algo importante.</strong> Si es un aviso de &quot;guardado&quot;, perderlo no molesta. Si es un número de orden o un error que hay que reintentar, el toast no sirve: necesita algo persistente.</p>
+<h2 id="uigas">UiGas</h2>
+<pre class="doc-pre"><code>.toast {
+  --bs-toast-bg:          var(--uig-surface);
+  --bs-toast-border-color: var(--uig-line);
+  --bs-toast-header-bg:   var(--uig-surface-2);
+  --bs-toast-header-color: var(--uig-text-dim);
+}</code></pre>
+<ul class="doc-list"><li>El <code>.toast-header</code> usa <code>--uig-surface-2</code>: un peldaño por encima del cuerpo, que da la separación sin necesidad de borde.</li><li>El cuerpo y el fondo salen de los tokens: se adapta al tema sin reescritura.</li><li>El <code>.btn-close</code> del header funciona con la versión tematizada.</li></ul>
+<h2 id="cuando-toast-y-cuando-alerta">Cuándo toast y cuándo alerta</h2>
+<div class="table-wrap"><table class="doc-table"><thead><tr><th></th><th>Toast</th><th>Alerta</th></tr></thead><tbody><tr><td>Interrumpe</td><td>no</td><td>sí</td></tr><tr><td>Bloquea la vista</td><td>no</td><td>no</td></tr><tr><td>Se puede descartar</td><td>sí</td><td>a veces</td></tr><tr><td>Ancla en el flujo</td><td>no</td><td>sí</td></tr><tr><td>Automático</td><td>opcional</td><td>no</td></tr></tbody></table></div>
+<p>Un toast que aparece mientras el usuario está escribiendo en un campo genera un salto de foco si no lo manejás. Anclá el foco: el <code>role=&quot;alert&quot;</code> con <code>aria-live=&quot;assertive&quot;</code> interrumpe lo que el lector de pantalla esté leyendo.</p>
+<h2 id="accesibilidad">Accesibilidad</h2>
+<ul class="doc-list"><li><code>role=&quot;alert&quot;</code> para lo urgente, <code>role=&quot;status&quot;</code> (implícito) con <code>aria-live=&quot;polite&quot;</code> para lo informativo.</li><li><code>aria-atomic=&quot;true&quot;</code> para que se lea el toast entero, no solo la parte nueva.</li><li>El <code>.btn-close</code> necesita <code>aria-label=&quot;Cerrar&quot;</code>.</li><li><strong>El foco no va al toast.</strong> Es un aviso, no un diálogo: mandar el foco interrumpe lo que el usuario estaba haciendo. Bootstrap no mueve el foco.</li><li>Un toast con acción necesita que la acción sea alcanzable por teclado. Un toast que solo se lee, con autoclose, no sirve a quien navega por teclado con lector de pantalla rápido.</li></ul>
+<h2 id="que-sigue">Qué sigue</h2>
+<ul class="doc-list"><li><a href="../components/alerts.html">Alertas</a></li><li><a href="../components/close-button.html">Botón de cierre</a></li><li><a href="../components/modal.html">Modal</a></li></ul>
+</div>
+<nav class="pager"><a class="p-prev" href="../components/spinners.html"><small>Anterior</small>Spinners</a><a class="p-next" href="../components/tooltips.html"><small>Siguiente</small>Tooltips</a></nav>
+<footer class="docfoot">
+  <p>UiGas · CSS framework · override de Bootstrap 5 · MIT © 2026 softcronos.com.ar</p>
+  <p>Bootstrap 5 es marca de sus autores. Korataki solo para logo y marca.</p>
+</footer>
+</main>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<script>window.UIGAS_NAV = [{"title":"Inicio","href":"index.html"},{"title":"Introducción · Primeros pasos","href":"../getting-started/introduction.html"},{"title":"Instalación · Primeros pasos","href":"../getting-started/installation.html"},{"title":"Contenido · Primeros pasos","href":"../getting-started/contents.html"},{"title":"Navegadores y dispositivos · Primeros pasos","href":"../getting-started/browsers-devices.html"},{"title":"Herramientas de build · Primeros pasos","href":"../getting-started/build-tools.html"},{"title":"Breakpoints · Layout","href":"../layout/breakpoints.html"},{"title":"Contenedores · Layout","href":"../layout/containers.html"},{"title":"Grid · Layout","href":"../layout/grid.html"},{"title":"Columnas · Layout","href":"../layout/columns.html"},{"title":"Gutters · Layout","href":"../layout/gutters.html"},{"title":"Utilidades de layout · Layout","href":"../layout/utilities-for-layout.html"},{"title":"Reboot · Contenido","href":"../content/reboot.html"},{"title":"Tipografía · Contenido","href":"../content/typography.html"},{"title":"Imágenes · Contenido","href":"../content/images.html"},{"title":"Tablas · Contenido","href":"../content/tables.html"},{"title":"Figuras · Contenido","href":"../content/figures.html"},{"title":"Overview · Formularios","href":"../forms/overview.html"},{"title":"Form control · Formularios","href":"../forms/form-control.html"},{"title":"Select · Formularios","href":"../forms/select.html"},{"title":"Checks y radios · Formularios","href":"../forms/checks-radios.html"},{"title":"Range · Formularios","href":"../forms/range.html"},{"title":"Input group · Formularios","href":"../forms/input-group.html"},{"title":"Labels flotantes · Formularios","href":"../forms/floating-labels.html"},{"title":"Layout · Formularios","href":"../forms/layout.html"},{"title":"Validación · Formularios","href":"../forms/validation.html"},{"title":"Accesibilidad · Formularios","href":"../forms/accessibility.html"},{"title":"Acordeón · Componentes","href":"../components/accordion.html"},{"title":"Alertas · Componentes","href":"../components/alerts.html"},{"title":"Badges · Componentes","href":"../components/badges.html"},{"title":"Breadcrumb · Componentes","href":"../components/breadcrumb.html"},{"title":"Botones · Componentes","href":"../components/buttons.html"},{"title":"Grupo de botones · Componentes","href":"../components/button-group.html"},{"title":"Tarjetas · Componentes","href":"../components/card.html"},{"title":"Carrusel · Componentes","href":"../components/carousel.html"},{"title":"Botón de cierre · Componentes","href":"../components/close-button.html"},{"title":"Collapse · Componentes","href":"../components/collapse.html"},{"title":"Dropdowns · Componentes","href":"../components/dropdowns.html"},{"title":"List group · Componentes","href":"../components/list-group.html"},{"title":"Modal · Componentes","href":"../components/modal.html"},{"title":"Navs y tabs · Componentes","href":"../components/navs-tabs.html"},{"title":"Navbar · Componentes","href":"../components/navbar.html"},{"title":"Offcanvas · Componentes","href":"../components/offcanvas.html"},{"title":"Paginación · Componentes","href":"../components/pagination.html"},{"title":"Placeholders · Componentes","href":"../components/placeholders.html"},{"title":"Popovers · Componentes","href":"../components/popovers.html"},{"title":"Progreso · Componentes","href":"../components/progress.html"},{"title":"Scrollspy · Componentes","href":"../components/scrollspy.html"},{"title":"Spinners · Componentes","href":"../components/spinners.html"},{"title":"Toasts · Componentes","href":"../components/toasts.html"},{"title":"Tooltips · Componentes","href":"../components/tooltips.html"},{"title":"Clearfix · Helpers","href":"../helpers/clearfix.html"},{"title":"Color y fondo · Helpers","href":"../helpers/color-background.html"},{"title":"Enlaces de color · Helpers","href":"../helpers/colored-links.html"},{"title":"Focus ring · Helpers","href":"../helpers/focus-ring.html"},{"title":"Icon link · Helpers","href":"../helpers/icon-link.html"},{"title":"Posición · Helpers","href":"../helpers/position.html"},{"title":"Ratio · Helpers","href":"../helpers/ratio.html"},{"title":"Stacks · Helpers","href":"../helpers/stacks.html"},{"title":"Stretched link · Helpers","href":"../helpers/stretched-link.html"},{"title":"Truncado de texto · Helpers","href":"../helpers/text-truncation.html"},{"title":"Regla vertical · Helpers","href":"../helpers/vertical-rule.html"},{"title":"API · Utilidades","href":"../utilities/api.html"},{"title":"Background · Utilidades","href":"../utilities/background.html"},{"title":"Bordes · Utilidades","href":"../utilities/borders.html"},{"title":"Colores · Utilidades","href":"../utilities/colors.html"},{"title":"Display · Utilidades","href":"../utilities/display.html"},{"title":"Flex · Utilidades","href":"../utilities/flex.html"},{"title":"Float · Utilidades","href":"../utilities/float.html"},{"title":"Interacciones · Utilidades","href":"../utilities/interactions.html"},{"title":"Opacidad · Utilidades","href":"../utilities/opacity.html"},{"title":"Overflow · Utilidades","href":"../utilities/overflow.html"},{"title":"Posición · Utilidades","href":"../utilities/position.html"},{"title":"Sombras · Utilidades","href":"../utilities/shadows.html"},{"title":"Sizing · Utilidades","href":"../utilities/sizing.html"},{"title":"Espaciado · Utilidades","href":"../utilities/spacing.html"},{"title":"Texto · Utilidades","href":"../utilities/text.html"},{"title":"Alineación vertical · Utilidades","href":"../utilities/vertical-align.html"},{"title":"Visibilidad · Utilidades","href":"../utilities/visibility.html"},{"title":"Z-index · Utilidades","href":"../utilities/z-index.html"},{"title":"Overview · Customizar","href":"../customize/overview.html"},{"title":"Sass · Customizar","href":"../customize/sass.html"},{"title":"Opciones · Customizar","href":"../customize/options.html"},{"title":"Color · Customizar","href":"../customize/color.html"},{"title":"Componentes · Customizar","href":"../customize/components.html"},{"title":"Variables CSS · Customizar","href":"../customize/css-variables.html"},{"title":"Optimizar · Customizar","href":"../customize/optimize.html"},{"title":"Enfoque · Extender","href":"../extend/approach.html"},{"title":"Iconos · Extender","href":"../extend/icons.html"},{"title":"Componentes UiGas · Extender","href":"../extend/components.html"}];</script>
+<script>
+(function(){
+  var tt = document.getElementById('tt');
+  tt.addEventListener('click', function(){
+    var el = document.documentElement;
+    var next = el.getAttribute('data-bs-theme') === 'light' ? 'dark' : 'light';
+    el.setAttribute('data-bs-theme', next);
+    try { localStorage.setItem('uig-theme', next); } catch (e) {}
+  });
+  var burger = document.getElementById('burger'), scrim = document.getElementById('scrim');
+  function close(){ document.body.classList.remove('nav-open'); scrim.hidden = true; burger.setAttribute('aria-expanded','false'); }
+  burger.addEventListener('click', function(){
+    var open = document.body.classList.toggle('nav-open');
+    scrim.hidden = !open;
+    burger.setAttribute('aria-expanded', String(open));
+  });
+  scrim.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+})();
+
+(function(){
+  var idx = window.UIGAS_NAV || [];
+  var box = document.getElementById('q'), out = document.getElementById('qout');
+  function hide(){ out.hidden = true; out.innerHTML = ''; }
+  function run(){
+    var q = box.value.trim().toLowerCase();
+    if (q.length < 2) return hide();
+    var hit = idx.filter(function(p){
+      return (p.title + ' ' + p.path).toLowerCase().indexOf(q) > -1;
+    }).slice(0, 12);
+    if (!hit.length) return hide();
+    out.innerHTML = hit.map(function(p){
+      return '<a href="' + p.href + '">' + p.title + '<small>' + p.path + '</small></a>';
+    }).join('');
+    out.hidden = false;
+  }
+  box.addEventListener('input', run);
+  box.addEventListener('focus', run);
+  document.addEventListener('click', function(e){
+    if (!out.contains(e.target) && e.target !== box) hide();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') { box.value = ''; hide(); box.blur(); }
+  });
+})();
+</script>
+</body>
+</html>

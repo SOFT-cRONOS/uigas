@@ -1,0 +1,29 @@
+/* =========================================
+   15. PAGINATION
+   ========================================= */
+.pagination {
+  --bs-pagination-color:                var(--uig-text-dim);
+  --bs-pagination-bg:                   var(--uig-surface);
+  --bs-pagination-border-color:         var(--uig-line);
+  --bs-pagination-border-radius:        var(--bs-border-radius);
+  --bs-pagination-hover-color:          var(--uig-heading);
+  --bs-pagination-hover-bg:             var(--uig-line);
+  --bs-pagination-hover-border-color:   var(--uig-line-strong);
+  --bs-pagination-focus-color:          var(--uig-red);
+  --bs-pagination-focus-bg:             rgba(249, 33, 33, 0.08);
+  --bs-pagination-focus-box-shadow:     0 0 0 3px rgba(249, 33, 33, 0.25);
+  --bs-pagination-active-color:         #ffffff;
+  --bs-pagination-active-bg:            var(--uig-red-slab);
+  --bs-pagination-active-border-color:  var(--uig-red-slab);
+  --bs-pagination-disabled-color:       var(--uig-text-muted);
+  --bs-pagination-disabled-bg:          var(--uig-bg-deep);
+  --bs-pagination-disabled-border-color: var(--uig-surface-2);
+}
+
+.page-link {
+  font-family: var(--uig-font-display);
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.active > .page-link,
+.page-link.active { box-shadow: var(--uig-glow-red); }

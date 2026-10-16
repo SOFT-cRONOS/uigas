@@ -1,0 +1,81 @@
+/* =========================================
+   2. BASE — body, typography, links
+   ========================================= */
+
+
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  font-family: var(--bs-body-font-family);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;   /* Brandbook CVR §06 — Body: Barlow 400 · lh 1.7 */
+}
+
+/* H2–H6 — Brandbook CVR §06: Barlow Condensed es la voz de títulos
+   de sección y subsección. El H1 vive aparte, más abajo. */
+h2, h3, h4, h5, h6,
+.h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--bs-heading-color);
+}
+
+/* Display headings — wide, aggressive */
+.display-1, .display-2, .display-3,
+.display-4, .display-5, .display-6 {
+  font-family: var(--uig-font-display);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--uig-heading);
+}
+
+/* H1 y display — Barlow Condensed es la voz legible de los títulos
+   principales (Brandbook CVR §06, ajustado). Korataki queda reservada
+   para la marca: logotipo y menciones del nombre (ver .brandmark y
+   .navbar-brand). Sin itálica: la jerarquía la dan el peso 900, el
+   uppercase y el tracking. */
+h1, .h1,
+.display-1, .display-2, .display-3 {
+  font-family: var(--uig-font-h1);
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--uig-heading);
+}
+
+/* .brandmark — mención del nombre de marca. Korataki si está instalada
+   (local); si no, Barlow Condensed 900 itálica. */
+.brandmark {
+  font-family: var(--uig-font-brand);
+  font-weight: 900;
+  font-style: italic;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--uig-heading);
+}
+
+a {
+  color: var(--bs-link-color);
+  transition: color 0.2s ease;
+}
+a:hover { color: var(--bs-link-hover-color); }
+
+hr {
+  border-color: var(--bs-border-color);
+  opacity: 1;
+}
+
+::selection {
+  background: var(--uig-red-slab);
+  color: #ffffff;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--uig-bg-deep); }
+::-webkit-scrollbar-thumb { background: var(--uig-line-strong); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--uig-text-dim); }

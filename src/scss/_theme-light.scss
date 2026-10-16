@@ -1,0 +1,269 @@
+/* =========================================
+   40. AJUSTES DEL TEMA CLARO
+   ─────────────────────────────────────────
+   Los botones conservan su par de color; aquí se
+   corrige lo que sobre blanco quedaría ilegible.
+   ========================================= */
+[data-bs-theme="light"] .navbar-toggler-icon {
+  --bs-navbar-toggler-icon-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%2824,24,27,0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+[data-bs-theme="light"] .text-bg-light {
+  background-color: #e4e4e7 !important;
+  color: #141414 !important;
+}
+[data-bs-theme="light"] .text-bg-secondary {
+  background-color: #e4e4e7 !important;
+  color: #3f3f46 !important;
+}
+[data-bs-theme="light"] .text-bg-dark {
+  background-color: #141414 !important;
+  color: #f4f4f5 !important;
+}
+[data-bs-theme="light"] .btn-secondary {
+  --bs-btn-color:             var(--uig-text);
+  --bs-btn-bg:                var(--uig-surface-2);
+  --bs-btn-border-color:      var(--uig-line-strong);
+  --bs-btn-hover-color:       var(--uig-heading);
+  --bs-btn-hover-bg:          var(--uig-surface-3);
+  --bs-btn-hover-border-color: var(--uig-text-dim);
+  --bs-btn-active-color:      var(--uig-heading);
+  --bs-btn-active-bg:         var(--uig-line-strong);
+  --bs-btn-active-border-color: var(--uig-text-dim);
+  --bs-btn-disabled-color:    var(--uig-text-dim);
+  --bs-btn-disabled-bg:       var(--uig-surface-2);
+  --bs-btn-disabled-border-color: var(--uig-line);
+}
+[data-bs-theme="light"] .btn-light {
+  --bs-btn-bg:                #ffffff;
+  --bs-btn-border-color:      var(--uig-line-strong);
+  --bs-btn-color:             #141414;
+  --bs-btn-hover-bg:          #ececf0;
+  --bs-btn-hover-border-color: var(--uig-text-dim);
+  --bs-btn-hover-color:       #141414;
+  --bs-btn-active-bg:         #e4e4e7;
+  --bs-btn-active-border-color: var(--uig-text-dim);
+  --bs-btn-active-color:      #141414;
+}
+[data-bs-theme="light"] code {
+  color: #b30500;
+  background-color: rgba(249, 33, 33, 0.12);
+}
+[data-bs-theme="light"] .mark,
+[data-bs-theme="light"] mark { color: #b91c1c; }
+[data-bs-theme="light"] .sidebar-overlay { background: rgba(20, 20, 20, 0.45); }
+
+/* Superficies claras: sombras más suaves y verdes que en oscuro */
+[data-bs-theme="light"] .card {
+  box-shadow: inset 0 1px 0 #ffffff, 0 2px 8px rgba(20, 20, 20, 0.07);
+}
+[data-bs-theme="light"] .card:hover {
+  box-shadow: 0 0 0 1px rgba(249, 33, 33, 0.3), 0 12px 28px rgba(20, 20, 20, 0.14);
+}
+[data-bs-theme="light"] .card-featured {
+  box-shadow: 0 16px 30px rgba(20, 20, 20, 0.12);
+}
+[data-bs-theme="light"] .card-featured:hover {
+  box-shadow:
+    0 18px 34px rgba(20, 20, 20, 0.16),
+    0 0 16px rgba(249, 33, 33, 0.3);
+}
+
+/* Badges tenues en claro: acentos más profundos para contrastar */
+[data-bs-theme="light"] .badge-soft-primary,
+[data-bs-theme="light"] .badge-soft-danger {
+  --uig-badge-fg: #b30500;
+  --uig-badge-bd: rgba(249, 33, 33, 0.35);
+}
+[data-bs-theme="light"] .badge-soft-success {
+  --uig-badge-fg: #15803d;
+  --uig-badge-bd: rgba(34, 197, 94, 0.4);
+}
+[data-bs-theme="light"] .badge-soft-warning {
+  --uig-badge-fg: #b45309;
+  --uig-badge-bd: rgba(245, 158, 11, 0.4);
+}
+[data-bs-theme="light"] .badge-soft-info {
+  --uig-badge-fg: #0369a1;
+  --uig-badge-bd: rgba(56, 189, 248, 0.4);
+}
+
+/* Alertas: el color de la familia se usa como texto y marcador. Sobre
+   la base clara esos colores planos (#ff4d44, #4ade80, #fbbf24…) no
+   contrastan; se reescriben con los versantes oscuros de la rampa. */
+[data-bs-theme="light"] .alert-primary {
+  --bs-alert-bg:            rgba(179, 5, 0, 0.09);
+  --bs-alert-border-color: rgba(179, 5, 0, 0.4);
+  --bs-alert-color:         #b30500;
+}
+[data-bs-theme="light"] .alert-secondary {
+  --bs-alert-bg:            rgba(20, 20, 20, 0.06);
+  --bs-alert-border-color: rgba(20, 20, 20, 0.25);
+  --bs-alert-color:         #3f3f46;
+}
+[data-bs-theme="light"] .alert-success {
+  --bs-alert-bg:            rgba(22, 101, 52, 0.09);
+  --bs-alert-border-color: rgba(22, 101, 52, 0.4);
+  --bs-alert-color:         #166534;
+}
+[data-bs-theme="light"] .alert-danger {
+  --bs-alert-bg:            rgba(179, 5, 0, 0.09);
+  --bs-alert-border-color: rgba(179, 5, 0, 0.4);
+  --bs-alert-color:         #b30500;
+}
+[data-bs-theme="light"] .alert-warning {
+  --bs-alert-bg:            rgba(146, 64, 14, 0.09);
+  --bs-alert-border-color: rgba(146, 64, 14, 0.4);
+  --bs-alert-color:         #92400e;
+}
+[data-bs-theme="light"] .alert-info {
+  --bs-alert-bg:            rgba(3, 105, 161, 0.09);
+  --bs-alert-border-color: rgba(3, 105, 161, 0.4);
+  --bs-alert-color:         #0369a1;
+}
+[data-bs-theme="light"] .alert-light {
+  --bs-alert-bg:            rgba(20, 20, 20, 0.06);
+  --bs-alert-border-color: rgba(20, 20, 20, 0.25);
+  --bs-alert-color:         #3f3f46;
+}
+[data-bs-theme="light"] .alert-dark {
+  --bs-alert-bg:            rgba(20, 20, 20, 0.08);
+  --bs-alert-border-color: var(--uig-line);
+  --bs-alert-color:         #52525b;
+}
+
+/* Outline buttons: el color de la familia se usa como texto. En claro
+   ese color plano (#22c55e, #38bdf8…) apenas se ve; se reescribe con
+   los versantes oscuros usados en el resto del tema claro. */
+[data-bs-theme="light"] .btn-outline-secondary {
+  --bs-btn-color:              #3f3f46;
+  --bs-btn-border-color:      var(--uig-line-strong);
+  --bs-btn-hover-color:       #141414;
+  --bs-btn-hover-bg:         #ececf0;
+  --bs-btn-hover-border-color: var(--uig-line-strong);
+  --bs-btn-active-color:     #141414;
+  --bs-btn-active-bg:       #d8d8dc;
+  --bs-btn-active-border-color: var(--uig-line-strong);
+}
+[data-bs-theme="light"] .btn-outline-light {
+  --bs-btn-color:              #141414;
+  --bs-btn-border-color:      var(--uig-line-strong);
+  --bs-btn-hover-color:       #141414;
+  --bs-btn-hover-bg:         #ececf0;
+  --bs-btn-hover-border-color: var(--uig-line-strong);
+  --bs-btn-active-color:     #141414;
+  --bs-btn-active-bg:       #d8d8dc;
+  --bs-btn-active-border-color: var(--uig-line-strong);
+}
+[data-bs-theme="light"] .btn-outline-dark {
+  --bs-btn-color:              #141414;
+  --bs-btn-border-color:      var(--uig-line-strong);
+  --bs-btn-hover-color:       #141414;
+  --bs-btn-hover-bg:         #ececf0;
+  --bs-btn-hover-border-color: var(--uig-line-strong);
+  --bs-btn-active-color:     #141414;
+  --bs-btn-active-bg:       #d8d8dc;
+  --bs-btn-active-border-color: var(--uig-line-strong);
+}
+[data-bs-theme="light"] .btn-outline-success {
+  --bs-btn-color:              #166534;
+  --bs-btn-border-color:      rgba(22, 101, 52, 0.55);
+  --bs-btn-hover-color:       #ffffff;
+  --bs-btn-hover-bg:         #166534;
+  --bs-btn-hover-border-color: #166534;
+  --bs-btn-active-color:     #ffffff;
+  --bs-btn-active-bg:       #14532d;
+  --bs-btn-active-border-color: #14532d;
+}
+[data-bs-theme="light"] .btn-outline-warning {
+  --bs-btn-color:              #92400e;
+  --bs-btn-border-color:      rgba(146, 64, 14, 0.55);
+  --bs-btn-hover-color:       #ffffff;
+  --bs-btn-hover-bg:         #92400e;
+  --bs-btn-hover-border-color: #92400e;
+  --bs-btn-active-color:     #ffffff;
+  --bs-btn-active-bg:       #78350f;
+  --bs-btn-active-border-color: #78350f;
+}
+[data-bs-theme="light"] .btn-outline-info {
+  --bs-btn-color:              #0369a1;
+  --bs-btn-border-color:      rgba(3, 105, 161, 0.55);
+  --bs-btn-hover-color:       #ffffff;
+  --bs-btn-hover-bg:         #0369a1;
+  --bs-btn-hover-border-color: #0369a1;
+  --bs-btn-active-color:     #ffffff;
+  --bs-btn-active-bg:       #075985;
+  --bs-btn-active-border-color: #075985;
+}
+[data-bs-theme="light"] .btn-outline-danger {
+  --bs-btn-color:              #b30500;
+  --bs-btn-border-color:      rgba(179, 5, 0, 0.55);
+  --bs-btn-hover-color:       #ffffff;
+  --bs-btn-hover-bg:         #b30500;
+  --bs-btn-hover-border-color: #b30500;
+  --bs-btn-active-color:     #ffffff;
+  --bs-btn-active-bg:       #8a0400;
+  --bs-btn-active-border-color: #8a0400;
+}
+
+/* Validación: el verde plano (#22c55e) mide 2:1 sobre la superficie
+   clara — ni el borde ni el mensaje se leen. Se baja al versante
+   oscuro de la misma familia. El rojo ya pasa por --bs-danger-
+   text-emphasis, que sí está redefinido para claro. */
+[data-bs-theme="light"] .form-control.is-valid,
+[data-bs-theme="light"] .was-validated .form-control:valid,
+[data-bs-theme="light"] .form-select.is-valid,
+[data-bs-theme="light"] .was-validated .form-select:valid {
+  border-color: #166534;
+}
+[data-bs-theme="light"] .form-control.is-valid:focus,
+[data-bs-theme="light"] .was-validated .form-control:valid:focus,
+[data-bs-theme="light"] .form-select.is-valid:focus,
+[data-bs-theme="light"] .was-validated .form-select:valid:focus {
+  box-shadow: 0 0 0 3px rgba(22, 101, 52, 0.2);
+}
+[data-bs-theme="light"] .valid-feedback { color: #166534; }
+
+/* El pulgar del range usa --uig-red: en claro eso lo baja a #b30500,
+   de 3.5:1 a 6.3:1 sobre la superficie. */
+[data-bs-theme="light"] .form-range::-webkit-slider-thumb { background-color: var(--uig-red); }
+[data-bs-theme="light"] .form-range::-moz-range-thumb     { background-color: var(--uig-red); }
+
+/* btn-ghost: sus valores son blancos translúcidos pensados para fondo
+   oscuro. Sobre superficie clara el texto queda en 2.25:1 y el hover
+   no se ve. Se reescriben con el equivalente oscuro. */
+[data-bs-theme="light"] .btn-ghost {
+  --bs-btn-color:          #3f3f46;
+  --bs-btn-hover-color:    #141414;
+  --bs-btn-hover-bg:       rgba(20, 20, 20, 0.05);
+  --bs-btn-active-color:   #141414;
+  --bs-btn-active-bg:      rgba(20, 20, 20, 0.08);
+}
+
+/* El spinner de btn-loading es blanco: invisible sobre claro. */
+[data-bs-theme="light"] .btn-loading::after {
+  border-color: rgba(20, 20, 20, 0.2);
+  border-top-color: var(--uig-red);
+}
+
+/* El SVG del botón de cierre trae el gris fijo del tema oscuro. */
+[data-bs-theme="light"] .btn-close {
+  --bs-btn-close-color: #52525b;
+  --bs-btn-close-bg: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2352525b'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 1 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+  opacity: 0.75;
+}
+
+/* Texto de acento: _utilities.scss los escribe con los tonos planos
+   (#22c55e, #f59e0b, #38bdf8), pensados para fondo oscuro. Sobre la
+   superficie clara quedan en 1.6:1 - 2.0:1: ilegibles. Se pasan al
+   versante oscuro de cada familia, el mismo criterio de alertas,
+   badges, botones outline y validación. */
+[data-bs-theme="light"] .text-success { color: #166534 !important; }
+[data-bs-theme="light"] .text-warning { color: #92400e !important; }
+[data-bs-theme="light"] .text-info    { color: #0369a1 !important; }
+
+/* Focus ring: el rojo al 70% de opacidad se mezcla con la superficie
+   clara y queda en 2.5:1 - 2.8:1, por debajo del 3:1 que pide la
+   WCAG para contraste no textual. En claro va rojo pleno. */
+[data-bs-theme="light"] :focus-visible {
+  outline-color: #b30500;
+}

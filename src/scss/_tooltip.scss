@@ -1,0 +1,33 @@
+/* =========================================
+   19. TOOLTIPS & POPOVERS
+   ========================================= */
+.tooltip-inner {
+  background-color: var(--uig-surface-2);
+  color: var(--uig-text);
+  border: 1px solid var(--uig-line-strong);
+  border-radius: var(--bs-border-radius);
+  font-family: var(--uig-font-body);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.4rem 0.75rem;
+}
+
+.bs-tooltip-top .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^=top] .tooltip-arrow::before { border-top-color: var(--uig-line-strong); }
+.bs-tooltip-bottom .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^=bottom] .tooltip-arrow::before { border-bottom-color: var(--uig-line-strong); }
+.bs-tooltip-start .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^=left] .tooltip-arrow::before  { border-left-color: var(--uig-line-strong); }
+.bs-tooltip-end .tooltip-arrow::before,
+.bs-tooltip-auto[data-popper-placement^=right] .tooltip-arrow::before  { border-right-color: var(--uig-line-strong); }
+
+.popover {
+  --bs-popover-bg:            var(--uig-surface);
+  --bs-popover-border-color:  var(--uig-line);
+  --bs-popover-border-radius: var(--bs-border-radius-lg);
+  --bs-popover-box-shadow:    0 12px 32px rgba(0, 0, 0, 0.6);
+  --bs-popover-body-color:    var(--uig-text);
+  --bs-popover-header-bg:     var(--uig-tint);
+  --bs-popover-header-color:  var(--uig-heading);
+  backdrop-filter: blur(8px);
+}

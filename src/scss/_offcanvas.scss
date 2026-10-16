@@ -1,0 +1,17 @@
+/* =========================================
+   22. OFFCANVAS
+   ========================================= */
+.offcanvas {
+  --bs-offcanvas-bg:           var(--uig-bg-deep);
+  --bs-offcanvas-color:        var(--uig-text);
+  --bs-offcanvas-border-color: var(--uig-line);
+  --bs-offcanvas-box-shadow:   0 0 40px rgba(0, 0, 0, 0.8);
+}
+.offcanvas-header { border-bottom: 1px solid var(--uig-line); }
+.offcanvas-title {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.offcanvas-backdrop.show { opacity: 0.7; }

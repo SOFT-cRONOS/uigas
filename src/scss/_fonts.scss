@@ -1,0 +1,21 @@
+/* =========================================
+   FUENTES — Korataki (Brandbook CVR §06)
+   ─────────────────────────────────────────
+   Voz de MARCA: logotipo y menciones del nombre. Es una fuente
+   comercial (Typodermic) que no está en Google Fonts: el brandbook la
+   resuelve desde la fuente instalada en el sistema y así lo hace
+   también este override, declarándola con local(). El rostro ya es
+   Bold Italic de fábrica, por eso se publica como la cursiva de la
+   familia: así el navegador no le aplica oblicua sintética encima.
+   Donde Korataki no esté instalada, la familia no carga y cada
+   stack cae a su siguiente voz (Barlow Condensed 900 itálica).
+   ========================================= */
+@font-face {
+  font-family: 'Korataki';
+  src: local('KoratakiW01-BoldItalic'),
+       local('Korataki W01 Bold Italic'),
+       local('Korataki Bold Italic');
+  font-weight: 700 900;
+  font-style: italic;
+  font-display: swap;
+}

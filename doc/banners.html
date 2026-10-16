@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UiGas — Hero Banners, CTAs &amp; Sliders | Sim Racing</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Fuentes UiGas -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&amp;family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&amp;family=Rajdhani:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <!-- Tema UiGas -->
+  <link rel="stylesheet" href="../dist/uigas.min.css">
+  
+  <style>
+    /* MÍNIMO CSS DEMO — solo helpers de layout */
+    .demo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      align-items: stretch;
+    }
+    .demo-grid > * {
+      flex: 1 1 380px;
+    }
+    
+    .hero-demo {
+      min-height: 420px;
+      border-radius: 1rem;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(10,10,10,0.3) 0%, rgba(10,10,10,0.85) 70%);
+      z-index: 1;
+    }
+    
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 3rem;
+    }
+    
+    .img-placeholder {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.75) contrast(1.1);
+    }
+    
+    .scan-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #e10600, transparent);
+      animation: scan 4s linear infinite;
+      opacity: 0.6;
+    }
+    
+    @keyframes scan {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(800%); }
+    }
+  </style>
+</head>
+<body class="bg-body" style="padding: 2rem 1.5rem;">
+
+  <div class="container">
+    <!-- Botón VOLVER -->
+    <div class="mb-4">
+      <a href="showcase.html" class="btn btn-outline-secondary btn-sm" style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.08em;">
+        ⬸ Volver al showcase completo
+      </a>
+    </div>
+
+    <!-- Cabecera -->
+    <div class="mb-5">
+      <div class="section-label" style="font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #e10600; margin-bottom: 0.3rem;">UI<span style="color:#e10600;">GAS</span> · HERO &amp; CTA</div>
+      <h1 class="display-6" style="color:#ffffff;">Hero Banners, CTAs y Sliders</h1>
+      <p class="text-secondary" style="font-family: var(--uig-font-body); max-width: 680px;">Componentes premium para sim racing — Assetto Corsa, iRacing, campeonatos y mods. Totalmente fiel al estilo UiGas.</p>
+      <div style="height: 2px; width: 90px; background: #e10600; margin-top: 0.75rem;"></div>
+    </div>
+
+    <!-- SECCIÓN 1 — HERO BANNERS -->
+    <div class="mb-5">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <span class="badge text-bg-primary">01</span>
+        <h3 class="h4 mb-0" style="font-family:'Barlow Condensed'; font-weight:700;">Hero Banners</h3>
+      </div>
+      <div class="demo-grid">
+
+        <!-- Hero 1 -->
+        <div class="hero-demo" style="background: linear-gradient(135deg, #0a0a0a, #1a0000);">
+          <div class="img-placeholder" style="background-image: url('https://picsum.photos/id/1015/1200/800');"></div>
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <div class="scan-glow"></div>
+            <span class="badge text-bg-danger mb-3">ASSSETTO CORSA COMPETIZIONE</span>
+            <h2 class="display-5 fw-bold text-white" style="letter-spacing: 0.02em; line-height: 1.05;">GT3 WORLD SERIES 2026</h2>
+            <p class="lead text-white-50 mb-4" style="font-family: var(--uig-font-body); max-width: 420px;">Compite en Spa, Monza y Nürburgring con los mejores mods comunitarios.</p>
+            <div class="d-flex gap-3">
+              <button class="btn btn-primary btn-lg px-5">INSCRIBIRME</button>
+              <button class="btn btn-outline-light btn-lg">VER CALENDARIO</button>
+            </div>
+            <div class="mt-4 d-flex align-items-center gap-4 text-white-50 small">
+              <div>32 PILOTOS</div>
+              <div>8 CARRERAS</div>
+              <div class="text-success">LIVE EN TWITCH</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero 2 -->
+        <div class="hero-demo" style="background: linear-gradient(135deg, #0a0a0a, #1a1a00);">
+          <div class="img-placeholder" style="background-image: url('https://picsum.photos/id/1074/1200/800');"></div>
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <span class="badge text-bg-warning mb-3">iRACING • SEASON 3</span>
+            <h2 class="display-5 fw-bold text-white" style="letter-spacing: 0.02em;">DALLAS NIGHT RACE</h2>
+            <p class="text-white-50 mb-4" style="max-width: 380px;">Lucha bajo las luces con el nuevo Ford Mustang GT3.</p>
+            <button class="btn btn-primary btn-lg px-5">UNIRME A LA CARRERA</button>
+            <div class="mt-5">
+              <small class="text-white-50">Próxima fecha: <strong class="text-white">14 JUNIO • 21:00 UTC</strong></small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 2 — HERO VARIANTS -->
+    <div class="mb-5">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <span class="badge text-bg-primary">02</span>
+        <h3 class="h4 mb-0" style="font-family:'Barlow Condensed'; font-weight:700;">Más Hero Banners</h3>
+      </div>
+      <div class="demo-grid">
+
+        <!-- Hero 3 -->
+        <div class="hero-demo" style="min-height: 380px;">
+          <div class="img-placeholder" style="background-image: url('https://picsum.photos/id/201/1200/800');"></div>
+          <div class="hero-overlay"></div>
+          <div class="hero-content text-center mx-auto" style="max-width: 520px;">
+            <div class="mb-3">
+              <span style="font-size: 3.5rem;">🏆</span>
+            </div>
+            <h2 class="display-6 fw-bold text-white">CAMPEONATO ARGENTINO DE SIM RACING</h2>
+            <p class="text-white-50">Temporada 2026 • Assetto Corsa • Circuito de Buenos Aires</p>
+            <button class="btn btn-danger btn-lg px-5 mt-3">VER CLASIFICACIÓN</button>
+          </div>
+        </div>
+
+        <!-- Hero 4 -->
+        <div class="hero-demo">
+          <div class="img-placeholder" style="background-image: url('https://picsum.photos/id/870/1200/800');"></div>
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h3 class="text-white-50 mb-2">MOD SPOTLIGHT</h3>
+            <h2 class="display-5 fw-bold text-white">PORSCHE 992 GT3 R</h2>
+            <div class="d-flex align-items-center gap-3 mt-4">
+              <span class="badge text-bg-success">NUEVO</span>
+              <span class="text-white">v1.8.4 • 420 HP</span>
+            </div>
+            <button class="btn btn-outline-primary btn-lg mt-4">DESCARGAR MOD</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 3 — CTAs -->
+    <div class="mb-5">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <span class="badge text-bg-primary">03</span>
+        <h3 class="h4 mb-0" style="font-family:'Barlow Condensed'; font-weight:700;">Call to Actions</h3>
+      </div>
+      <div class="demo-grid">
+
+        <!-- CTA 1 -->
+        <div class="card border-primary border-opacity-50">
+          <div class="card-body p-5 text-center">
+            <h4 class="fw-bold text-white mb-3">¿LISTO PARA COMPETIR?</h4>
+            <p class="text-secondary mb-4">Únete a la liga oficial de UiGas Racing y enfrenta a los mejores pilotos de la región.</p>
+            <button class="btn btn-primary btn-lg px-5">INSCRIPCIÓN ABIERTA</button>
+            <div class="mt-4 text-success small">128 pilotos ya inscritos</div>
+          </div>
+        </div>
+
+        <!-- CTA 2 -->
+        <div class="card bg-gradient" style="background: linear-gradient(135deg, #111111, #1f0000);">
+          <div class="card-body p-5">
+            <div class="d-flex justify-content-between align-items-end">
+              <div>
+                <span class="badge text-bg-danger">LIMITADO</span>
+                <h4 class="fw-bold text-white mt-3">Pit Pass VIP</h4>
+                <p class="text-white-50">Acceso a setups exclusivos, coaching y transmisiones en 4K.</p>
+                <div class="h3 text-primary mb-0">$19.99<span class="fs-5 text-secondary">/mes</span></div>
+              </div>
+              <button class="btn btn-outline-light btn-lg">OBTENER</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN 4 — SLIDERS / CAROUSELS -->
+    <div class="mb-5">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <span class="badge text-bg-primary">04</span>
+        <h3 class="h4 mb-0" style="font-family:'Barlow Condensed'; font-weight:700;">Sliders &amp; Carousels</h3>
+      </div>
+
+      <!-- Carousel 1 -->
+      <div id="heroCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="hero-demo" style="height: 520px; border-radius: 0;">
+              <div class="img-placeholder" style="background-image: url('https://picsum.photos/id/1015/1600/900');"></div>
+              <div class="hero-overlay"></div>
+              <div class="hero-content">
+                <span class="badge text-bg-primary">FEATURED</span>
+                <h2 class="display-4 fw-bold text-white mt-3">MONZA • ROUND 4</h2>
+                <p class="lead text-white-50">iRacing • GT3 • 60 minutos</p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="hero-demo" style="height: 520px; border-radius: 0;">
+              <div class="img-placeholder" style="background-image: url('https://picsum.photos/id/133/1600/900');"></div>
+              <div class="hero-overlay"></div>
+              <div class="hero-content">
+                <span class="badge text-bg-success">NEW MOD</span>
+                <h2 class="display-4 fw-bold text-white mt-3">FERRARI 296 GT3</h2>
+                <button class="btn btn-primary mt-4">DESCARGAR AHORA</button>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="hero-demo" style="height: 520px; border-radius: 0;">
+              <div class="img-placeholder" style="background-image: url('https://picsum.photos/id/201/1600/900');"></div>
+              <div class="hero-overlay"></div>
+              <div class="hero-content">
+                <h2 class="display-4 fw-bold text-white mt-3">LEADERBOARD</h2>
+                <p class="lead text-white-50">Verstappen lidera el campeonato por 47 puntos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Más ejemplos compactos -->
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Mini Hero CTA</h5>
+            <div class="bg-dark p-4 rounded-3 text-center">
+              <p class="mb-3">¿Quieres mejorar tu tiempo en Nordschleife?</p>
+              <button class="btn btn-danger w-100">VER SETUP RECOMENDADO</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card border-warning border-opacity-50">
+          <div class="card-body text-center">
+            <h5>Próxima Carrera en Vivo</h5>
+            <div class="display-6 fw-bold text-warning mb-2">2h 14m</div>
+            <button class="btn btn-outline-warning">VER EN DIRECTO</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<!-- 1. HERO 100vh (Texto / Industrial) -->
+    <section class="vh-100 d-flex align-items-center justify-content-center text-center bg-dark position-relative overflow-hidden">
+      <div class="position-relative z-1 px-3">
+        <span class="badge text-bg-primary mb-3 fs-6 px-3 py-2">🏁 TEMPORADA 2026</span>
+        <h2 class="display-1 fw-bold mb-3">Domina la pista.<br><span class="text-primary">Siente cada décima.</span></h2>
+        <p class="lead text-secondary mb-4 mx-auto" style="max-width: 600px;">Telemetría avanzada, configuración de setups y análisis predictivo para Assetto Corsa Competición e iRacing.</p>
+        <div class="d-flex flex-wrap justify-content-center gap-3">
+          <a href="#" class="btn btn-primary btn-lg px-4">Iniciar Sesión</a>
+          <a href="#" class="btn btn-outline-secondary btn-lg px-4">Ver Demo</a>
+        </div>
+      </div>
+      <!-- Scanline overlay sutil (UiGas ya lo aplica al body, esto refuerza el héroe) -->
+      <div class="position-absolute top-0 start-0 w-100 h-100 bg-black opacity-25"></div>
+    </section>
+
+    <!-- 2. HERO 100vh con Imagen de Fondo -->
+    <section class="vh-100 position-relative d-flex align-items-center bg-hero-asphalt bg-cover">
+      <div class="container position-relative z-1">
+        <div class="row align-items-center">
+          <div class="col-lg-7">
+            <h2 class="display-2 fw-bold mb-3">CIRCUITO DE <span class="text-primary">NÜRBURGRING</span></h2>
+            <p class="fs-5 text-secondary mb-4">20.8 km de asfalto puro. Clima dinámico, física de neumáticos recalibrada y setups de competición listos para descargar.</p>
+            <div class="d-flex gap-3 flex-wrap">
+              <a href="#" class="btn btn-primary btn-lg">Descargar Contenido</a>
+              <a href="#" class="btn btn-outline-light btn-lg">Ver Guía de Setup</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HERO CONTEXTO (Split + Glass Panel) -->
+    <section class="vh-75 d-flex align-items-center bg-hero-track position-relative">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <h2 class="display-4 fw-bold mb-3">Campeonato Oficial<br>UiGas <span class="text-primary">PRO SERIES</span></h2>
+            <p class="text-secondary mb-4 fs-5">Inscripciones abiertas. Sistema ELO, transmisiones en vivo y premios semanales en equipos de sim racing.</p>
+            <a href="#" class="btn btn-primary btn-lg px-5">Inscribirse Ahora</a>
+          </div>
+          <div class="col-lg-5 offset-lg-1">
+            <div class="glass-ui rounded-4 p-4">
+              <h4 class="text-white mb-3">📊 Estado del Campeonato</h4>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-secondary">Pilotos Activos</span>
+                <span class="text-primary fw-bold">4.218</span>
+              </div>
+              <div class="progress mb-4" style="height: 6px;">
+                <div class="progress-bar bg-primary" style="width: 78%"></div>
+              </div>
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-secondary">Próxima Ronda</span>
+                <span class="text-warning fw-bold">SPA-FRANCORCHAMPS</span>
+              </div>
+              <small class="text-muted d-block mb-3">Sábado 20:00 UTC · iRacing Official Server</small>
+              <a href="#" class="btn btn-outline-secondary w-100 btn-sm">Ver Reglamento</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SLIDER AUTOMÁTICO (Rotación de Pistas) -->
+    <section class="py-5">
+      <div id="carouselAutoTracks" class="carousel slide ratio ratio-21x9 rounded-4 overflow-hidden" data-bs-ride="carousel" data-bs-interval="3500">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselAutoTracks" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#carouselAutoTracks" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#carouselAutoTracks" data-bs-slide-to="2"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active bg-dark d-flex align-items-center">
+            <div class="container text-center px-5">
+              <span class="badge text-bg-warning mb-3">MONZA</span>
+              <h2 class="display-5 mb-3">Templo de la Velocidad</h2>
+              <p class="text-secondary fs-5 mb-4">5.793 km · 11 curvas · DRS habilitado · Carga baja recomendada</p>
+              <a href="#" class="btn btn-primary">Ver Setup Monza</a>
+            </div>
+          </div>
+          <div class="carousel-item bg-body-secondary d-flex align-items-center">
+            <div class="container text-center px-5">
+              <span class="badge text-bg-danger mb-3">NÜRBURGRING NORDSCHLEIFE</span>
+              <h2 class="display-5 mb-3">El Infierno Verde</h2>
+              <p class="text-secondary fs-5 mb-4">20.832 km · 170 curvas · Lluvia variable · Neumáticos intermedios</p>
+              <a href="#" class="btn btn-outline-danger">Ver Setup Nordschleife</a>
+            </div>
+          </div>
+          <div class="carousel-item bg-dark d-flex align-items-center">
+            <div class="container text-center px-5">
+              <span class="badge text-bg-info mb-3">SPA-FRANCORCHAMPS</span>
+              <h2 class="display-5 mb-3">Ardenas & Eau Rouge</h2>
+              <p class="text-secondary fs-5 mb-4">7.004 km · 19 curvas · Cambio de clima dinámico · Fricción media</p>
+              <a href="#" class="btn btn-outline-info">Ver Setup Spa</a>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselAutoTracks" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselAutoTracks" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+      </div>
+    </section>
+
+    <!-- 5. CTA HORIZONTAL CON STATS -->
+    <section class="bg-body-secondary rounded-4 p-4 p-lg-5 mb-5">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-8">
+          <h2 class="mb-2">Únete a la Liga Oficial UiGas</h2>
+          <p class="text-secondary mb-0">Más de 4.200 pilotos activos. Campeonatos semanales, sistema ELO, penalizaciones automáticas y transmisiones en vivo con overlays profesionales.</p>
+        </div>
+        <div class="col-lg-4 text-lg-end d-flex flex-column flex-lg-row align-items-lg-center gap-3 justify-content-lg-end">
+          <div class="d-flex gap-4 text-center">
+            <div><div class="fs-3 fw-bold text-primary">4.2K</div><small class="text-muted">Pilotos</small></div>
+            <div><div class="fs-3 fw-bold text-primary">99.8%</div><small class="text-muted">Uptime</small></div>
+          </div>
+          <a href="#" class="btn btn-primary btn-lg">Inscribirse</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CTA URGENTE CON COUNTDOWN -->
+    <div class="alert alert-danger alert-dismissible fade show d-flex flex-column flex-md-row align-items-center justify-content-between gap-4 mb-5" role="alert">
+      <div class="text-center text-md-start">
+        <h4 class="alert-heading mb-1">🚨 TORNEO ELITE: FINALES REGIONALES</h4>
+        <p class="mb-0 text-light opacity-75">Cierre de inscripciones en 48 horas. Premios: $15K en efectivo + equipos de sim racing.</p>
+      </div>
+      <div class="d-flex align-items-center gap-3">
+        <div class="text-center p-2 bg-dark rounded-3 border border-danger"><div class="fs-4 fw-bold text-white">48</div><small class="text-muted">Horas</small></div>
+        <div class="text-center p-2 bg-dark rounded-3 border border-danger"><div class="fs-4 fw-bold text-white">12</div><small class="text-muted">Min</small></div>
+        <a href="#" class="btn btn-light btn-lg px-4">Registrar Piloto</a>
+      </div>
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+    </div>
+
+    <!-- 7. SLIDER EMBEBIDO (Mods & Performance) -->
+    <section class="mb-5">
+      <div class="card overflow-hidden">
+        <div id="carouselMods" class="carousel slide" data-bs-ride="false">
+          <div class="carousel-inner">
+            <div class="carousel-item active p-4">
+              <div class="row g-4 align-items-center">
+                <div class="col-md-3 text-center p-3 bg-body-secondary rounded-3">
+                  <span class="fs-1">🏎️</span>
+                  <p class="mb-0 text-muted">BMW M4 GT3</p>
+                </div>
+                <div class="col-md-7">
+                  <h4 class="mb-1">Paquete de Aerodinámica v2</h4>
+                  <p class="text-secondary mb-3">Alerón trasero ajustable, difusor recalibrado y suspensión activa. Compatible con ACC 1.9+.</p>
+                  <div class="progress mb-2" style="height: 6px;"><div class="progress-bar bg-primary" style="width: 85%"></div></div>
+                  <small class="text-muted">Compatibilidad: 85% · Descargas: 12.4K</small>
+                </div>
+                <div class="col-md-2 text-md-end">
+                  <a href="#" class="btn btn-outline-primary w-100">Instalar</a>
+                </div>
+              </div>
+            </div>
+            <div class="carousel-item p-4">
+              <div class="row g-4 align-items-center">
+                <div class="col-md-3 text-center p-3 bg-body-secondary rounded-3">
+                  <span class="fs-1">🚗</span>
+                  <p class="mb-0 text-muted">Porsche 911 GT3 R</p>
+                </div>
+                <div class="col-md-7">
+                  <h4 class="mb-1">Simulación de Desgaste Físico</h4>
+                  <p class="text-secondary mb-3">Modelado realista de temperatura de frenos, presión de neumáticos y consumo de combustible.</p>
+                  <div class="progress mb-2" style="height: 6px;"><div class="progress-bar bg-success" style="width: 92%"></div></div>
+                  <small class="text-muted">Compatibilidad: 92% · Descargas: 8.1K</small>
+                </div>
+                <div class="col-md-2 text-md-end">
+                  <a href="#" class="btn btn-outline-primary w-100">Instalar</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer d-flex justify-content-between border-top-0">
+            <button class="carousel-control-prev position-static" type="button" data-bs-target="#carouselMods" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+            <span class="text-muted align-self-center">Mods & Performance</span>
+            <button class="carousel-control-next position-static" type="button" data-bs-target="#carouselMods" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. BANNER CONTEXTO (Actualización iRacing / Server Status) -->
+    <section class="bg-dark rounded-4 p-4 mb-5 d-flex flex-column flex-md-row align-items-md-center gap-4">
+      <div class="flex-grow-1">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <span class="badge text-bg-warning">⚠️ MANTENIMIENTO PROGRAMADO</span>
+          <span class="text-muted small">Build 2026.03.15</span>
+        </div>
+        <h3 class="mb-2">Actualización de Físicas y Servidores</h3>
+        <p class="text-secondary mb-0">Nuevas físicas de neumáticos, corrección de colisiones en zonas de grava y mejora en el motor de audio espacial. Servidores offline por 2h.</p>
+      </div>
+      <div class="d-flex flex-column gap-2">
+        <a href="#" class="btn btn-outline-warning btn-sm">Leer Notas de Parche</a>
+        <a href="#" class="btn btn-outline-light btn-sm">Estado de Servidores</a>
+      </div>
+    </section>
+
+    <!-- 9. HERO CONTEXTO (Telemetry Live + Glass Overlay) -->
+    <section class="vh-60 position-relative rounded-4 overflow-hidden mb-5 bg-dark d-flex align-items-center">
+      <!-- Fondo de grilla (heredado de .bg-dark en UiGas) -->
+      <div class="position-absolute top-0 start-0 w-100 h-100 hero-overlay"></div>
+      <div class="container position-relative z-1">
+        <div class="row align-items-center g-4">
+          <div class="col-lg-6">
+            <span class="badge text-bg-primary mb-3">📡 LIVE TELEMETRY</span>
+            <h2 class="display-5 mb-3">Analiza tu vuelta en <span class="text-primary">tiempo real</span></h2>
+            <p class="text-secondary fs-5">Conecta tu rig. Visualiza trazado ideal, puntos de frenado, aplicación de throttle y comparación contra el mejor tiempo de la sesión.</p>
+            <a href="#" class="btn btn-primary btn-lg mt-2">Conectar Telemetría</a>
+          </div>
+          <div class="col-lg-5 offset-lg-1">
+            <div class="glass-ui rounded-3 p-3">
+              <div class="d-flex justify-content-between mb-2">
+                <span class="text-muted small">SPEED</span>
+                <span class="text-white fw-bold">312 km/h</span>
+              </div>
+              <div class="progress mb-3" style="height: 4px;"><div class="progress-bar bg-primary" style="width: 82%"></div></div>
+              <div class="row g-2 text-center">
+                <div class="col-4">
+                  <div class="text-white fw-bold">1.24</div>
+                  <small class="text-muted">S1</small>
+                </div>
+                <div class="col-4">
+                  <div class="text-white fw-bold">0.89</div>
+                  <small class="text-muted">S2</small>
+                </div>
+                <div class="col-4">
+                  <div class="text-white fw-bold">1.02</div>
+                  <small class="text-muted">S3</small>
+                </div>
+              </div>
+              <hr class="border-secondary my-2">
+              <div class="d-flex justify-content-between">
+                <span class="text-success small">▲ -0.4s vs Best</span>
+                <span class="text-muted small">Lap 24/35</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10. CTA MULTI-PASO (Setup Rig / Modding) -->
+    <section class="mb-5">
+      <h2 class="text-center mb-4">Configurá tu <span class="text-primary">Rig</span></h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 p-4 text-center border-primary">
+            <div class="card-body">
+              <span class="display-6 mb-3 d-block text-primary">1</span>
+              <h4 class="card-title">Hardware & Volante</h4>
+              <p class="text-secondary small">Selecciona tu direct drive, pedales load cell y cockpit. Optimizamos el FFB automáticamente.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 p-4 text-center">
+            <div class="card-body">
+              <span class="display-6 mb-3 d-block text-muted">2</span>
+              <h4 class="card-title">Software & Mods</h4>
+              <p class="text-secondary small">Instalación de CMS, plugins de telemetría y packs de físicas compatibles con ACC/iRacing.</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card h-100 p-4 text-center">
+            <div class="card-body">
+              <span class="display-6 mb-3 d-block text-muted">3</span>
+              <h4 class="card-title">Validación en Pista</h4>
+              <p class="text-secondary small">Test automatizado en Monza. Ajuste fino de suspensión, frenos y alineación según tu estilo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="#" class="btn btn-primary btn-lg px-5">Iniciar Configuración Guiada</a>
+      </div>
+    </section>
+
+
+    <footer class="mt-5 pt-4 border-top" style="border-color: #1f1f1f !important;">
+      <div class="d-flex flex-wrap justify-content-between align-items-center">
+        <div>
+          <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 900; letter-spacing: 0.08em; font-size: 1.2rem;">UI<span style="color:#e10600;">GAS</span></span>
+          <span class="ms-2 text-secondary" style="font-size: 0.7rem;">Hero Banners • CTAs • Sliders para Sim Racing</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

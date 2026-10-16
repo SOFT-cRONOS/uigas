@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UiGas — Galería de Tarjetas | Productos, Mods, Eventos + Notificaciones</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Fuentes UiGas -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tema UiGas (DEBE cargarse DESPUÉS de Bootstrap) -->
+  <link rel="stylesheet" href="../dist/uigas.min.css">
+  <style>
+    /* =========================================
+       MÍNIMO CSS DEMO — solo ayuda de layout
+       (No modifica colores, bordes, tipografía, hover, glow)
+       ========================================= */
+    .demo-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      align-items: stretch;
+    }
+    .demo-grid > * {
+      flex: 1 1 280px;
+    }
+    .img-sim {
+      background: linear-gradient(145deg, #141414, #0a0a0a);
+      min-height: 160px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #2a2a2a;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      font-size: 0.75rem;
+      border-bottom: 1px solid #1f1f1f;
+    }
+    /* No se añade ningún override visual de estilo UiGas */
+  </style>
+</head>
+<body class="bg-body" style="padding: 2rem 1.5rem;">
+
+  <div class="container">
+    <!-- Botón VOLVER (link a showcase.html) -->
+    <div class="mb-4">
+      <a href="showcase.html" class="btn btn-outline-secondary btn-sm" style="font-family:'Barlow Condensed',sans-serif; letter-spacing:0.08em;">
+        ⬸ Volver al showcase completo
+      </a>
+    </div>
+
+    <!-- Cabecera minimal -->
+    <div class="mb-5">
+      <div class="section-label" style="font-family: 'Barlow Condensed', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: #e10600; margin-bottom: 0.3rem;">UI<span style="color:#e10600;">GAS</span> · EXTENDED CARDS</div>
+      <h1 class="display-6" style="color:#ffffff;">Nuevas categorías: imágenes, productos, mods, eventos y notificaciones</h1>
+      <p class="text-secondary" style="font-family:var(--uig-font-body); max-width: 620px;">Cards con imagen, producto, modding, eventos y sistema de alertas — siempre fieles a la estética racing / oscura.</p>
+      <div style="height: 2px; width: 80px; background: #e10600; margin-top: 0.75rem;"></div>
+    </div>
+
+    <!-- =========================================
+         SECCIÓN 1 — TARJETAS CON IMAGEN (simuladas)
+         ========================================= -->
+    <div class="mb-5">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <span class="badge text-bg-primary">01</span>
+        <h3 class="h4 mb-0" style="font-family:'Barlow Condensed'; font-weight:700;">Tarjetas con imagen</h3>
+      </div>
+      <div class="demo-grid">
+        <!-- Card imagen 1: Circuito de Mónaco -->
+        <div class="card h-100">
+          <div class="img-sim" style="background: linear-gradient(135deg, #102a3c, #07141e); flex-direction:column;">
+            <span style="font-size: 2rem;">🏁</span>
+            <span>MONACO GP</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Circuito de Mónaco</h5>
+            <p class="card-text" style="font-family:var(--uig-font-body); font-size:0.85rem; color:#6b7280;">La catedral de la velocidad. Curvas icónicas, túnel y puerto.</p>
+            <div class="d-flex justify-content-between">
+              <span class="badge text-bg-secondary">3.337 km</span>
+              <span class="badge text-bg-primary">19 curvas</span>
+            </div>
+          </div>
+          <div class="card-footer bg-transparent">
+            <button class="btn btn-outline-primary btn-sm w-100">Ver circuito</button>
+          </div>
+        </div>
+        <!-- Card imagen 2: Simulador de carreras -->
+        <div class="card h-100">
+          <div class="img-sim" style="background: linear-gradient(145deg, #1e1a1a, #0a0505);">
+            <span style="font-size: 2rem;">🕹️</span>
+            <span style="margin-left: 0.5rem;">SIM PRO</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Cockpit profesional</h5>
+            <p class="card-text" style="font-family:var(--uig-font-body); font-size:0.85rem; color:#6b7280;">Butaca ergonómica, direct drive, pedales load cell.</p>
+            <div class="mt-2">
+              <span class="badge text-bg-warning">Disponible</span>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary btn-sm w-100">Configurar</button>
+          </div>
+        </div>
+        <!-- Card imagen 3: Neumáticos slick -->
+        <div class="card h-100">
+          <div class="img-sim" style="background: #0b0f0b;">
+            <span style="font-size:2rem;">⚫</span>
+            <span>Pirelli Slick C5</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Soft compound</h5>
+            <p class="card-text" style="font-family:var(--uig-font-body); font-size:0.85rem; color:#6b7280;">Máximo agarre para clasificación y stint corto.</p>
+            <div class="d-flex gap-2">
+              <span class="badge text-bg-danger">Temp: 98-112°C</span>
+            </div>
+          </div>
+          <div class="card-footer d-flex gap-2">
+            <button class="btn btn-outline-secondary btn-sm flex-grow-1">Specs</button>
+            <button class="btn btn-outline-primary btn-sm flex-grow-1">Pedir set</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================
+         SECCIÓN 2 — TARJETAS DE PRODUCTOS (tienda / equipo)
+         ========================================= -->
+    <div class="mb-5">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <span class="badge text-bg-primary">02</span>
+        <h3 class="h4 mb-0" style="font-family:'Barlow Condensed'; font-weight:700;">Productos oficiales</h3>
+      </div>
+      <div class="demo-grid">
+        <!-- Producto 1: Camiseta equipo -->
+        <div class="card h-100">
+          <div class="card-header d-flex justify-content-between">
+            <span style="font-family:'Barlow Condensed'; font-weight:700; font-size:0.7rem;">MERCHANDISING</span>
+            <span class="badge text-bg-primary">🔥 Nuevo</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Team jersey 2025</h5>
+            <div class="d-flex align-items-baseline gap-2 mt-1">
+              <span class="h4 text-primary" style="font-family:'Barlow Condensed';">$89.99</span>
+              <span class="text-secondary text-decoration-line-through" style="font-size:0.8rem;">$129.99</span>
+            </div>
+            <p class="card-text mt-2" style="font-family:var(--uig-font-body); font-size:0.85rem;">Fibra técnica transpirable, patrocinadores oficiales, bordado.</p>
+            <div class="d-flex gap-1 flex-wrap">
+              <span class="badge text-bg-secondary">S-XXL</span>
+              <span class="badge text-bg-secondary">Rojo/Negro</span>
+            </div>
+          </div>
+          <div class="card-footer d-flex gap-2">
+            <button class="btn btn-primary btn-sm flex-grow-1">Comprar</button>
+            <button class="btn btn-outline-secondary btn-sm flex-grow-1">Detalles</button>
+          </div>
+        </div>
+        <!-- Producto 2: Casco replica -->
+        <div class="card h-100">
+          <div class="card-header">
+            <span style="font-family:'Barlow Condensed'; font-weight:700; font-size:0.7rem;">SEGURIDAD</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Réplica carbono</h5>
+            <div class="h5 text-primary" style="font-family:'Barlow Condensed';">$349.00</div>
+            <p class="card-text" style="font-family:var(--uig-font-body); font-size:0.85rem;">Casco réplica FIA, visor antiescarcha, sistema HANS compatible.</p>
+            <div class="progress mt-2" style="height: 4px;">
+              <div class="progress-bar bg-warning" style="width: 67%;"></div>
+            </div>
+            <div class="form-text text-end" style="font-size:0.7rem;">67% de stock disponible</div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-outline-primary btn-sm w-100">Ver más</button>
+          </div>
+        </div>
+        <!-- Producto 3: Suscripción telemetría -->
+        <div class="card h-100 border-primary border-opacity-25">
+          <div class="card-header bg-transparent">
+            <span class="badge text-bg-primary">PRO</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">UiGas Insider</h5>
+            <div class="h4 text-primary" style="font-family:'Barlow Condensed';">$29/mes</div>
+            <ul class="list-unstyled mt-2" style="font-family:var(--uig-font-body); font-size:0.8rem;">
+              <li class="mb-1">✓ Datos en tiempo real</li>
+              <li class="mb-1">✓ Análisis predictivo</li>
+              <li>✓ Estrategia IA</li>
+            </ul>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary w-100">Suscribirme</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================
+         SECCIÓN 3 — TARJETAS DE MODS (mejoras / tuning)
+         ========================================= -->
+    <div class="mb-5">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <span class="badge text-bg-primary">03</span>
+        <h3 class="h4 mb-0" style="font-family:'Barlow Condensed'; font-weight:700;">Mods & Performance</h3>
+      </div>
+      <div class="demo-grid">
+        <!-- Mod 1: ECU remap -->
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center gap-2 mb-2">
+              <span class="badge text-bg-danger">⚡ POWER</span>
+              <h5 class="card-title mb-0">ECU Stage 2</h5>
+            </div>
+            <p class="card-text" style="font-family:var(--uig-font-body); font-size:0.85rem;">Remapeo centralita +35 HP, límite de rpm elevado.</p>
+            <div class="d-flex justify-content-between text-secondary" style="font-size:0.75rem;">
+              <span>+25 Nm torque</span>
+              <span>Compatibilidad: Bosch/EMS</span>
+            </div>
+          </div>
+          <div class="card-footer d-flex gap-1">
+            <button class="btn btn-outline-secondary btn-sm flex-grow-1">Info</button>
+            <button class="btn btn-primary btn-sm flex-grow-1">Adquirir</button>
+          </div>
+        </div>
+        <!-- Mod 2: Aerodinámica -->
+        <div class="card">
+          <div class="card-header">
+            <span style="font-family:'Barlow Condensed'; font-weight:700;">AERO PACK</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Ala trasera ajustable (DRS+)</h5>
+            <div class="d-flex gap-2 mt-1">
+              <span class="badge text-bg-success">+12% downforce</span>
+              <span class="badge text-bg-secondary">Carbono</span>
+            </div>
+            <div class="mt-2">
+              <div class="d-flex justify-content-between">
+                <span class="text-secondary" style="font-size:0.7rem;">Peso: 4.2kg</span>
+                <span class="text-primary">$1.290</span>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-outline-primary btn-sm w-100">Preordenar</button>
+          </div>
+        </div>
+        <!-- Mod 3: Suspensión de pista -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Suspensión coilover 3 vías</h5>
+            <p class="card-text text-secondary" style="font-family:var(--uig-font-body); font-size:0.8rem;">Altura regulable, dureza independiente compresión/extensión.</p>
+            <div class="progress mb-1" style="height: 4px;"><div class="progress-bar bg-primary" style="width: 40%;"></div></div>
+            <div class="form-text">Dureza: intermedia</div>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary btn-sm w-100">Configurar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================
+         SECCIÓN 4 — TARJETAS DE EVENTOS (carreras, track days)
+         ========================================= -->
+    <div class="mb-5">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <span class="badge text-bg-primary">04</span>
+        <h3 class="h4 mb-0" style="font-family:'Barlow Condensed'; font-weight:700;">Próximos Eventos</h3>
+      </div>
+      <div class="demo-grid">
+        <!-- Evento 1: Gran Premio -->
+        <div class="card h-100">
+          <div class="card-header d-flex justify-content-between">
+            <span>🏁 FIA FORMULA 1</span>
+            <span class="badge text-bg-primary">30 mayo</span>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">GP de Mónaco 2025</h5>
+            <p class="card-text" style="font-family:var(--uig-font-body); font-size:0.85rem;">Circuito urbano · Clasificación sábado 15:00 · Carrera domingo.</p>
+            <div class="d-flex gap-2">
+              <span class="badge text-bg-secondary">Entradas desde €89</span>
+            </div>
+          </div>
+          <div class="card-footer d-flex gap-1">
+            <button class="btn btn-primary btn-sm flex-grow-1">Comprar tickets</button>
+            <button class="btn btn-outline-secondary btn-sm flex-grow-1">Horarios</button>
+          </div>
+        </div>
+        <!-- Evento 2: Track day -->
+        <div class="card">
+          <div class="card-header">
+            🏎️ TRACK DAY · JEREZ
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Jornada de puertas abiertas</h5>
+            <div class="d-flex align-items-center gap-2 mt-1">
+              <span class="badge text-bg-warning">15 junio</span>
+              <span class="badge text-bg-secondary">Cupo: 40 pilotos</span>
+            </div>
+            <p class="mt-2 text-secondary" style="font-size:0.8rem;">Circuito de Jerez, categorías turismo, GT, fórmulas. Seguro incluido.</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-outline-primary btn-sm w-100">Inscribirme</button>
+          </div>
+        </div>
+        <!-- Evento 3: Simracing Expo -->
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Sim Racing Expo</h5>
+            <div class="d-flex gap-2 mt-1 mb-2">
+              <span class="badge text-bg-primary">12-14 julio</span>
+              <span class="badge text-bg-info">Madrid</span>
+            </div>
+            <p class="card-text text-secondary" style="font-size:0.8rem;">Pro drivers, lanzamientos de hardware, competición oficial.</p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-secondary btn-sm w-100">Registrarse</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================
+         SECCIÓN 5 — TARJETAS DE NOTIFICACIONES (alertas estilo sistema)
+         ========================================= -->
+    <div class="mb-5">
+      <div class="d-flex align-items-center gap-3 mb-3">
+        <span class="badge text-bg-primary">05</span>
+        <h3 class="h4 mb-0" style="font-family:'Barlow Condensed'; font-weight:700;">Notificaciones & Alertas</h3>
+      </div>
+      <div class="demo-grid">
+        <!-- Notificación 1: Alarma de sector -->
+        <div class="card border-danger border-opacity-50">
+          <div class="card-body d-flex gap-2 align-items-start">
+            <div style="width: 8px; height: 8px; background: #e10600; border-radius: 50%; margin-top: 8px; box-shadow: 0 0 6px #e10600;"></div>
+            <div>
+              <div class="d-flex justify-content-between">
+                <strong class="text-danger" style="font-family:'Barlow Condensed';">¡Bandera amarilla!</strong>
+                <small class="text-secondary">hace 2 min</small>
+              </div>
+              <p class="mb-1" style="font-size:0.85rem; font-family:var(--uig-font-body);">Sector 2 · coche detenido en escape. Precaucion.</p>
+              <button class="btn btn-outline-danger btn-sm mt-1">Ver incidente</button>
+            </div>
+          </div>
+        </div>
+        <!-- Notificación 2: Estrategia recomienda pit -->
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <span class="badge text-bg-warning">Recomendación IA</span>
+              <span class="text-secondary" style="font-size:0.7rem;">hace 10 min</span>
+            </div>
+            <p class="mt-2 mb-0" style="font-family:var(--uig-font-body);">Pit stop ventana abierta. Neumáticos delanteros con 68% desgaste.</p>
+            <div class="mt-2 d-flex gap-2">
+              <button class="btn btn-primary btn-sm">Pit ahora</button>
+              <button class="btn btn-outline-secondary btn-sm">Descartar</button>
+            </div>
+          </div>
+        </div>
+        <!-- Notificación 3: Telemetría sincronizada -->
+        <div class="card">
+          <div class="card-body d-flex gap-2">
+            <span class="text-success">✓</span>
+            <div>
+              <strong>Telemetría actualizada</strong>
+              <div class="text-secondary" style="font-size:0.8rem;">Nuevos datos de trazado disponibles para análisis.</div>
+            </div>
+          </div>
+          <div class="card-footer p-2">
+            <a href="#" class="text-primary" style="font-size:0.7rem; font-family:'Barlow Condensed';">VER REGISTROS →</a>
+          </div>
+        </div>
+        <!-- Notificación extra: Alerta remota de motor (ejemplo extra compacto) -->
+        <div class="card bg-secondary-bg-subtle">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <span class="badge text-bg-danger">CRÍTICO</span>
+              <span class="text-secondary">T+0</span>
+            </div>
+            <p class="mt-1 mb-0">Temp. refrigerante: 128°C. Reducir régimen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================================
+         EJEMPLO ADICIONAL: Notificación tipo toast integrada en tarjeta (estilo sistema)
+         ========================================= -->
+    <div class="row mt-3">
+      <div class="col-12 col-md-8">
+        <div class="card" style="border-left: 3px solid #22c55e;">
+          <div class="card-body py-2">
+            <div class="d-flex justify-content-between align-items-center">
+              <div>
+                <span class="badge text-bg-success mb-1">SISTEMA</span>
+                <p class="mb-0" style="font-family:var(--uig-font-body);">Nuevo firmware disponible v2.4.1 · Compatibilidad con DRS mejorada.</p>
+              </div>
+              <button class="btn btn-sm btn-outline-primary">Actualizar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-4 mt-3 mt-md-0">
+        <div class="card border-primary border-opacity-25 text-center p-2">
+          <div class="card-body p-2">
+            <span class="text-primary">⏱️ Pit stop record: 1.98s</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer UiGas -->
+    <footer class="mt-5 pt-4 border-top" style="border-color: #1f1f1f !important;">
+      <div class="d-flex flex-wrap justify-content-between align-items-center">
+        <div>
+          <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 900; letter-spacing: 0.08em; font-size: 1.2rem;">UI<span style="color:#e10600;">GAS</span></span>
+          <span class="ms-2 text-secondary" style="font-size: 0.7rem;">Tarjetas + imágenes + productos + mods + eventos + notificaciones</span>
+        </div>
+        <div class="text-secondary" style="font-family:'Rajdhani',sans-serif; font-size:0.75rem;">
+          <a href="showcase.html" class="text-secondary text-decoration-none me-2">← Showcase principal</a> • Diseño 100% UiGas
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Bootstrap JS opcional (para componentes dinámicos) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

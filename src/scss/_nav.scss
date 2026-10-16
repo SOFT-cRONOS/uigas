@@ -1,0 +1,38 @@
+/* =========================================
+   17. TABS & NAVS
+   ========================================= */
+.nav-tabs {
+  --bs-nav-tabs-border-color:              var(--uig-line);
+  --bs-nav-tabs-border-radius:             var(--bs-border-radius);
+  --bs-nav-tabs-link-hover-border-color:   transparent transparent var(--uig-line-strong);
+  --bs-nav-tabs-link-active-color:         var(--uig-red);
+  --bs-nav-tabs-link-active-bg:            transparent;
+  --bs-nav-tabs-link-active-border-color:  transparent transparent var(--uig-red);
+  border-bottom-color: var(--uig-line);
+}
+
+.nav-tabs .nav-link {
+  font-family: var(--uig-font-display);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--uig-text-muted);
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.nav-tabs .nav-link:hover { color: var(--uig-text); border-color: transparent transparent var(--uig-line-strong); }
+.nav-tabs .nav-link.active { color: var(--bs-primary-text-emphasis); border-bottom-color: var(--uig-red); }
+
+.nav-pills {
+  --bs-nav-pills-border-radius: var(--bs-border-radius);
+  --bs-nav-pills-link-active-color: #ffffff;
+  --bs-nav-pills-link-active-bg: var(--uig-red-slab);
+}
+.nav-pills .nav-link {
+  color: var(--uig-text-dim);
+  font-family: var(--uig-font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.nav-pills .nav-link.active { box-shadow: var(--uig-glow-red); }

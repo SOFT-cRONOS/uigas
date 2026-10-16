@@ -1,0 +1,204 @@
+/* =========================================
+   24. TEXT UTILITIES (color overrides)
+   ========================================= */
+.text-primary   { color: var(--bs-primary-text-emphasis) !important; }
+.text-secondary { color: var(--uig-text-dim) !important; }
+.text-success   { color: #22c55e !important; }
+.text-danger    { color: var(--bs-danger-text-emphasis) !important; }
+.text-warning   { color: #f59e0b !important; }
+.text-info      { color: #38bdf8 !important; }
+.text-light     { color: var(--uig-text-soft) !important; }
+.text-dark      { color: var(--uig-text)  !important; }
+.text-muted     { color: var(--uig-text-muted)  !important; }
+.text-white     { color: #ffffff  !important; }
+.text-body      { color: var(--uig-text)  !important; }
+.text-body-secondary { color: var(--uig-text-dim) !important; }
+.text-body-emphasis  { color: var(--uig-heading)  !important; }
+
+/* =========================================
+   25. BACKGROUND UTILITIES
+   ========================================= */
+.bg-body         { background-color: var(--uig-bg) !important; }
+.bg-body-secondary { background-color: var(--uig-surface) !important; }
+.bg-body-tertiary  { background-color: var(--uig-surface-2) !important; }
+.bg-black        { background-color: #000000 !important; }
+.bg-white        { background-color: #ffffff !important; }
+.bg-transparent  { background-color: transparent !important; }
+
+/* =========================================
+   26. BORDER UTILITIES
+   ========================================= */
+.border         { border-color: var(--uig-line) !important; }
+.border-primary { --bs-border-opacity:1; border-color: rgba(249, 33, 33, var(--bs-border-opacity)) !important; }
+.border-secondary { border-color: rgba(161, 161, 170, var(--bs-border-opacity, 1)) !important; }
+.border-success { border-color: rgba(34, 197, 94, var(--bs-border-opacity, 1)) !important; }
+.border-danger  { border-color: rgba(249, 33, 33, var(--bs-border-opacity, 1)) !important; }
+.border-warning { border-color: rgba(245, 158, 11, var(--bs-border-opacity, 1)) !important; }
+.border-info    { border-color: rgba(56, 189, 248, var(--bs-border-opacity, 1)) !important; }
+.border-light   { border-color: var(--uig-line-strong) !important; }
+.border-dark    { border-color: var(--uig-line) !important; }
+.border-white   { border-color: rgba(255,255,255,0.15) !important; }
+
+/* =========================================
+   27. SHADOWS
+   ========================================= */
+.shadow    { box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5) !important; }
+.shadow-sm { box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35) !important; }
+.shadow-lg { box-shadow: 0 12px 32px rgba(0, 0, 0, 0.65) !important; }
+
+/* =========================================
+   28. BLOCKQUOTES — racing telemetry feel
+   ========================================= */
+.blockquote {
+  position: relative;
+  padding-left: 1.9rem;
+  color: var(--uig-text-dim);
+  font-family: var(--uig-font-data);
+  font-weight: 500;
+  font-size: 1.15rem;
+}
+.blockquote::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 2px;
+  background: var(--uig-red);
+}
+.blockquote-footer { color: var(--uig-text-muted); }
+
+/* =========================================
+   29. CODE
+   ========================================= */
+code {
+  color: #ff4d44;
+  background-color: rgba(249, 33, 33, 0.1);
+  padding: 0.1em 0.35em;
+  border-radius: var(--bs-border-radius);
+  font-size: 0.875em;
+}
+pre {
+  background-color: var(--uig-bg-deep);
+  border: 1px solid var(--uig-line);
+  border-radius: var(--bs-border-radius-lg);
+  padding: 1.25rem;
+  color: var(--uig-text);
+}
+pre code {
+  color: inherit;
+  background-color: transparent;
+  padding: 0;
+  border-radius: 0;
+}
+kbd {
+  background-color: var(--uig-surface-2);
+  color: var(--uig-text);
+  border: 1px solid var(--uig-line-strong);
+  border-radius: var(--bs-border-radius-sm);
+  font-size: 0.8em;
+  padding: 0.15em 0.45em;
+}
+
+/* =========================================
+   30. IMAGES & FIGURES
+   ========================================= */
+.img-thumbnail {
+  background-color: var(--uig-surface);
+  border-color: var(--uig-line);
+}
+.figure-caption { color: var(--uig-text-muted); }
+
+/* =========================================
+   31. PLACEHOLDER
+   ========================================= */
+.placeholder {
+  background-color: var(--uig-line);
+}
+.placeholder-glow .placeholder {
+  animation: uigas-glow-pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes uigas-glow-pulse {
+  0%, 100% { opacity: 0.5; }
+  50%       { opacity: 0.15; }
+}
+
+/* =========================================
+   32. HR / DIVIDERS
+   ========================================= */
+hr {
+  border-color: var(--uig-line);
+  opacity: 1;
+}
+
+/* =========================================
+   33. MISC — mark, abbr
+   ========================================= */
+.mark, mark {
+  background-color: rgba(249, 33, 33, 0.18);
+  color: #ff4d44;
+  border-radius: var(--bs-border-radius-sm);
+  padding: 0.08em 0.32em;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* =========================================
+   34. FUTURISTIC BACKGROUND HELPERS
+   ─────────────────────────────────────────
+   These are layout/presentation classes
+   that Bootstrap uses on container elements.
+   We add ambient texture without new classes.
+   ========================================= */
+
+/* bg-dark — "grid de pista" (Brandbook CVR §07, Elemento 01):
+   líneas finas paralelas inclinadas 15°, tinte de marca. Fondo
+   estructural, no decoración suelta. */
+.bg-dark {
+  background-color: #0c0c0c !important;
+  background-image: repeating-linear-gradient(
+    105deg,
+    rgba(249, 33, 33, 0.055) 0 1px,
+    transparent 1px 34px
+  );
+}
+
+/* bg-light — superficie clara plana, sin degradados decorativos */
+.bg-light {
+  background-color: var(--uig-surface-2) !important;
+  color: var(--uig-text);
+}
+
+/* bg-primary — plano: el brandbook (§11) prohíbe gradientes
+   decorativos no previstos y la estética es "deliberadamente flat". */
+.bg-primary {
+  background-color: var(--uig-red-slab) !important;
+}
+
+/* bg-secondary */
+.bg-secondary {
+  background-color: var(--uig-surface-2) !important;
+}
+
+/* =========================================
+   35. RESPONSIVE OVERRIDES
+   ========================================= */
+@media (max-width: 768px) {
+  .modal-content { border-radius: var(--bs-border-radius-lg); }
+  .card { border-radius: var(--bs-border-radius); }
+  .card:hover { transform: translateY(-3px); }
+}
+
+/* =========================================
+   36. FOCUS RING — global keyboard nav
+   ========================================= */
+:focus-visible {
+  outline: 2px solid rgba(249, 33, 33, 0.7);
+  outline-offset: 3px;
+}
+.btn:focus-visible, a:focus-visible {
+  box-shadow: var(--uig-ring);
+  outline: none;
+}

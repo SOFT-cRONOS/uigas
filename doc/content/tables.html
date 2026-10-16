@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tablas · UiGas</title>
+<meta name="description" content="Hairline de 1px, encabezado en versalitas y cifras en Rajdhani. UiGas no usa el zebra de Bootstrap: el contraste lo pone el fondo de la superficie.">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../dist/uigas.min.css">
+<link rel="stylesheet" href="../assets/docs.css">
+<script>(function(){var q=new URLSearchParams(location.search).get('theme');
+var s=localStorage.getItem('uig-theme');
+var t=q||s||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+document.documentElement.setAttribute('data-bs-theme',t);})();</script>
+</head>
+<body>
+<a class="skip" href="#main">Ir al contenido</a>
+
+<header class="topbar">
+  <button class="burger" id="burger" aria-label="Menú" aria-expanded="false">☰</button>
+  <a class="brandmark" href="../index.html">Ui<span>Gas</span></a>
+  <div class="search">
+    <input id="q" type="search" placeholder="Buscar en la documentación…" autocomplete="off" aria-label="Buscar">
+    <div class="qout" id="qout" hidden></div>
+  </div>
+  <div class="top-actions">
+    <a class="btn btn-outline-secondary btn-sm d-none d-lg-inline-flex" href="../showcase.html">Showcase</a>
+    <a class="btn btn-outline-secondary btn-sm d-none d-md-inline-flex" href="https://github.com/softcronos/ui_gas" rel="noopener">GitHub</a>
+    <button class="btn btn-outline-secondary btn-sm theme-btn" id="tt" aria-label="Cambiar tema">◐</button>
+  </div>
+</header>
+
+<div class="shell">
+<aside class="sidebar" id="sidebar"><div class="side-inner"><details class="side-group"><summary class="side-title">Primeros pasos<span class="side-count">5</span></summary><div class="side-items"><a class="side-link" href="../getting-started/introduction.html">Introducción</a><a class="side-link" href="../getting-started/installation.html">Instalación</a><a class="side-link" href="../getting-started/contents.html">Contenido</a><a class="side-link" href="../getting-started/browsers-devices.html">Navegadores y dispositivos</a><a class="side-link" href="../getting-started/build-tools.html">Herramientas de build</a></div></details><details class="side-group"><summary class="side-title">Layout<span class="side-count">6</span></summary><div class="side-items"><a class="side-link" href="../layout/breakpoints.html">Breakpoints</a><a class="side-link" href="../layout/containers.html">Contenedores</a><a class="side-link" href="../layout/grid.html">Grid</a><a class="side-link" href="../layout/columns.html">Columnas</a><a class="side-link" href="../layout/gutters.html">Gutters</a><a class="side-link" href="../layout/utilities-for-layout.html">Utilidades de layout</a></div></details><details class="side-group" open><summary class="side-title">Contenido<span class="side-count">5</span></summary><div class="side-items"><a class="side-link" href="../content/reboot.html">Reboot</a><a class="side-link" href="../content/typography.html">Tipografía</a><a class="side-link" href="../content/images.html">Imágenes</a><a class="side-link is-here" href="../content/tables.html">Tablas</a><a class="side-link" href="../content/figures.html">Figuras</a></div></details><details class="side-group"><summary class="side-title">Formularios<span class="side-count">10</span></summary><div class="side-items"><a class="side-link" href="../forms/overview.html">Overview</a><a class="side-link" href="../forms/form-control.html">Form control</a><a class="side-link" href="../forms/select.html">Select</a><a class="side-link" href="../forms/checks-radios.html">Checks y radios</a><a class="side-link" href="../forms/range.html">Range</a><a class="side-link" href="../forms/input-group.html">Input group</a><a class="side-link" href="../forms/floating-labels.html">Labels flotantes</a><a class="side-link" href="../forms/layout.html">Layout</a><a class="side-link" href="../forms/validation.html">Validación</a><a class="side-link" href="../forms/accessibility.html">Accesibilidad</a></div></details><details class="side-group"><summary class="side-title">Componentes<span class="side-count">24</span></summary><div class="side-items"><a class="side-link" href="../components/accordion.html">Acordeón</a><a class="side-link" href="../components/alerts.html">Alertas</a><a class="side-link" href="../components/badges.html">Badges</a><a class="side-link" href="../components/breadcrumb.html">Breadcrumb</a><a class="side-link" href="../components/buttons.html">Botones</a><a class="side-link" href="../components/button-group.html">Grupo de botones</a><a class="side-link" href="../components/card.html">Tarjetas</a><a class="side-link" href="../components/carousel.html">Carrusel</a><a class="side-link" href="../components/close-button.html">Botón de cierre</a><a class="side-link" href="../components/collapse.html">Collapse</a><a class="side-link" href="../components/dropdowns.html">Dropdowns</a><a class="side-link" href="../components/list-group.html">List group</a><a class="side-link" href="../components/modal.html">Modal</a><a class="side-link" href="../components/navs-tabs.html">Navs y tabs</a><a class="side-link" href="../components/navbar.html">Navbar</a><a class="side-link" href="../components/offcanvas.html">Offcanvas</a><a class="side-link" href="../components/pagination.html">Paginación</a><a class="side-link" href="../components/placeholders.html">Placeholders</a><a class="side-link" href="../components/popovers.html">Popovers</a><a class="side-link" href="../components/progress.html">Progreso</a><a class="side-link" href="../components/scrollspy.html">Scrollspy</a><a class="side-link" href="../components/spinners.html">Spinners</a><a class="side-link" href="../components/toasts.html">Toasts</a><a class="side-link" href="../components/tooltips.html">Tooltips</a></div></details><details class="side-group"><summary class="side-title">Helpers<span class="side-count">11</span></summary><div class="side-items"><a class="side-link" href="../helpers/clearfix.html">Clearfix</a><a class="side-link" href="../helpers/color-background.html">Color y fondo</a><a class="side-link" href="../helpers/colored-links.html">Enlaces de color</a><a class="side-link" href="../helpers/focus-ring.html">Focus ring</a><a class="side-link" href="../helpers/icon-link.html">Icon link</a><a class="side-link" href="../helpers/position.html">Posición</a><a class="side-link" href="../helpers/ratio.html">Ratio</a><a class="side-link" href="../helpers/stacks.html">Stacks</a><a class="side-link" href="../helpers/stretched-link.html">Stretched link</a><a class="side-link" href="../helpers/text-truncation.html">Truncado de texto</a><a class="side-link" href="../helpers/vertical-rule.html">Regla vertical</a></div></details><details class="side-group"><summary class="side-title">Utilidades<span class="side-count">18</span></summary><div class="side-items"><a class="side-link" href="../utilities/api.html">API</a><a class="side-link" href="../utilities/background.html">Background</a><a class="side-link" href="../utilities/borders.html">Bordes</a><a class="side-link" href="../utilities/colors.html">Colores</a><a class="side-link" href="../utilities/display.html">Display</a><a class="side-link" href="../utilities/flex.html">Flex</a><a class="side-link" href="../utilities/float.html">Float</a><a class="side-link" href="../utilities/interactions.html">Interacciones</a><a class="side-link" href="../utilities/opacity.html">Opacidad</a><a class="side-link" href="../utilities/overflow.html">Overflow</a><a class="side-link" href="../utilities/position.html">Posición</a><a class="side-link" href="../utilities/shadows.html">Sombras</a><a class="side-link" href="../utilities/sizing.html">Sizing</a><a class="side-link" href="../utilities/spacing.html">Espaciado</a><a class="side-link" href="../utilities/text.html">Texto</a><a class="side-link" href="../utilities/vertical-align.html">Alineación vertical</a><a class="side-link" href="../utilities/visibility.html">Visibilidad</a><a class="side-link" href="../utilities/z-index.html">Z-index</a></div></details><details class="side-group"><summary class="side-title">Customizar<span class="side-count">7</span></summary><div class="side-items"><a class="side-link" href="../customize/overview.html">Overview</a><a class="side-link" href="../customize/sass.html">Sass</a><a class="side-link" href="../customize/options.html">Opciones</a><a class="side-link" href="../customize/color.html">Color</a><a class="side-link" href="../customize/components.html">Componentes</a><a class="side-link" href="../customize/css-variables.html">Variables CSS</a><a class="side-link" href="../customize/optimize.html">Optimizar</a></div></details><details class="side-group"><summary class="side-title">Extender<span class="side-count">3</span></summary><div class="side-items"><a class="side-link" href="../extend/approach.html">Enfoque</a><a class="side-link" href="../extend/icons.html">Iconos</a><a class="side-link" href="../extend/components.html">Componentes UiGas</a></div></details><a class="side-ext" href="../showcase.html">→ Showcase</a></div></aside>
+<main class="main" id="main">
+<nav class="crumbs"><a href="../index.html">UiGas</a><span>/</span><a href="../index.html#content">Contenido</a><span>/</span><span class="here">Tablas</span></nav>
+<div class="doc-main">
+<p class="lead">Hairline de 1px, encabezado en versalitas y cifras en Rajdhani. UiGas no usa el zebra de Bootstrap: el contraste lo pone el fondo de la superficie.</p>
+<h2 id="tabla-base">Tabla base</h2>
+<div class="ex"><div class="ex-demo"><table class="table">
+  <thead>
+    <tr><th scope="col">Piloto</th><th scope="col">Vueltas</th><th scope="col">Tiempo</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>M. Rossi</td><td>58</td><td>1:32.480</td></tr>
+    <tr><td>J. Álvarez</td><td>58</td><td>1:32.911</td></tr>
+  </tbody>
+</table></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;table class=&quot;table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Piloto&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Vueltas&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Tiempo&lt;/th&gt;&lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;td&gt;M. Rossi&lt;/td&gt;&lt;td&gt;58&lt;/td&gt;&lt;td&gt;1:32.480&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;J. Álvarez&lt;/td&gt;&lt;td&gt;58&lt;/td&gt;&lt;td&gt;1:32.911&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre></details></div>
+<p>La <code>.table</code> de UiGas sustituye el fondo deBootstrap con <code>--uig-surface</code> y el borde con <code>--uig-line</code>. Sobre superficie oscura las filas se separan por hairline, no por bandas: es más silencioso y sigue leyéndose bien en pantallas chicas.</p>
+<h2 id="tabla-oscura">Tabla oscura</h2>
+<p>Para tablas dentro de una superficie elevada, <code>.table-dark</code> invierte el fondo:</p>
+<div class="ex"><div class="ex-demo"><table class="table table-dark">
+  <thead><tr><th scope="col">Sector</th><th scope="col">Velocidad</th></tr></thead>
+  <tbody><tr><td>1</td><td>291 km/h</td></tr></tbody>
+</table></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;table class=&quot;table table-dark&quot;&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Sector&lt;/th&gt;&lt;th scope=&quot;col&quot;&gt;Velocidad&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;291 km/h&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;</code></pre></details></div>
+<h2 id="variantes-semanticas">Variantes semánticas</h2>
+<p>Bootstrap ofrece <code>.table-primary</code>, <code>.table-success</code> y compañía. UiGas mantiene los selectores: la fila entera toma el tinte y el color del estado. El <code>caption</code> es el lugar natural para el texto de estado.</p>
+<div class="ex"><div class="ex-demo"><table class="table table-success">
+  <caption class="caption-top">Sector cerrado</caption>
+  <tbody><tr><td>Vuelta rápida</td><td>Completa</td></tr></tbody>
+</table></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;table class=&quot;table table-success&quot;&gt;
+  &lt;caption class=&quot;caption-top&quot;&gt;Sector cerrado&lt;/caption&gt;
+  &lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Vuelta rápida&lt;/td&gt;&lt;td&gt;Completa&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;
+&lt;/table&gt;</code></pre></details></div>
+<h2 id="tabla-dentro-de-una-card">Tabla dentro de una card</h2>
+<div class="ex"><div class="ex-demo"><div class="card">
+  <div class="card-body">
+    <table class="table mb-0">…</table>
+  </div>
+</div></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;div class=&quot;card&quot;&gt;
+  &lt;div class=&quot;card-body&quot;&gt;
+    &lt;table class=&quot;table mb-0&quot;&gt;…&lt;/table&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre></details></div>
+<p>Quita el margen inferior de la tabla (<code>mb-0</code>) para que no quede una franja vacía contra el borde de la card.</p>
+<h2 id="tabla-responsive">Tabla responsive</h2>
+<p><code>.table-responsive</code> es de Bootstrap y UiGas no lo redefine. Envuelve la tabla para que desplace en horizontal en pantallas chicas en vez de romper el layout:</p>
+<div class="ex"><div class="ex-demo"><div class="table-responsive">
+  <table class="table">…</table>
+</div></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;div class=&quot;table-responsive&quot;&gt;
+  &lt;table class=&quot;table&quot;&gt;…&lt;/table&gt;
+&lt;/div&gt;</code></pre></details></div>
+<h2 id="accesibilidad">Accesibilidad</h2>
+<ul class="doc-list"><li><code>scope=&quot;col&quot;</code> en cada <code>th</code> del encabezado. Sin eso, un lector de pantalla no anuncia a qué columna pertenece cada celda.</li><li><code>scope=&quot;row&quot;</code> en el primer <code>td</code> de cada fila cuando esa celda identifica la fila.</li><li>No uses el color como único portador de información: <code>.table-success</code> y <code>.table-danger</code> se distinguen también por el texto del <code>caption</code>.</li><li>Los datos tabulados leen mejor con <code>text-align: right</code> en las columnas numéricas y la fuente de datos.</li></ul>
+<div class="ex"><div class="ex-demo"><table class="table">
+  <caption>Tiempos por vuelta · <strong>Última actualización 14:32</strong></caption>
+  <thead><tr><th scope="col">Vuelta</th><th scope="col" class="text-end">Tiempo</th></tr></thead>
+  <tbody>
+    <tr><th scope="row" class="fw-normal">57</th><td class="text-end">1:32.480</td></tr>
+  </tbody>
+</table></div><details class="ex-code"><summary>Código</summary><pre><code class="lang-html">&lt;table class=&quot;table&quot;&gt;
+  &lt;caption&gt;Tiempos por vuelta · &lt;strong&gt;Última actualización 14:32&lt;/strong&gt;&lt;/caption&gt;
+  &lt;thead&gt;&lt;tr&gt;&lt;th scope=&quot;col&quot;&gt;Vuelta&lt;/th&gt;&lt;th scope=&quot;col&quot; class=&quot;text-end&quot;&gt;Tiempo&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;&lt;th scope=&quot;row&quot; class=&quot;fw-normal&quot;&gt;57&lt;/th&gt;&lt;td class=&quot;text-end&quot;&gt;1:32.480&lt;/td&gt;&lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre></details></div>
+<h2 id="que-sigue">Qué sigue</h2>
+<ul class="doc-list"><li><a href="../content/figures.html">Figuras</a> — imágenes con pie y pie de figura</li><li><a href="../content/typography.html">Tipografía</a> — por qué las cifras usan Rajdhani</li></ul>
+</div>
+<nav class="pager"><a class="p-prev" href="../content/images.html"><small>Anterior</small>Imágenes</a><a class="p-next" href="../content/figures.html"><small>Siguiente</small>Figuras</a></nav>
+<footer class="docfoot">
+  <p>UiGas · CSS framework · override de Bootstrap 5 · MIT © 2026 softcronos.com.ar</p>
+  <p>Bootstrap 5 es marca de sus autores. Korataki solo para logo y marca.</p>
+</footer>
+</main>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<script>window.UIGAS_NAV = [{"title":"Inicio","href":"index.html"},{"title":"Introducción · Primeros pasos","href":"../getting-started/introduction.html"},{"title":"Instalación · Primeros pasos","href":"../getting-started/installation.html"},{"title":"Contenido · Primeros pasos","href":"../getting-started/contents.html"},{"title":"Navegadores y dispositivos · Primeros pasos","href":"../getting-started/browsers-devices.html"},{"title":"Herramientas de build · Primeros pasos","href":"../getting-started/build-tools.html"},{"title":"Breakpoints · Layout","href":"../layout/breakpoints.html"},{"title":"Contenedores · Layout","href":"../layout/containers.html"},{"title":"Grid · Layout","href":"../layout/grid.html"},{"title":"Columnas · Layout","href":"../layout/columns.html"},{"title":"Gutters · Layout","href":"../layout/gutters.html"},{"title":"Utilidades de layout · Layout","href":"../layout/utilities-for-layout.html"},{"title":"Reboot · Contenido","href":"../content/reboot.html"},{"title":"Tipografía · Contenido","href":"../content/typography.html"},{"title":"Imágenes · Contenido","href":"../content/images.html"},{"title":"Tablas · Contenido","href":"../content/tables.html"},{"title":"Figuras · Contenido","href":"../content/figures.html"},{"title":"Overview · Formularios","href":"../forms/overview.html"},{"title":"Form control · Formularios","href":"../forms/form-control.html"},{"title":"Select · Formularios","href":"../forms/select.html"},{"title":"Checks y radios · Formularios","href":"../forms/checks-radios.html"},{"title":"Range · Formularios","href":"../forms/range.html"},{"title":"Input group · Formularios","href":"../forms/input-group.html"},{"title":"Labels flotantes · Formularios","href":"../forms/floating-labels.html"},{"title":"Layout · Formularios","href":"../forms/layout.html"},{"title":"Validación · Formularios","href":"../forms/validation.html"},{"title":"Accesibilidad · Formularios","href":"../forms/accessibility.html"},{"title":"Acordeón · Componentes","href":"../components/accordion.html"},{"title":"Alertas · Componentes","href":"../components/alerts.html"},{"title":"Badges · Componentes","href":"../components/badges.html"},{"title":"Breadcrumb · Componentes","href":"../components/breadcrumb.html"},{"title":"Botones · Componentes","href":"../components/buttons.html"},{"title":"Grupo de botones · Componentes","href":"../components/button-group.html"},{"title":"Tarjetas · Componentes","href":"../components/card.html"},{"title":"Carrusel · Componentes","href":"../components/carousel.html"},{"title":"Botón de cierre · Componentes","href":"../components/close-button.html"},{"title":"Collapse · Componentes","href":"../components/collapse.html"},{"title":"Dropdowns · Componentes","href":"../components/dropdowns.html"},{"title":"List group · Componentes","href":"../components/list-group.html"},{"title":"Modal · Componentes","href":"../components/modal.html"},{"title":"Navs y tabs · Componentes","href":"../components/navs-tabs.html"},{"title":"Navbar · Componentes","href":"../components/navbar.html"},{"title":"Offcanvas · Componentes","href":"../components/offcanvas.html"},{"title":"Paginación · Componentes","href":"../components/pagination.html"},{"title":"Placeholders · Componentes","href":"../components/placeholders.html"},{"title":"Popovers · Componentes","href":"../components/popovers.html"},{"title":"Progreso · Componentes","href":"../components/progress.html"},{"title":"Scrollspy · Componentes","href":"../components/scrollspy.html"},{"title":"Spinners · Componentes","href":"../components/spinners.html"},{"title":"Toasts · Componentes","href":"../components/toasts.html"},{"title":"Tooltips · Componentes","href":"../components/tooltips.html"},{"title":"Clearfix · Helpers","href":"../helpers/clearfix.html"},{"title":"Color y fondo · Helpers","href":"../helpers/color-background.html"},{"title":"Enlaces de color · Helpers","href":"../helpers/colored-links.html"},{"title":"Focus ring · Helpers","href":"../helpers/focus-ring.html"},{"title":"Icon link · Helpers","href":"../helpers/icon-link.html"},{"title":"Posición · Helpers","href":"../helpers/position.html"},{"title":"Ratio · Helpers","href":"../helpers/ratio.html"},{"title":"Stacks · Helpers","href":"../helpers/stacks.html"},{"title":"Stretched link · Helpers","href":"../helpers/stretched-link.html"},{"title":"Truncado de texto · Helpers","href":"../helpers/text-truncation.html"},{"title":"Regla vertical · Helpers","href":"../helpers/vertical-rule.html"},{"title":"API · Utilidades","href":"../utilities/api.html"},{"title":"Background · Utilidades","href":"../utilities/background.html"},{"title":"Bordes · Utilidades","href":"../utilities/borders.html"},{"title":"Colores · Utilidades","href":"../utilities/colors.html"},{"title":"Display · Utilidades","href":"../utilities/display.html"},{"title":"Flex · Utilidades","href":"../utilities/flex.html"},{"title":"Float · Utilidades","href":"../utilities/float.html"},{"title":"Interacciones · Utilidades","href":"../utilities/interactions.html"},{"title":"Opacidad · Utilidades","href":"../utilities/opacity.html"},{"title":"Overflow · Utilidades","href":"../utilities/overflow.html"},{"title":"Posición · Utilidades","href":"../utilities/position.html"},{"title":"Sombras · Utilidades","href":"../utilities/shadows.html"},{"title":"Sizing · Utilidades","href":"../utilities/sizing.html"},{"title":"Espaciado · Utilidades","href":"../utilities/spacing.html"},{"title":"Texto · Utilidades","href":"../utilities/text.html"},{"title":"Alineación vertical · Utilidades","href":"../utilities/vertical-align.html"},{"title":"Visibilidad · Utilidades","href":"../utilities/visibility.html"},{"title":"Z-index · Utilidades","href":"../utilities/z-index.html"},{"title":"Overview · Customizar","href":"../customize/overview.html"},{"title":"Sass · Customizar","href":"../customize/sass.html"},{"title":"Opciones · Customizar","href":"../customize/options.html"},{"title":"Color · Customizar","href":"../customize/color.html"},{"title":"Componentes · Customizar","href":"../customize/components.html"},{"title":"Variables CSS · Customizar","href":"../customize/css-variables.html"},{"title":"Optimizar · Customizar","href":"../customize/optimize.html"},{"title":"Enfoque · Extender","href":"../extend/approach.html"},{"title":"Iconos · Extender","href":"../extend/icons.html"},{"title":"Componentes UiGas · Extender","href":"../extend/components.html"}];</script>
+<script>
+(function(){
+  var tt = document.getElementById('tt');
+  tt.addEventListener('click', function(){
+    var el = document.documentElement;
+    var next = el.getAttribute('data-bs-theme') === 'light' ? 'dark' : 'light';
+    el.setAttribute('data-bs-theme', next);
+    try { localStorage.setItem('uig-theme', next); } catch (e) {}
+  });
+  var burger = document.getElementById('burger'), scrim = document.getElementById('scrim');
+  function close(){ document.body.classList.remove('nav-open'); scrim.hidden = true; burger.setAttribute('aria-expanded','false'); }
+  burger.addEventListener('click', function(){
+    var open = document.body.classList.toggle('nav-open');
+    scrim.hidden = !open;
+    burger.setAttribute('aria-expanded', String(open));
+  });
+  scrim.addEventListener('click', close);
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') close(); });
+})();
+
+(function(){
+  var idx = window.UIGAS_NAV || [];
+  var box = document.getElementById('q'), out = document.getElementById('qout');
+  function hide(){ out.hidden = true; out.innerHTML = ''; }
+  function run(){
+    var q = box.value.trim().toLowerCase();
+    if (q.length < 2) return hide();
+    var hit = idx.filter(function(p){
+      return (p.title + ' ' + p.path).toLowerCase().indexOf(q) > -1;
+    }).slice(0, 12);
+    if (!hit.length) return hide();
+    out.innerHTML = hit.map(function(p){
+      return '<a href="' + p.href + '">' + p.title + '<small>' + p.path + '</small></a>';
+    }).join('');
+    out.hidden = false;
+  }
+  box.addEventListener('input', run);
+  box.addEventListener('focus', run);
+  document.addEventListener('click', function(e){
+    if (!out.contains(e.target) && e.target !== box) hide();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') { box.value = ''; hide(); box.blur(); }
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+/* =========================================
+   18. BREADCRUMB
+   ========================================= */
+.breadcrumb {
+  --bs-breadcrumb-divider-color: var(--uig-text-muted);
+  --bs-breadcrumb-item-active-color: var(--uig-text);
+  font-family: var(--uig-font-body);
+  font-weight: 500;
+}
+.breadcrumb-item a {
+  color: var(--uig-text-dim);
+  text-decoration: none;
+}
+.breadcrumb-item a:hover { color: var(--bs-link-hover-color); }
+.breadcrumb-item.active { color: var(--uig-text); }
