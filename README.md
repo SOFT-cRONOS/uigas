@@ -1,7 +1,7 @@
 # UiGas — CSS Framework
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![CDN](https://img.shields.io/badge/CDN-jsDelivr-blue)](https://cdn.jsdelivr.net/gh/softcronos/ui_gas@latest/dist/uigas.min.css)
+[![CDN](https://img.shields.io/badge/CDN-jsDelivr-blue)](https://cdn.jsdelivr.net/gh/softcronos/uigas@latest/dist/uigas.min.css)
 
 Framework CSS para temas dark sport minimal basado en el Brandbook CVR 2027 (Club Vuelta Rápida). Override de Bootstrap 5 con sistema de_tokens, cuatro voces tipográficas y componentes de simulación.
 
@@ -11,10 +11,10 @@ Framework CSS para temas dark sport minimal basado en el Brandbook CVR 2027 (Clu
 
 ```html
 <!-- Versión más reciente -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/softcronos/ui_gas@latest/dist/uigas.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/softcronos/uigas@latest/dist/uigas.min.css">
 
 <!-- Versión fija (para producción) -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/softcronos/ui_gas@v1.0.0/dist/uigas.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/softcronos/uigas@v1.0.0/dist/uigas.min.css">
 ```
 
 > Las fuentes UiGas (Barlow Condensed, Barlow, Rajdhani) se cargan aparte con el `<link>` de Google Fonts — ver la sección [Uso](#uso).
@@ -40,7 +40,7 @@ El framework se enlaza **después** de Bootstrap 5, y las fuentes UiGas van en e
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 <!-- 3 · UiGas — SIEMPRE después de Bootstrap -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/softcronos/ui_gas@latest/dist/uigas.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/softcronos/uigas@latest/dist/uigas.min.css">
 
 <!-- 4 · Bootstrap JS — modal, dropdown, carousel, accordion, offcanvas, toast, tooltip -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -59,7 +59,7 @@ UiGas es una **capa de override visual**, no un reemplazo. Necesita Bootstrap 5 
 ## Estructura del repositorio
 
 ```
-UI_GAS/
+UIGAS/
 ├── src/scss/              # Fuente SCSS (parciales por componente)
 │   ├── style.scss         # Entrada: importa los parciales en orden de cascada
 │   ├── _fonts.scss        # @font-face Korataki (logo y marca)
