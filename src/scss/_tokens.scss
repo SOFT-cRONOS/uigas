@@ -1,75 +1,77 @@
 /* =========================================
-   1. TOKENS — paleta CVR + capa semántica
+   1. TOKENS — paleta UiGas 2.0 + capa semántica
    ─────────────────────────────────────────
-   Valores tomados del Brandbook CVR 2027: §05 Sistema de Color
-   (Racing Red, Asphalt Black, rampa de grises) y §06 Sistema
-   Tipográfico. La paleta de marca no cambia entre temas: solo se
+   Paleta industrial: rojo de marca #ef1d24, fondos
+   #1b1b1b / #1e1e1e / #252525, texto #fdfdfd / #99989d.
+   La paleta de marca no cambia entre temas: solo se
    reescribe la capa semántica (--uig-*), así
    <html data-bs-theme="light"> conmuta TODO.
-   Radios chicos: Dark Sport Minimal, sin chaflán.
+   Radios chicos (2–4px), sin chaflán.
    ========================================= */
 :root,
 [data-bs-theme="dark"] {
-  /* --- Marca (idéntica en ambos temas) — Brandbook CVR §05 --- */
-  /* `--bs-primary` es el relleno sólido que sostiene texto blanco, así
-     que apunta al slab de marca (#e10600 = 4.97:1, el rojo de glow que
-     trae el propio brandbook). La SEÑAL de marca es `--uig-red`
-     (#f92121, Racing Red) y se usa en todo lo que no lleva texto
-     encima: enlaces, focus, bordes, tintes, indicadores, glow. */
-  --bs-primary:           #e10600;
-  --bs-primary-rgb:       225, 6, 0;
-  --bs-secondary:         #a1a1aa;
-  --bs-secondary-rgb:     161, 161, 170;
+  /* --- Marca (idéntica en ambos temas) --- */
+  /* `--bs-primary` es el relleno sólido que sostiene texto blanco.
+     #ef1d24 mide 4.31:1 con blanco (AA para texto grande y bordes);
+     es además la señal de marca en enlaces, focus, tintes y glow. */
+  --bs-primary:           #ef1d24;
+  --bs-primary-rgb:       239, 29, 36;
+  --bs-secondary:         #99989d;
+  --bs-secondary-rgb:     153, 152, 157;
   --bs-success:           #22c55e;
   --bs-success-rgb:       34, 197, 94;
-  --bs-danger:            #e10600;
-  --bs-danger-rgb:        225, 6, 0;
+  --bs-danger:            #ef1d24;
+  --bs-danger-rgb:        239, 29, 36;
   --bs-warning:           #f59e0b;
   --bs-warning-rgb:       245, 158, 11;
   --bs-info:              #38bdf8;
   --bs-info-rgb:          56, 189, 248;
   --bs-light:             #d4d4d8;
   --bs-light-rgb:         212, 212, 216;
-  --bs-dark:              #141414;   /* Asphalt Black */
-  --bs-dark-rgb:          20, 20, 20;
+  --bs-dark:              #1b1b1b;
+  --bs-dark-rgb:          27, 27, 27;
 
-  /* Rampón rojo CVR (§05). Cada escalón cumple su contraste:
-     #f92121 / #ff2a1f sobre oscuro = 4.70 / 5.00 · #b30500 y más abajo
-     con texto blanco = 7.15+. `--uig-red-slab` es el único que puede
-     portar texto blanco a plena intensidad. */
-  --uig-red:      #f92121;  /* Racing Red  — señal: acentos y texto */
-  --uig-red-hi:   #ff2a1f;  /* Red Light   — hover */
-  --uig-red-lo:   #b30500;  /* Red 600     — hover profundo */
-  --uig-red-deep: #8a0400;  /* Deep Red    — activo / destructivo */
-  --uig-red-slab: #e10600;  /* relleno sólido con texto blanco (4.97:1) */
+  /* Rampón rojo. Cada escalón cumple su contraste:
+     #ff3a3f sobre #1b1b1b = 4.86:1 (texto) · #ef1d24 con blanco = 4.31:1
+     (relleno sólido y títulos) · #8a0a0e = rojo profundo para estados. */
+  --uig-red:      #ef1d24;  /* Rojo marca  — señal: acentos, bordes, glow */
+  --uig-red-hi:   #ff3a3f;  /* Rojo claro  — hover / texto sobre oscuro */
+  --uig-red-lo:   #c4161b;  /* Rojo medio  — hover profundo / activo */
+  --uig-red-deep: #8a0a0e;  /* Rojo profundo — activo / destructivo */
+  --uig-red-slab: #ef1d24;  /* relleno sólido con texto blanco (4.31:1) */
+  --uig-red-rgb:  239, 29, 36;
   --uig-white:    #ffffff;
   --uig-ink:      #141414;  /* texto oscuro sobre superficies claras */
 
   /* --- Superficies (cambian por tema) --- */
-  --uig-bg:         #141414;   /* Asphalt Black — base por defecto CVR */
-  --uig-bg-deep:    #0c0c0c;   /* overlay / fondo profundo / código */
-  --uig-surface:    #111111;   /* cards, campos, menús */
-  --uig-surface-2:  #1a1a1a;   /* elevado / hover */
-  --uig-surface-3:  #1f1f1f;   /* sólido neutro */
+  --uig-bg:         #1e1e1e;   /* base de la página */
+  --uig-bg-deep:    #010101;   /* overlay / fondo profundo / código */
+  --uig-surface:    #252525;   /* cards, campos, menús, paneles */
+  --uig-surface-2:  #1e1e1e;   /* elevado / hover */
+  --uig-surface-3:  #2b2b2b;   /* sólido neutro / presionado */
+
+  /* --- Scrollbar --- */
+  --uig-scroll-track: #0e0e11;
+  --uig-scroll-thumb: #26262e;
 
   /* --- Líneas --- */
-  --uig-line:        #1f1f1f;
-  --uig-line-strong: #2a2a2a;
+  --uig-line:        #2a2a32;
+  --uig-line-strong: #34343d;
 
   /* --- Texto --- */
-  --uig-heading:    #ffffff;
-  --uig-text:       #ededed;
-  --uig-text-soft:  #d4d4d8;
-  --uig-text-dim:   #a1a1aa;
-  --uig-text-muted: #7d8593;   /* Gray 400 levantado: 4.75:1 sobre #1f1f1f */
+  --uig-heading:    #fdfdfd;
+  --uig-text:       #fdfdfd;
+  --uig-text-soft:  #c8c8ce;
+  --uig-text-dim:   #99989d;
+  --uig-text-muted: #71717c;   /* info secundaria / artistas / timestamps */
 
   /* --- Tintes, vidrio y overlays --- */
   --uig-tint:        rgba(255, 255, 255, 0.03);
   --uig-tint-2:      rgba(255, 255, 255, 0.015);
   --uig-glass:       rgba(255, 255, 255, 0.025);
   --uig-glass-line:  rgba(255, 255, 255, 0.08);
-  --uig-nav-bg:      rgba(20, 20, 20, 0.9);
-  --uig-menu-bg:     rgba(17, 17, 17, 0.98);
+  --uig-nav-bg:      rgba(27, 27, 27, 0.9);
+  --uig-menu-bg:     rgba(30, 30, 30, 0.98);
   --uig-backdrop:    rgba(0, 0, 0, 0.7);
 
   /* --- Sombras (por tema) --- */
@@ -80,56 +82,56 @@
 
   /* --- Bootstrap derivado de la capa semántica --- */
   --bs-body-bg:            var(--uig-bg);
-  --bs-body-bg-rgb:        20, 20, 20;
+  --bs-body-bg-rgb:        27, 27, 27;
   --bs-body-color:         var(--uig-text);
-  --bs-body-color-rgb:     237, 237, 237;
-  /* Sistema tipográfico (Brandbook CVR §06, ajustado):
-     Barlow Condensed = H1, display, títulos y etiquetas (legible)
-     Korataki         = SOLO marca: logotipo y menciones del nombre
-                        (exclusivo, fuente local del sistema)
-     Barlow           = cuerpo
-     Rajdhani         = EXCLUSIVO de datos (tiempos, posiciones, telemetría) */
-  --uig-font-h1:      'Barlow Condensed', sans-serif;
-  --uig-font-display: 'Barlow Condensed', sans-serif;
+  --bs-body-color-rgb:     253, 253, 253;
+  /* Sistema tipográfico (BPM / UiGas):
+     Barlow Condensed = títulos (voz condensada de impacto)
+     Inter            = cuerpo, UI y datos tabulares
+     Mono             = timestamps y cifras técnicas */
+  --uig-font-h1:      'Barlow Condensed', 'Barlow', sans-serif;
+  --uig-font-display: 'Barlow', 'Barlow', sans-serif;
   --uig-font-brand:   'Korataki', 'KoratakiW01-BoldItalic', 'Barlow Condensed', sans-serif;
-  --uig-font-body:    'Barlow', 'Segoe UI', sans-serif;
-  --uig-font-data:    'Rajdhani', sans-serif;
+  --uig-font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --uig-font-num:     'Inter', system-ui, -apple-system, sans-serif;
+  --uig-font-data:    ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
 
   --bs-body-font-family:   var(--uig-font-body);
+  --bs-body-font-size:     0.75rem;   /* base densa: 12px (text-xs) */
 
   --bs-emphasis-color:     var(--uig-heading);
-  --bs-emphasis-color-rgb: 255, 255, 255;
-  --bs-secondary-color:    rgba(237, 237, 237, 0.65);
-  --bs-secondary-color-rgb: 237, 237, 237;
+  --bs-emphasis-color-rgb: 253, 253, 253;
+  --bs-secondary-color:    rgba(253, 253, 253, 0.65);
+  --bs-secondary-color-rgb: 253, 253, 253;
   --bs-secondary-bg:       var(--uig-surface);
-  --bs-secondary-bg-rgb:   17, 17, 17;
-  --bs-tertiary-color:     rgba(237, 237, 237, 0.4);
+  --bs-secondary-bg-rgb:   30, 30, 30;
+  --bs-tertiary-color:     rgba(253, 253, 253, 0.4);
   --bs-tertiary-bg:        var(--uig-surface-2);
-  --bs-tertiary-bg-rgb:    26, 26, 26;
+  --bs-tertiary-bg-rgb:    37, 37, 37;
 
   --bs-border-color:             var(--uig-line);
   --bs-border-color-translucent: var(--uig-glass-line);
   --bs-heading-color:            var(--uig-heading);
 
-  /* --- Radios: escala chica (Dark Sport Minimal, sin chaflán) --- */
-  --bs-border-radius:      3px;
+  /* --- Radios: escala chica (sin chaflán) --- */
+  --bs-border-radius:      4px;
   --bs-border-radius-sm:   2px;
   --bs-border-radius-lg:   4px;
   --bs-border-radius-xl:   6px;
   --bs-border-radius-xxl:  8px;
   --bs-border-radius-pill: 50rem;
 
-  /* Racing Red mide 4.70:1 sobre #141414 — AA en cuerpo */
-  --bs-link-color:            #f92121;
-  --bs-link-color-rgb:        249, 33, 33;
-  --bs-link-hover-color:      #ff4d44;
-  --bs-link-hover-color-rgb:  255, 77, 68;
+  /* #ff3a3f mide 4.86:1 sobre #1b1b1b — AA en cuerpo */
+  --bs-link-color:            var(--uig-red-hi);
+  --bs-link-color-rgb:        255, 58, 63;
+  --bs-link-hover-color:      #ef1d24;
+  --bs-link-hover-color-rgb:  255, 100, 105;
 
   --bs-box-shadow:        var(--uig-shadow-2);
   --bs-box-shadow-sm:     var(--uig-shadow-1);
   --bs-box-shadow-lg:     var(--uig-shadow-3);
   --bs-box-shadow-inset:  var(--uig-inset);
-  --bs-focus-ring-color:  rgba(249, 33, 33, 0.35);
+  --bs-focus-ring-color:  rgba(239, 29, 36, 0.45);
 
   --bs-form-valid-color:          #22c55e;
   --bs-form-valid-border-color:   #22c55e;
@@ -137,21 +139,21 @@
   --bs-form-invalid-border-color: var(--uig-red);
 
   /* --- Tonos sutiles (alerts, tablas, badges) --- */
-  --bs-primary-text-emphasis:   #ff4d44;
-  --bs-primary-bg-subtle:       rgba(249, 33, 33, 0.12);
-  --bs-primary-border-subtle:   rgba(249, 33, 33, 0.4);
+  --bs-primary-text-emphasis:   var(--uig-red-hi);
+  --bs-primary-bg-subtle:       rgba(239, 29, 36, 0.12);
+  --bs-primary-border-subtle:   rgba(239, 29, 36, 0.4);
   --bs-secondary-text-emphasis: var(--uig-text-soft);
-  --bs-secondary-bg-subtle:     rgba(161, 161, 170, 0.1);
-  --bs-secondary-border-subtle: rgba(161, 161, 170, 0.3);
+  --bs-secondary-bg-subtle:     rgba(153, 152, 157, 0.1);
+  --bs-secondary-border-subtle: rgba(153, 152, 157, 0.3);
   --bs-success-text-emphasis:   #4ade80;
   --bs-success-bg-subtle:       rgba(34, 197, 94, 0.1);
   --bs-success-border-subtle:   rgba(34, 197, 94, 0.35);
   --bs-warning-text-emphasis:   #fbbf24;
   --bs-warning-bg-subtle:       rgba(245, 158, 11, 0.1);
   --bs-warning-border-subtle:   rgba(245, 158, 11, 0.35);
-  --bs-danger-text-emphasis:    #ff4d44;
-  --bs-danger-bg-subtle:        rgba(249, 33, 33, 0.12);
-  --bs-danger-border-subtle:    rgba(249, 33, 33, 0.4);
+  --bs-danger-text-emphasis:    var(--uig-red-hi);
+  --bs-danger-bg-subtle:        rgba(239, 29, 36, 0.12);
+  --bs-danger-border-subtle:    rgba(239, 29, 36, 0.4);
   --bs-info-text-emphasis:      #7dd3fc;
   --bs-info-bg-subtle:          rgba(56, 189, 248, 0.1);
   --bs-info-border-subtle:      rgba(56, 189, 248, 0.35);
@@ -159,20 +161,20 @@
   --bs-light-bg-subtle:         rgba(212, 212, 216, 0.08);
   --bs-light-border-subtle:     rgba(212, 212, 216, 0.25);
   --bs-dark-text-emphasis:      var(--uig-text-dim);
-  --bs-dark-bg-subtle:          rgba(20, 20, 20, 0.5);
+  --bs-dark-bg-subtle:          rgba(27, 27, 27, 0.5);
   --bs-dark-border-subtle:      var(--uig-line);
   --bs-gradient: none;
 
-  /* --- Glow de marca (Brandbook CVR: --cvr-glow-primary) --- */
-  --uig-glow-red:    0 0 18px rgba(249, 33, 33, 0.35);
-  --uig-glow-red-lg: 0 0 32px rgba(249, 33, 33, 0.45);
+  /* --- Glow de marca --- */
+  --uig-glow-red:    0 0 18px rgba(239, 29, 36, 0.35);
+  --uig-glow-red-lg: 0 0 32px rgba(239, 29, 36, 0.45);
 
   /* --- Interacción: reposo plano, la motion lleva el peso --- */
   --uig-btn-lit:     inset 0 1px 0 rgba(255, 255, 255, 0.16);
   --uig-lift:        translateY(-2px);
   --uig-press:       translateY(0) scale(0.985);
   --uig-inset-press: inset 0 2px 8px rgba(0, 0, 0, 0.45);
-  --uig-ring:        0 0 0 3px rgba(249, 33, 33, 0.45);
+  --uig-ring:        0 0 0 3px rgba(239, 29, 36, 0.45);
   --uig-ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -183,22 +185,20 @@
    ningún componente necesita reglas nuevas.
    ========================================= */
 [data-bs-theme="light"] {
-  /* Brandbook CVR §11: "No usar fondos blancos como base principal".
-     La base clara vive en la rampa neutra, pero en un tono menos
-     brillante que Gray 50 para que el texto destaque; el blanco
-     sigue siendo la superficie elevada. Carbono #141414 para texto
-     sobre claro. */
-  --uig-bg:         #dcdde2;   /* base: más baja que Gray 100 (antes #ececf0) */
+  --uig-bg:         #dcdde2;   /* base */
   --uig-bg-deep:    #cfd0d6;   /* overlay / fondo profundo */
-  --uig-surface:    #f0f0f3;   /* superficie elevada (cards) — ya no blanco puro */
+  --uig-surface:    #f0f0f3;   /* superficie elevada (cards, paneles) */
   --uig-surface-2:  #e6e7eb;   /* hover / overlays */
   --uig-surface-3:  #d3d4da;   /* profundo / presionado */
+
+  --uig-scroll-track: #e4e5e9;
+  --uig-scroll-thumb: #c3c4cb;
 
   --uig-line:        #c3c4cb;
   --uig-line-strong: #b0b1ba;
 
-  --uig-heading:    #141414;   /* Asphalt Black sobre fondo claro */
-  --uig-text:       #2a2a2a;   /* Steel Gray */
+  --uig-heading:    #141414;   /* texto de marca sobre fondo claro */
+  --uig-text:       #2a2a2a;
   --uig-text-soft:  #3f3f46;
   --uig-text-dim:   #52525b;
   --uig-text-muted: #545760;   /* AA (≥4.5:1) incluso sobre --uig-bg-deep */
@@ -207,10 +207,12 @@
   --uig-tint-2:      rgba(20, 20, 20, 0.02);
   --uig-glass:       rgba(20, 20, 20, 0.025);
   --uig-glass-line:  rgba(20, 20, 20, 0.1);
-  /* La señal de marca se profundiza sobre claro: #b30500 mide ~6:1
-     sobre la base, y el hover pasa a Deep Red en vez de encenderse. */
-  --uig-red:      #b30500;
-  --uig-red-hi:   #8a0400;
+  /* La señal de marca se profundiza sobre claro: #8a0a0e mide ~7.3:1
+     sobre la base, y el hover pasa aun más profundo en vez de
+     encenderse. */
+  --uig-red:      #8a0a0e;
+  --uig-red-hi:   #6b0709;
+  --uig-red-lo:   #5c0709;
 
   --uig-nav-bg:      rgba(240, 240, 243, 0.88);
   --uig-menu-bg:     rgba(240, 240, 243, 0.99);
@@ -226,19 +228,19 @@
   --bs-emphasis-color-rgb: 20, 20, 20;
   --bs-secondary-color:    rgba(42, 42, 42, 0.72);
   --bs-secondary-color-rgb: 42, 42, 42;
-  --bs-tertiary-color:     rgba(42, 42, 42, 0.7);   /* 0.5 daba ~2.8:1 */
+  --bs-tertiary-color:     rgba(42, 42, 42, 0.7);
   --bs-secondary-bg-rgb:     240, 240, 243;   /* = --uig-surface */
   --bs-tertiary-bg-rgb:      230, 231, 235;   /* = --uig-surface-2 */
 
   --uig-btn-lit:     inset 0 1px 0 rgba(255, 255, 255, 0.6);
   --uig-inset-press: inset 0 2px 8px rgba(20, 20, 20, 0.18);
-  --uig-glow-red:    0 0 18px rgba(249, 33, 33, 0.28);
-  --uig-glow-red-lg: 0 0 32px rgba(249, 33, 33, 0.36);
+  --uig-glow-red:    0 0 18px rgba(138, 10, 14, 0.28);
+  --uig-glow-red-lg: 0 0 32px rgba(138, 10, 14, 0.36);
 
-  /* Semánticos base en claro. Los de dark (#a1a1aa, #22c55e, #f59e0b,
+  /* Semánticos base en claro. Los de dark (#99989d, #22c55e, #f59e0b,
      #38bdf8) miden 1.6–2.0:1 sobre la base clara, y .text-secondary /
      .text-success / .text-warning / .text-info los usan tal cual.
-     primary y danger NO se tocan (son el slab de marca). */
+     primary y danger NO se tocan (son el rojo de marca). */
   --bs-secondary:         #52525b;
   --bs-secondary-rgb:     82, 82, 91;
   --bs-success:           #166534;
@@ -248,37 +250,37 @@
   --bs-info:              #075985;
   --bs-info-rgb:          7, 89, 133;
 
-  /* Acentos de estado: rampón rojo CVR (Red 600) para leerse sobre
-     la base clara; el resto, versantes oscuros de sus propios tonos. */
-  --bs-primary-text-emphasis:   #b30500;
+  /* Acentos de estado: rojo profundo de marca para leerse sobre la
+     base clara; el resto, versantes oscuros de sus propios tonos. */
+  --bs-primary-text-emphasis:   #8a0a0e;
   --bs-success-text-emphasis:   #166534;
   --bs-warning-text-emphasis:   #92400e;
-  --bs-danger-text-emphasis:    #b30500;
+  --bs-danger-text-emphasis:    #8a0a0e;
   --bs-info-text-emphasis:      #075985;
   --bs-light-text-emphasis:     #3f3f46;
   --bs-secondary-text-emphasis: #3f3f46;
   --bs-dark-text-emphasis:      #3f3f46;
   /* Tinte sutil de cada acento. En el tema claro se usan los
      versantes oscuros ya empleados en text-emphasis. */
-  --bs-primary-bg-subtle:        rgba(179, 5, 0, 0.09);
-  --bs-primary-border-subtle:   rgba(179, 5, 0, 0.4);
-  --bs-secondary-bg-subtle:     rgba(20, 20, 20, 0.06);
-  --bs-secondary-border-subtle: rgba(20, 20, 20, 0.25);
-  --bs-success-bg-subtle:       rgba(22, 101, 52, 0.09);
-  --bs-success-border-subtle:  rgba(22, 101, 52, 0.4);
-  --bs-warning-bg-subtle:       rgba(146, 64, 14, 0.09);
-  --bs-warning-border-subtle:  rgba(146, 64, 14, 0.4);
-  --bs-danger-bg-subtle:        rgba(179, 5, 0, 0.09);
-  --bs-danger-border-subtle:   rgba(179, 5, 0, 0.4);
-  --bs-info-bg-subtle:         rgba(7, 89, 133, 0.09);
-  --bs-info-border-subtle:    rgba(7, 89, 133, 0.4);
-  --bs-light-bg-subtle:         rgba(20, 20, 20, 0.06);
-  --bs-light-border-subtle:    rgba(20, 20, 20, 0.12);
-  --bs-dark-bg-subtle:         rgba(20, 20, 20, 0.06);
-  --bs-dark-border-subtle:    rgba(20, 20, 20, 0.15);
+  --bs-primary-bg-subtle:        rgba(138, 10, 14, 0.09);
+  --bs-primary-border-subtle:    rgba(138, 10, 14, 0.4);
+  --bs-secondary-bg-subtle:      rgba(20, 20, 20, 0.06);
+  --bs-secondary-border-subtle:  rgba(20, 20, 20, 0.25);
+  --bs-success-bg-subtle:        rgba(22, 101, 52, 0.09);
+  --bs-success-border-subtle:    rgba(22, 101, 52, 0.4);
+  --bs-warning-bg-subtle:        rgba(146, 64, 14, 0.09);
+  --bs-warning-border-subtle:    rgba(146, 64, 14, 0.4);
+  --bs-danger-bg-subtle:         rgba(138, 10, 14, 0.09);
+  --bs-danger-border-subtle:     rgba(138, 10, 14, 0.4);
+  --bs-info-bg-subtle:           rgba(7, 89, 133, 0.09);
+  --bs-info-border-subtle:       rgba(7, 89, 133, 0.4);
+  --bs-light-bg-subtle:          rgba(20, 20, 20, 0.06);
+  --bs-light-border-subtle:      rgba(20, 20, 20, 0.12);
+  --bs-dark-bg-subtle:           rgba(20, 20, 20, 0.06);
+  --bs-dark-border-subtle:       rgba(20, 20, 20, 0.15);
 
-  --bs-link-color:            #b30500;
-  --bs-link-color-rgb:        179, 5, 0;
-  --bs-link-hover-color:      #8a0400;
-  --bs-link-hover-color-rgb:  138, 4, 0;
+  --bs-link-color:            #8a0a0e;
+  --bs-link-color-rgb:        138, 10, 14;
+  --bs-link-hover-color:      #6b0709;
+  --bs-link-hover-color-rgb:  107, 7, 9;
 }

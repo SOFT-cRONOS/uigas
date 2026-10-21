@@ -2,12 +2,13 @@
    8. BADGES
    ========================================= */
 .badge {
-  font-family: var(--uig-font-display);
+  font-family: var(--uig-font-body);
+  font-size: 0.5rem;            /* 8px — texto de pill */
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  border-radius: var(--bs-border-radius);
-  padding: 0.32em 0.72em;
+  border-radius: var(--bs-border-radius-sm);
+  padding: 0.3em 0.6em;
   line-height: 1.05;
   display: inline-flex;
   align-items: center;
@@ -22,7 +23,7 @@
 .bg-warning   { background-color: #f59e0b !important; }
 .bg-info      { background-color: #38bdf8 !important; }
 .bg-light     { background-color: var(--uig-line) !important; }
-.bg-dark      { background-color: #0c0c0c !important; }
+.bg-dark      { background-color: var(--uig-bg-deep) !important; }
 
 .text-bg-primary   { background-color: var(--uig-red-slab) !important; color: #fff !important; }
 .text-bg-secondary { background-color: var(--uig-line) !important; color: var(--uig-text-dim) !important; }
@@ -31,7 +32,7 @@
 .text-bg-warning   { background-color: #f59e0b !important; color: #000 !important; }
 .text-bg-info      { background-color: #38bdf8 !important; color: #000 !important; }
 .text-bg-light     { background-color: var(--uig-line) !important; color: var(--uig-text) !important; }
-.text-bg-dark      { background-color: #0c0c0c !important; color: var(--uig-text) !important; }
+.text-bg-dark      { background-color: var(--uig-bg-deep) !important; color: var(--uig-text) !important; }
 
 /* Soft / tinted badges — quiet status without the solid slab.
    Usage: <span class="badge badge-soft badge-soft-success">EN PISTA</span> */
@@ -40,10 +41,10 @@
   color: var(--uig-badge-fg) !important;
   border: 1px solid var(--uig-badge-bd);
 }
-.badge-soft-primary   { --uig-badge-fg:#ff4d44; --uig-badge-bg:rgba(249,33,33,.14);    --uig-badge-bd:rgba(249,33,33,.42); }
+.badge-soft-primary   { --uig-badge-fg:var(--uig-red-hi); --uig-badge-bg:rgba(239,29,36,.14);    --uig-badge-bd:rgba(239,29,36,.42); }
 .badge-soft-secondary { --uig-badge-fg:var(--uig-text-soft); --uig-badge-bg:rgba(161,161,170,.12);--uig-badge-bd:rgba(161,161,170,.32); }
 .badge-soft-success   { --uig-badge-fg:#4ade80; --uig-badge-bg:rgba(34,197,94,.14);  --uig-badge-bd:rgba(34,197,94,.38); }
-.badge-soft-danger    { --uig-badge-fg:#ff4d44; --uig-badge-bg:rgba(249,33,33,.14);    --uig-badge-bd:rgba(249,33,33,.42); }
+.badge-soft-danger    { --uig-badge-fg:var(--uig-red-hi); --uig-badge-bg:rgba(239,29,36,.14);    --uig-badge-bd:rgba(239,29,36,.42); }
 .badge-soft-warning   { --uig-badge-fg:#fbbf24; --uig-badge-bg:rgba(245,158,11,.14); --uig-badge-bd:rgba(245,158,11,.38); }
 .badge-soft-info      { --uig-badge-fg:#7dd3fc; --uig-badge-bg:rgba(56,189,248,.14); --uig-badge-bd:rgba(56,189,248,.38); }
 .badge-soft-light     { --uig-badge-fg:var(--uig-text-soft); --uig-badge-bg:rgba(212,212,216,.1); --uig-badge-bd:var(--uig-line-strong); }

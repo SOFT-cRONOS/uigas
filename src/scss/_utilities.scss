@@ -29,10 +29,10 @@
    26. BORDER UTILITIES
    ========================================= */
 .border         { border-color: var(--uig-line) !important; }
-.border-primary { --bs-border-opacity:1; border-color: rgba(249, 33, 33, var(--bs-border-opacity)) !important; }
+.border-primary { --bs-border-opacity:1; border-color: rgba(239, 29, 36, var(--bs-border-opacity)) !important; }
 .border-secondary { border-color: rgba(161, 161, 170, var(--bs-border-opacity, 1)) !important; }
 .border-success { border-color: rgba(34, 197, 94, var(--bs-border-opacity, 1)) !important; }
-.border-danger  { border-color: rgba(249, 33, 33, var(--bs-border-opacity, 1)) !important; }
+.border-danger  { border-color: rgba(239, 29, 36, var(--bs-border-opacity, 1)) !important; }
 .border-warning { border-color: rgba(245, 158, 11, var(--bs-border-opacity, 1)) !important; }
 .border-info    { border-color: rgba(56, 189, 248, var(--bs-border-opacity, 1)) !important; }
 .border-light   { border-color: var(--uig-line-strong) !important; }
@@ -73,8 +73,8 @@
    29. CODE
    ========================================= */
 code {
-  color: #ff4d44;
-  background-color: rgba(249, 33, 33, 0.1);
+  color: var(--uig-red-hi);
+  background-color: rgba(239, 29, 36, 0.1);
   padding: 0.1em 0.35em;
   border-radius: var(--bs-border-radius);
   font-size: 0.875em;
@@ -137,8 +137,8 @@ hr {
    33. MISC — mark, abbr
    ========================================= */
 .mark, mark {
-  background-color: rgba(249, 33, 33, 0.18);
-  color: #ff4d44;
+  background-color: rgba(239, 29, 36, 0.18);
+  color: var(--uig-red-hi);
   border-radius: var(--bs-border-radius-sm);
   padding: 0.08em 0.32em;
   box-decoration-break: clone;
@@ -157,10 +157,10 @@ hr {
    líneas finas paralelas inclinadas 15°, tinte de marca. Fondo
    estructural, no decoración suelta. */
 .bg-dark {
-  background-color: #0c0c0c !important;
+  background-color: var(--uig-bg-deep) !important;
   background-image: repeating-linear-gradient(
     105deg,
-    rgba(249, 33, 33, 0.055) 0 1px,
+    rgba(239, 29, 36, 0.055) 0 1px,
     transparent 1px 34px
   );
 }
@@ -188,14 +188,13 @@ hr {
 @media (max-width: 768px) {
   .modal-content { border-radius: var(--bs-border-radius-lg); }
   .card { border-radius: var(--bs-border-radius); }
-  .card:hover { transform: translateY(-3px); }
 }
 
 /* =========================================
    36. FOCUS RING — global keyboard nav
    ========================================= */
 :focus-visible {
-  outline: 2px solid rgba(249, 33, 33, 0.7);
+  outline: 2px solid rgba(239, 29, 36, 0.7);
   outline-offset: 3px;
 }
 .btn:focus-visible, a:focus-visible {

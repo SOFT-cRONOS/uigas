@@ -36,9 +36,9 @@
 .alert a { color: inherit; text-decoration: underline; text-underline-offset: 2px; }
 
 .alert-primary {
-  --bs-alert-bg:           rgba(249, 33, 33, 0.1);
-  --bs-alert-border-color: rgba(249, 33, 33, 0.45);
-  --bs-alert-color:        #ff4d44;
+  --bs-alert-bg:           rgba(239, 29, 36, 0.1);
+  --bs-alert-border-color: rgba(239, 29, 36, 0.45);
+  --bs-alert-color:        var(--uig-red-hi);
 }
 .alert-secondary {
   --bs-alert-bg:           rgba(161, 161, 170, 0.08);
@@ -51,9 +51,9 @@
   --bs-alert-color:        #4ade80;
 }
 .alert-danger {
-  --bs-alert-bg:           rgba(249, 33, 33, 0.1);
-  --bs-alert-border-color: rgba(249, 33, 33, 0.5);
-  --bs-alert-color:        #ff4d44;
+  --bs-alert-bg:           rgba(239, 29, 36, 0.1);
+  --bs-alert-border-color: rgba(239, 29, 36, 0.5);
+  --bs-alert-color:        var(--uig-red-hi);
 }
 .alert-warning {
   --bs-alert-bg:           rgba(245, 158, 11, 0.1);

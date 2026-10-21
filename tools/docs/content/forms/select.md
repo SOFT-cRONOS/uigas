@@ -15,6 +15,30 @@
 
 Comparte tratamiento con `.form-control`: mismo fondo, mismo borde, mismo foco rojo.
 
+## UI personalizada (uig-select)
+
+El control cerrado lo dibuja UiGas, pero la **lista que se abre pertenece al sistema operativo**: fondo, tipografía, hover y scroll no se pueden estilizar con CSS. Para que el desplegable completo sea UiGas, incluí `dist/uigas-select.js`. El script mejora cada `select.form-select` a un menú Bootstrap con los tokens del framework, sin cambiar el HTML:
+
+```html
+<script src="dist/uigas-select.js" defer></script>
+
+<select class="form-select" aria-label="Circuito">
+  <option value="">Elegí un circuito</option>
+  <option value="cordoba">Córdoba</option>
+  <option value="rojas">Rojas</option>
+  <option value="termas">Termas de Río Hondo</option>
+</select>
+```
+
+- El `<select>` original queda en el DOM, oculto: sigue enviando su valor en el submit y conserva la validación nativa.
+- Teclado completo: ↑/↓, Home/End, Enter, Esc, Tab y búsqueda por inicial.
+- `select.disabled`, `option.disabled` y `<optgroup>` se respetan.
+- El estado `is-valid` / `is-invalid` y `.was-validated` se reflejan en el disparador.
+- Contenido dinámico: después de agregar o quitar opciones, llamá `uigasSelect.refresh()`.
+- Opt-out por control: `data-uig-select="off"`.
+
+> `multiple`, `size`, `.form-floating` y `.input-group` quedan con el select nativo: dependen del layout del control original. Si necesitás un menú UiGas en esos casos, usá el componente dropdown directamente.
+
 ## Con grupos
 
 ```html

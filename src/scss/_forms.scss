@@ -1,6 +1,9 @@
 /* =========================================
    6. FORMS
    ========================================= */
+
+.form-control:hover { border-color: var(--uig-line-strong);}
+
 .form-control,
 .form-select {
   background-color: var(--uig-surface);
@@ -8,18 +11,24 @@
   border-radius: var(--bs-border-radius);
   color: var(--uig-text);
   font-family: var(--uig-font-body);
+  font-size: 0.75rem;
   font-weight: 500;
+  padding: 0.3rem 0.6rem;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
+
 
 .form-control:focus,
 .form-select:focus {
   background-color: var(--uig-surface);
   border-color: var(--uig-red);
-  box-shadow: 0 0 0 3px rgba(249, 33, 33, 0.2);
+  box-shadow: none;
   color: var(--uig-text);
   outline: 0;
 }
+
+
+
 
 .form-control::placeholder { color: var(--uig-text-muted); opacity: 1; }
 
@@ -31,12 +40,12 @@
 }
 
 .form-label {
-  font-family: var(--uig-font-display);
-  font-weight: 600;
+  font-family: var(--uig-font-body);
+  font-weight: 500;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: var(--uig-text-dim);
-  font-size: 0.85rem;
+  font-size: 0.6875rem;   /* 11px — label de formulario */
 }
 
 .form-text { color: var(--uig-text-muted); }
@@ -66,7 +75,7 @@
 }
 .form-check-input:focus {
   border-color: var(--uig-red);
-  box-shadow: 0 0 0 3px rgba(249, 33, 33, 0.2);
+  box-shadow: 0 0 0 3px rgba(239, 29, 36, 0.2);
 }
 
 /* Range */
@@ -86,7 +95,7 @@
   border-color: var(--uig-red);
 }
 .form-control.is-invalid:focus, .was-validated .form-control:invalid:focus {
-  box-shadow: 0 0 0 3px rgba(249, 33, 33, 0.2);
+  box-shadow: 0 0 0 3px rgba(239, 29, 36, 0.2);
 }
 .valid-feedback   { color: #22c55e; }
 .invalid-feedback { color: var(--bs-danger-text-emphasis); }

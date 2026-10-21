@@ -1,6 +1,6 @@
 # Sass
 
-> La fuente SCSS son 28 parciales y cero abstracción. No hay variables Sass, ni mixins, ni funciones. Todo el sistema vive en custom properties.
+> La fuente SCSS son 29 parciales y cero abstracción. No hay variables Sass, ni mixins, ni funciones. Todo el sistema vive en custom properties.
 
 ## Estructura
 

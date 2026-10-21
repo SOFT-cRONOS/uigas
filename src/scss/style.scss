@@ -6,11 +6,16 @@
 //  Se enlaza DESPUÉS de bootstrap.min.css.
 //
 //  Fuentes (agregar en <head>, antes de este CSS):
-//  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+//  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,900;1,700;1,900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+//
+//  Voz tipográfica:
+//  · Títulos  → Barlow Condensed (700/800/900)
+//  · Cuerpo/UI → Inter (400–700)
+//  · Datos/timestamps → mono del sistema (ui-monospace)
 //
 //  Korataki (logo y marca) no está en Google Fonts: se resuelve
 //  desde la fuente instalada en el sistema vía @font-face + local()
-//  (ver _base.scss), con Barlow Condensed 900 itálica como fallback.
+//  (ver _fonts.scss), con Barlow Condensed 900 itálica como fallback.
 // ============================================================
 
 @use "fonts";        //         · @font-face Korataki (logo y marca)
@@ -20,6 +25,7 @@
 @use "cards";        // 4
 @use "navbar";       // 5
 @use "forms";        // 6
+@use "select";       // 6b      · select personalizado (uig-select.js)
 @use "tables";       // 7
 @use "badges";       // 8
 @use "alerts";       // 9
