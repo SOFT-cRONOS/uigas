@@ -44,6 +44,9 @@ El framework se enlaza **después** de Bootstrap 5, y las fuentes UiGas van en e
 
 <!-- 4 · Bootstrap JS — modal, dropdown, carousel, accordion, offcanvas, toast, tooltip -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- 5 · Opcional: selects con el menú de UiGas (reemplaza el popup del sistema) -->
+<script src="https://cdn.jsdelivr.net/gh/softcronos/uigas@latest/dist/uigas-select.js" defer></script>
 ```
 
 ### Requisitos
@@ -51,7 +54,7 @@ El framework se enlaza **después** de Bootstrap 5, y las fuentes UiGas van en e
 UiGas es una **capa de override visual**, no un reemplazo. Necesita Bootstrap 5 presente:
 
 - **Bootstrap CSS** — UiGas no incluye reboot, grid (`.row`, `.col-*`) ni utilidades de layout. Viene **siempre después** de `bootstrap.min.css` porque redefine los custom properties `--bs-*` y las variables de cada componente con la misma especificidad.
-- **Bootstrap JS** — los componentes interactivos (modal, dropdown, carousel, accordion, offcanvas, toast, tooltip) dependen de `bootstrap.bundle.min.js`. UiGas es solo CSS y no lo incluye.
+- **Bootstrap JS** — los componentes interactivos (modal, dropdown, carousel, accordion, offcanvas, toast, tooltip) dependen de `bootstrap.bundle.min.js`. UiGas es CSS + un JS opcional (`uigas-select.js`); no incluye Bootstrap.
 - **Las fuentes UiGas** — `<link>` de Google Fonts en el `<head>`.
 
 > Korataki (solo logo y menciones de marca) no vive en Google Fonts: se resuelve desde la fuente instalada en el sistema vía `@font-face` + `local()`, con Barlow Condensed 900 itálica como fallback. Los H1 y display usan Barlow Condensed.
@@ -65,10 +68,14 @@ UIGAS/
 │   ├── _fonts.scss        # @font-face Korataki (logo y marca)
 │   ├── _tokens.scss       # Custom properties (dark + light)
 │   ├── _base.scss         # Base y tipografía
+│   ├── _select.scss       # Select personalizado (uig-select)
 │   ├── _buttons.scss … _theme-light.scss
+├── src/js/
+│   └── uigas-select.js    # Mejora <select class="form-select"> (vanilla)
 ├── dist/
 │   ├── uigas.css          # Build expandido (dev / debug)
-│   └── uigas.min.css      # Build minificado (publicar)
+│   ├── uigas.min.css      # Build minificado (publicar)
+│   └── uigas-select.js    # JS opcional (copiado desde src/js)
 ├── doc/
 │   ├── index.html         # Home de la documentación (generada)
 │   ├── showcase.html      # Showcase de componentes

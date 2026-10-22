@@ -2,7 +2,7 @@
 
 > Tres formas de consumir UiGas: CDN, archivo local o npm. Las tres necesitan Bootstrap 5 y las fuentes de Google Fonts.
 
-UiGas son dos archivos: `dist/uigas.min.css` (50 KB minificado) y `dist/uigas.css` (expandido, para debug). No trae JavaScript.
+UiGas son dos archivos de CSS —`dist/uigas.min.css` (50 KB minificado) y `dist/uigas.css` (expandido, para debug)— más un JS opcional: `dist/uigas-select.js`, que convierte los `<select class="form-select">` en desplegables con el menú de UiGas (el popup nativo del sistema no se puede estilizar con CSS).
 
 ## CDN
 
@@ -17,6 +17,9 @@ Lo más simple para probar. jsDelivr sirve el repo, así que no hay build ni reg
 
 <!-- Bootstrap JS, para los componentes interactivos -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Opcional: selects con el menú de UiGas -->
+<script src="https://cdn.jsdelivr.net/gh/softcronos/ui_gas@v1.0.0/dist/uigas-select.js" defer></script>
 ```
 
 Fijá la versión (`@v1.0.0`) en producción. `@latest` sirve el último tag del repo y puede cambiar sin aviso.
@@ -37,6 +40,7 @@ Para builds sin red en runtime, o si querés servir todo desde tu propio dominio
 
 ```html
 <link href="css/uigas.min.css" rel="stylesheet">
+<script src="js/uigas-select.js" defer></script>
 ```
 
 ## npm
@@ -47,6 +51,7 @@ npm install uigas
 
 ```js
 import 'uigas/dist/uigas.min.css';
+import 'uigas/dist/uigas-select.js'; // opcional: selects con menú UiGas
 ```
 
 UiGas declara `bootstrap` como *peer dependency* (`^5.3.0`): no lo instala ni lo empaqueta, porque el proyecto que lo consume ya debería tener su propia versión de Bootstrap.

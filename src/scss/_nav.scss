@@ -12,9 +12,10 @@
 }
 
 .nav-tabs .nav-link {
-  font-family: var(--uig-font-display);
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-family: var(--uig-font-body);
+  font-size: 0.625rem;      /* 10px — nav tab */
+  font-weight: 600;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--uig-text-muted);
   border-bottom: 2px solid transparent;
@@ -30,9 +31,15 @@
 }
 .nav-pills .nav-link {
   color: var(--uig-text-dim);
-  font-family: var(--uig-font-display);
+  font-family: var(--uig-font-body);
+  font-size: 0.6875rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 .nav-pills .nav-link.active { box-shadow: var(--uig-glow-red); }
+
+
+.sidebar {
+  background-color: var(--uig-bg-deep)!important;
+}

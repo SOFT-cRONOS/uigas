@@ -24,10 +24,13 @@ Un parcial por componente, nombrado por lo que define. Si agregás uno, agregalo
 
 ```bash
 npm install        # instala dart-sass
-npm run build      # → dist/uigas.min.css (comprimido, publicar)
-npm run build:dev  # → dist/uigas.css (expandido, debug)
+npm run build      # → dist/uigas.min.css + JS (publicar)
+npm run build:dev  # → dist/uigas.css (expandido, debug) + JS
+npm run build:js   # → copia src/js/*.js a dist/
 npm run watch      # recompila el minificado al guardar
 ```
+
+El CSS lo compila dart-sass. El JS no tiene bundler: `tools/build-js.mjs` copia los componentes vanilla de `src/js/` a `dist/`.
 
 ## Los tokens son custom properties, no variables SCSS
 
@@ -107,6 +110,7 @@ El build es reproducible: dos corridas seguidas dan archivos idénticos. Si no, 
 |---|---|---|
 | `dist/uigas.min.css` | ~50 KB | producción, CDN |
 | `dist/uigas.css` | ~72 KB | debug: leer reglas, inspección |
+| `dist/uigas-select.js` | ~7 KB | opcional: selects con menú UiGas |
 
 ## Qué sigue
 

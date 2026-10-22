@@ -152,6 +152,8 @@ ${
 </div>
 
 <div class="scrim" id="scrim" hidden></div>
+<script src="${BOOTSTRAP}/dist/js/bootstrap.bundle.min.js"></script>
+<script src="${assets}dist/uigas-select.js" defer></script>
 <script>window.UIGAS_NAV = ${JSON.stringify(navIndex)};</script>
 <script>
 (function(){

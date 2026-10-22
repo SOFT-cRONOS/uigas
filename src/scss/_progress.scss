@@ -17,3 +17,45 @@
 .progress-bar.bg-success { background-color: #22c55e !important; }
 .progress-bar.bg-warning { background-color: #f59e0b !important; }
 .progress-bar.bg-info    { background-color: #38bdf8 !important; }
+
+/* =========================================
+   13b. GAUGE CIRCULAR — anillo de progreso
+   ─────────────────────────────────────────
+   Uso: <div class="uig-gauge" style="--uig-gauge-progress: 72%"></div>
+   El contenido va dentro del anillo (queda sobre el hueco).
+   ========================================= */
+.uig-gauge {
+  --uig-gauge-progress: 50%;
+  --uig-gauge-size:    44px;
+  --uig-gauge-hole:    36px;
+  width: var(--uig-gauge-size);
+  height: var(--uig-gauge-size);
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--uig-red) var(--uig-gauge-progress),
+    #383842 0
+  );
+  display: inline-grid;
+  place-items: center;
+  position: relative;
+  flex-shrink: 0;
+}
+.uig-gauge::after {
+  content: '';
+  grid-area: 1 / 1;
+  width: var(--uig-gauge-hole);
+  height: var(--uig-gauge-hole);
+  border-radius: 50%;
+  background: #151518;
+}
+.uig-gauge > * {
+  grid-area: 1 / 1;
+  position: relative;
+  z-index: 1;
+  font-family: var(--uig-font-num);
+  font-size: 0.625rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--uig-heading);
+  line-height: 1;
+}

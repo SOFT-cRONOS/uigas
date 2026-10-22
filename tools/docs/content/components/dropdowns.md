@@ -1,6 +1,6 @@
 # Dropdowns
 
-> Menú flotante sobre `--uig-surface`, borde `--uig-line`, radio chico. El item se tiñe de rojo al hover; el activo queda con fondo `--uig-line`.
+> Menú flotante sobre `--uig-surface`, borde `--uig-line`, radio chico y tipografía de UI (13px). El item se tiñe de rojo al hover; el activo va sobre el rojo de marca.
 
 ## Básico
 
@@ -97,15 +97,18 @@ El menú hereda el fondo de la navbar si el contenedor tiene `.navbar-nav`:
 ## UiGas en el menú
 
 ```scss
---bs-dropdown-link-active-color: var(--uig-heading);
---bs-dropdown-link-active-bg:    var(--uig-line);
---bs-dropdown-link-hover-bg:     rgba(249, 33, 33, 0.08);
+--bs-dropdown-font-size:          0.8125rem;
+--bs-dropdown-item-padding-y:     0.35rem;
+--bs-dropdown-link-hover-bg:      rgba(239, 29, 36, 0.1);
+--bs-dropdown-link-active-bg:     var(--uig-red-slab);
 ```
 
-- item en hover → fondo rojo al 8%, texto `--uig-heading`
-- item activo → fondo `--uig-line`
+- item en hover → fondo rojo al 10%, texto `--uig-heading`
+- item activo → fondo `--uig-red-slab`
+- item con foco de teclado → outline rojo de 2px
+- item deshabilitado → texto `--uig-text-muted` al 55%
 
-> En tema claro el tinte rojo al 8% sobre `#f0f0f3` es casi imperceptible: el hover se nota poco más que un gris. El mismo patrón que en `.list-group-action-hover-bg`. Funciona —el activo sí se distingue— pero el hover es más tímido en claro que en oscuro.
+> En tema claro el tinte rojo al 10% sobre `#f0f0f3` es casi imperceptible: el hover se nota poco más que un gris. El mismo patrón que en `.list-group-action-hover-bg`. Funciona —el activo sí se distingue— pero el hover es más tímido en claro que en oscuro.
 
 ## Accesibilidad
 
@@ -113,7 +116,7 @@ El menú hereda el fondo de la navbar si el contenedor tiene `.navbar-nav`:
 - `aria-label="Abrir menú"` en el split button, que no tiene texto.
 - `.dropdown-header` es un `<h6>` dentro de un `<li>`: es un heading real, lo que permite saltar al grupo con el teclado.
 - El menú abre con `Escape` y devuelve el foco al disparador. Bootstrap lo resuelve.
-- Un dropdown no reemplaza un `<select>` cuando las opciones son datos: en listas largas, un select con teclado es más usable.
+- El componente `uig-select` usa este mismo menú para reemplazar el popup nativo de un `<select>`: ver [Select](/forms/select.html).
 
 ## Qué sigue
 

@@ -1,6 +1,6 @@
 UIGAS DESIGN SYSTEM — REFERENCIA RÁPIDA
 ========================================
-Librería:      UiGas 1.0.0
+Librería:      UiGas 2.0
 Baseline:      Bootstrap 5.3  (override visual — requiere Bootstrap CSS + JS)
 Tema por defecto: DARK        ·   Alternativa: [data-bs-theme="light"]
 
@@ -10,11 +10,11 @@ actualizá este documento: es la referencia rápida, no la fuente de verdad.
 
 ── MARCA (idéntica en ambos temas) ─────────────
 
---uig-red          #f92121   Racing Red   · señal de marca (bordes, focus, glow)
---uig-red-hi       #ff2a1f
---uig-red-lo       #b30500   Red profunda · hover/activo sobre claro
---uig-red-deep     #8a0400   Deep Red
---uig-red-slab     #e10600   slab sólido · relleno de .btn-primary (4.97:1 con blanco)
+--uig-red          #ef1d24   Rojo marca · señal (bordes, focus, glow, stats)
+--uig-red-hi       #ff3a3f   Rojo claro · hover y texto sobre oscuro (4.86:1)
+--uig-red-lo       #c4161b   Rojo medio · hover profundo
+--uig-red-deep     #8a0a0e   Rojo profundo · activo / destructivo
+--uig-red-slab     #ef1d24   slab sólido · relleno de .btn-primary (4.31:1 con blanco)
 --uig-white        #ffffff
 --uig-ink          #141414
 
@@ -23,82 +23,104 @@ actualizá este documento: es la referencia rápida, no la fuente de verdad.
 
 Token            Dark (default)   Light
 --------------   ---------------   ---------------
---uig-bg         #141414          #ececf0   base de la página
---uig-bg-deep    #0c0c0c          #dcdde2   overlay / fondo profundo / código
---uig-surface    #111111          #ffffff   cards, campos, menús
---uig-surface-2  #1a1a1a          #f4f4f5   elevado / hover
---uig-surface-3  #1f1f1f          #e4e4e7   sólido neutro / presionado
+--uig-bg         #1b1b1b          #dcdde2   base de la página
+--uig-bg-deep    #161616          #cfd0d6   overlay / fondo profundo / código
+--uig-surface    #1e1e1e          #f0f0f3   cards, campos, menús, paneles
+--uig-surface-2  #252525          #e6e7eb   elevado / hover
+--uig-surface-3  #2b2b2b          #d3d4da   sólido neutro / presionado
 
---uig-nav-bg     rgba(20, 20, 20, 0.9)
---uig-menu-bg    rgba(17, 17, 17, 0.98)
+--uig-nav-bg     rgba(27, 27, 27, 0.9)
+--uig-menu-bg    rgba(30, 30, 30, 0.98)
 --uig-backdrop   rgba(0, 0, 0, 0.7)
 
 
-── LÍNEAS ───────────────────────────────────────
+── LÍNEAS Y SCROLLBAR ───────────────────────────
 
-Token              Dark          Light
-----------------   -----------   -----------
---uig-line         #1f1f1f       #d8d8dc   hairline por defecto
---uig-line-strong  #2a2a2a       #c9c9cf
+Token                 Dark          Light
+-------------------   -----------   -----------
+--uig-line            #2a2a32       #c3c4cb   hairline por defecto
+--uig-line-strong     #34343d       #b0b1ba
+--uig-scroll-track    #0e0e11       #e4e5e9
+--uig-scroll-thumb    #26262e       #c3c4cb   hover: --uig-red
 
 
 ── TEXTO ────────────────────────────────────────
 
 Token              Dark          Light
 ----------------   -----------   -----------
---uig-heading      #ffffff       #141414
---uig-text         #ededed       #2a2a2a
---uig-text-soft    #d4d4d8       #3f3f46
---uig-text-dim     #a1a1aa       #52525b
---uig-text-muted   #7d8593       #61646d   4.75:1 / 5:1 sobre su base
-
-Contraste medido sobre la base clara (#ececf0): texto 12.2:1 · heading 15.6:1 ·
-muted 5:1 · código 6.1:1 · acentos de estado 4.3:1 – 6.1:1.
+--uig-heading      #fdfdfd       #141414
+--uig-text         #fdfdfd       #2a2a2a
+--uig-text-soft    #c8c8ce       #3f3f46
+--uig-text-dim     #99989d       #52525b
+--uig-text-muted   #71717c       #545760   info secundaria / artistas / timestamps
 
 
 ── ACENTOS DE ESTADO (texto) ────────────────────
 
 Familia     Dark            Light
 ----------   --------------   ------------
-primary     #ff4d44         #b30500
-danger      #ff4d44         #b30500
+primary     #ff3a3f         #8a0a0e
+danger      #ff3a3f         #8a0a0e
 success     #4ade80         #166534
 warning     #fbbf24         #92400e
-info        #7dd3fc         #0369a1
-secondary   #a1a1aa         #3f3f46
-
-En el tema claro los acentos planos se reemplazan por el versante oscuro de su
-propio tono: sobre base clara rendían 1.93:1 (verde) y 2.79:1 (rojo).
+info        #7dd3fc         #075985
+secondary   #99989d         #52525b
 
 
 ── TIPOGRAFÍA ───────────────────────────────────
 
 Voz            Fuente                                        Uso
 -----------    -------------------------------------------   ----------------------
-H1             'Barlow Condensed' 900                       titulares
-Display        'Barlow Condensed' 700                       H2–H6, labels, badges
-Marca          'Korataki' local() → Barlow Condensed it.   solo logo / nombre
-Body           'Barlow' 400 · line-height 1.7               párrafo
-Datos          'Rajdhani'                                    cifras y tiempos
+Títulos        'Barlow Condensed' 700/800/900                H1–H6, display, labels
+Body / UI      'Inter' 400–700                               cuerpo, botones, forms
+Marca          'Korataki' local() → Barlow Condensed it.     solo logo / nombre
+Datos          mono del sistema (ui-monospace)               timestamps, cifras técnicas
 
-Korataki no está en Google Fonts: se resuelve con @font-face + local() desde la
-fuente instalada en el sistema, con Barlow Condensed 900 itálica de fallback.
+Escala densa — base 12px (--bs-body-font-size: 0.75rem):
+
+Elemento              Tamaño    Peso    Notas
+--------------------   -------   ----    -------------------------------
+H1                     24–28px   900     uppercase, tracking 0.02em
+H2 / .uig-section      18px/14px 800     uppercase, tracking 0.08–0.18em
+H3 / H4                16/14px   800     uppercase
+Body                   12px      400     antialiased, lh 1.55
+.uig-label             11px      500     labels de formulario
+.uig-mono              10px      400     timestamps, datos técnicos
+.uig-stat              16px      700     rojo de marca, tracking -0.01em
+Badges / .uig-pill     8px       700     uppercase, tracking 0.08em
+Nav tabs               10px      600     uppercase, tracking 0.08em
+Labels form            11px      500     uppercase
+
+Utilidades nuevas: .uig-section · .uig-label · .uig-mono · .uig-stat · .uig-pill
 
 
-── RADIOS ───────────────────────────────────────
+── ESPACIADO Y GRID ─────────────────────────────
 
-Escala reescrita (Dark Sport Minimal, sin chaflán):
---bs-border-radius-sm 2px  ·  --bs-border-radius 3px  ·  -lg 4px
---bs-border-radius-xl 6px  ·  --bs-border-radius-xxl 8px  ·  -pill 50rem
+- Contenedor: max-width 1360px, gutter 24px (px-6).
+- Grid: los breakpoints son los de Bootstrap (sm 576 / md 768 / lg 992 /
+  xl 1200 / xxl 1400).
+- Escala de radios (sin chaflán):
+  --bs-border-radius-sm 2px  ·  -base/-lg 4px  ·  -xl 6px  ·  -xxl 8px
+  -pill 50rem (round completo)
 
 
-── INTERACCIÓN ───────────────────────────────────
+── COMPONENTES DE UI ────────────────────────────
+
+Botones: Inter 600, versalitas, tracking 0.08em; reposo plano, hover eleva.
+Cards: hairline 2px + lift; la destacada suma línea de marca.
+Gauge circular (.uig-gauge): 44×44px, conic-gradient(--uig-red
+  var(--uig-gauge-progress), #383842 0), hueco interior 36×36 #151518.
+  Uso: <div class="uig-gauge" style="--uig-gauge-progress: 72%"><span>72</span></div>
+Scrollbar: 6px, track #0e0e11, thumb #26262e (radius 3px), hover rojo.
+
+
+── INTERACCIÓN ──────────────────────────────────
 
 --uig-lift          translateY(-2px)                 hover de cards y botones
 --uig-press         translateY(0) scale(0.985)       estado activo
---uig-ring          0 0 0 3px rgba(249,33,33,.45)    foco
---uig-glow-red      0 0 18px rgba(249,33,33,.35)
---uig-glow-red-lg   0 0 32px rgba(249,33,33,.45)
+--uig-ring          0 0 0 3px rgba(239,29,36,.45)    foco
+--uig-glow-red      0 0 18px rgba(239,29,36,.35)
+--uig-glow-red-lg   0 0 32px rgba(239,29,36,.45)
 --uig-ease-out      cubic-bezier(.22, 1, .36, 1)
 
 --uig-shadow-1      0 2px 6px rgba(0,0,0,.35)
@@ -108,12 +130,8 @@ Escala reescrita (Dark Sport Minimal, sin chaflán):
 
 ── NOTAS DE ESTILO ──────────────────────────────
 
-- Estética oscura industrial, minimalista, con acento rojo fuerte.
-- Botones: versalitas, tracking amplio, relleno plano en reposo; el hover los eleva.
-- Cards: hairline + lift; la destacada suma borde de marca.
-- Radios chicos (2–8px): sin chaflán.
-- Vidrio muy sutil (opacidad 0.025) — nada translúcido pesado.
-- Sin gradientes llamativos; cuando se usan, primary → secondary a 135deg.
+- Estética industrial densa, tipografía chica, acento rojo fuerte.
+- Sin gradientes llamativos; vidrio muy sutil (opacidad 0.025).
 - El tema se conmuta con [data-bs-theme="light|dark"] en <html>.
   Solo se reescriben tokens: ningún componente necesita reglas nuevas
   salvo alertas y botones outline (ver _theme-light.scss).
@@ -121,7 +139,8 @@ Escala reescrita (Dark Sport Minimal, sin chaflán):
 
 ── REQUISITOS DE CONSUMO ────────────────────────
 
-1. Fuentes UiGas (Google Fonts) → <link> en <head>
+1. Fuentes (Google Fonts) → <link> en <head>:
+   Barlow + Barlow Condensed + Inter
 2. Bootstrap 5 CSS  → <link>, SIEMPRE antes de UiGas
 3. UiGas            → <link> después de Bootstrap
 4. Bootstrap JS     → <script bootstrap.bundle.min.js> para los componentes

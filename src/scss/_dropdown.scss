@@ -6,9 +6,16 @@
   --bs-dropdown-border-color:      var(--uig-line);
   --bs-dropdown-border-radius:     var(--bs-border-radius-lg);
   --bs-dropdown-color:             var(--uig-text);
+  --bs-dropdown-font-size:         0.8125rem;
+  --bs-dropdown-min-width:         9rem;
+  --bs-dropdown-padding-y:         0.35rem;
+  --bs-dropdown-item-padding-x:    0.75rem;
+  --bs-dropdown-item-padding-y:    0.35rem;
+  --bs-dropdown-header-padding-x:  0.75rem;
+  --bs-dropdown-header-padding-y:  0.4rem;
   --bs-dropdown-link-color:        var(--uig-text-dim);
   --bs-dropdown-link-hover-color:  var(--uig-heading);
-  --bs-dropdown-link-hover-bg:     rgba(249, 33, 33, 0.1);
+  --bs-dropdown-link-hover-bg:     rgba(239, 29, 36, 0.1);
   --bs-dropdown-link-active-color: var(--uig-heading);
   --bs-dropdown-link-active-bg:    var(--uig-red-slab);
   --bs-dropdown-divider-bg:        var(--uig-line);
@@ -25,10 +32,26 @@
   transition: background-color 0.15s ease, color 0.15s ease;
 }
 
+.dropdown-item:focus-visible {
+  outline: 2px solid var(--uig-red);
+  outline-offset: -2px;
+}
+
+.dropdown-item:disabled,
+.dropdown-item.disabled {
+  background-color: transparent;
+  color: var(--uig-text-muted);
+  opacity: 0.55;
+}
+
 .dropdown-header {
   font-family: var(--uig-font-display);
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   font-size: 0.75rem;
+}
+
+.dropdown-divider {
+  margin: 0.35rem 0;
 }

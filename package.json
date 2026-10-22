@@ -13,8 +13,9 @@
     "bootstrap": "^5.3.0"
   },
   "scripts": {
-    "build": "sass src/scss/style.scss dist/uigas.min.css --style=compressed --no-source-map",
-    "build:dev": "sass src/scss/style.scss dist/uigas.css --style=expanded --no-source-map",
+    "build": "sass src/scss/style.scss dist/uigas.min.css --style=compressed --no-source-map && node tools/build-js.mjs",
+    "build:dev": "sass src/scss/style.scss dist/uigas.css --style=expanded --no-source-map && node tools/build-js.mjs",
+    "build:js": "node tools/build-js.mjs",
     "watch": "sass --watch src/scss/style.scss dist/uigas.min.css --style=compressed --no-source-map",
     "docs": "node tools/docs/build.mjs",
     "docs:check": "node tools/docs/check-links.mjs",
